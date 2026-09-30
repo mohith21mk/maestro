@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "verify:isolation": "node scripts/verify-isolation.mjs",
+    "prebuild": "npm run verify:isolation",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview"

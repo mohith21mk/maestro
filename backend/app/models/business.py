@@ -69,3 +69,7 @@ class BusinessProfile(Base):
     role_profiles = relationship("RoleProfile", back_populates="business_profile", cascade="all, delete-orphan")
     skill_gaps = relationship("SkillGap", back_populates="business_profile", cascade="all, delete-orphan")
     learning_paths = relationship("LearningPath", back_populates="business_profile", cascade="all, delete-orphan")
+    disruptions = relationship("DisruptionEvent", back_populates="business_profile", cascade="all, delete-orphan")
+    supply_chain_decisions = relationship("SupplyChainDecision", back_populates="business_profile", cascade="all, delete-orphan")
+    shipments = relationship("Shipment", back_populates="business_profile", cascade="all, delete-orphan")
+    shipment_exceptions = relationship("ShipmentException", back_populates="business_profile", cascade="all, delete-orphan")

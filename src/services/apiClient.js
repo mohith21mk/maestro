@@ -450,6 +450,74 @@ class ApiClient {
   }
 
   // ---------------------------------------------------------------------------
+  // SAP RESILIENT SUPPLY CHAIN METHODS
+  // ---------------------------------------------------------------------------
+  async getSAPAdapterStatus(businessProfileId) {
+    return this.request(`/supply-chain/status?business_profile_id=${businessProfileId}`);
+  }
+
+  async getDisruptions(businessProfileId) {
+    return this.request(`/supply-chain/disruptions?business_profile_id=${businessProfileId}`);
+  }
+
+  async simulateDisruption(businessProfileId, data = {}) {
+    return this.request(`/supply-chain/disruptions/simulate?business_profile_id=${businessProfileId}`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async generateScenarios(businessProfileId, disruptionId = null) {
+    const query = disruptionId ? `&disruption_id=${encodeURIComponent(disruptionId)}` : '';
+    return this.request(`/supply-chain/scenarios/generate?business_profile_id=${businessProfileId}${query}`, {
+      method: 'POST',
+    });
+  }
+
+  async auditCandidateSupplier(businessProfileId, supplierCode = 'VEND-SAP-B02') {
+    return this.request(`/supply-chain/compliance/audit?business_profile_id=${businessProfileId}&supplier_code=${encodeURIComponent(supplierCode)}`, {
+      method: 'POST',
+    });
+  }
+
+  async submitHumanDecision(businessProfileId, decisionData) {
+    return this.request(`/supply-chain/decisions?business_profile_id=${businessProfileId}`, {
+      method: 'POST',
+      body: JSON.stringify(decisionData),
+    });
+  }
+
+  async getHumanDecisions(businessProfileId) {
+    return this.request(`/supply-chain/decisions?business_profile_id=${businessProfileId}`);
+  }
+
+  // Operational Supply Chain Methods (Shipments, Checkpoints, Exceptions, Prepare vs Execute)
+  async getShipments(businessProfileId) {
+    return this.request(`/supply-chain/shipments?business_profile_id=${businessProfileId}`);
+  }
+
+  async getShipment(shipmentId, businessProfileId) {
+    return this.request(`/supply-chain/shipments/${shipmentId}?business_profile_id=${businessProfileId}`);
+  }
+
+  async getOperationalExceptions(businessProfileId) {
+    return this.request(`/supply-chain/exceptions?business_profile_id=${businessProfileId}`);
+  }
+
+  async simulateShipmentDelay(businessProfileId) {
+    return this.request(`/supply-chain/shipments/simulate-delay?business_profile_id=${businessProfileId}`, {
+      method: 'POST',
+    });
+  }
+
+  async confirmShipmentAction(shipmentId, businessProfileId, actionData) {
+    return this.request(`/supply-chain/shipments/${shipmentId}/confirm-action?business_profile_id=${businessProfileId}`, {
+      method: 'POST',
+      body: JSON.stringify(actionData),
+    });
+  }
+
+  // ---------------------------------------------------------------------------
   // WORKFORCE INTELLIGENCE METHODS
   // ---------------------------------------------------------------------------
   async getWorkforceSummary(businessProfileId) {

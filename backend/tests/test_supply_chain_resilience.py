@@ -18,14 +18,7 @@ from app.services.proposal_service import ProposalService
 from app.services.auth_service import AuthService
 
 
-@pytest.fixture
-def db():
-    session = SessionLocal()
-    try:
-        yield session
-    finally:
-        session.rollback()
-        session.close()
+# Use db fixture from conftest.py
 
 
 @pytest.fixture
@@ -236,7 +229,7 @@ def test_supply_chain_proposal_and_task_execution(db: Session, auth_user_and_pro
     assert audit.new_state == "ACTION_CREATED"
 
 
-def test_supply_chain_tenant_isolation(db: Session, auth_user_and_profile):
+def test_supply_chain_tenant_isolation(db: Session, auth_user_and_profile, client):
     profile_a = auth_user_and_profile["profile"]
     token_a = auth_user_and_profile["token"]
 
@@ -260,7 +253,6 @@ def test_supply_chain_tenant_isolation(db: Session, auth_user_and_profile):
     db.add(profile_b)
     db.commit()
 
-    client = TestClient(app)
     # User A tries to access Profile B's supply chain summary -> must return 403
     response = client.get(
         f"/api/v1/supply-chain/summary?business_profile_id={profile_b.id}",

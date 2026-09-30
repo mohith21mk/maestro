@@ -15,7 +15,17 @@ from app.models.emission_factor import EmissionFactor
 from app.models.green_impact import GreenImpactMeasurement
 from app.models.agent_run import AgentRun
 from app.models.green_metric import GreenOperationalMetric
-from app.models.supplier import Supplier, SupplierDocument, SupplyItem, SupplyChainRisk
+from app.models.supplier import (
+    Supplier,
+    SupplierDocument,
+    SupplyItem,
+    SupplyChainRisk,
+    DisruptionEvent,
+    SupplyChainDecision,
+    Shipment,
+    ShipmentCheckpoint,
+    ShipmentException,
+)
 from app.models.workforce import EmployeeProfile, RoleProfile, SkillGap, LearningPath
 
 __all__ = [
@@ -41,6 +51,11 @@ __all__ = [
     "SupplierDocument",
     "SupplyItem",
     "SupplyChainRisk",
+    "DisruptionEvent",
+    "SupplyChainDecision",
+    "Shipment",
+    "ShipmentCheckpoint",
+    "ShipmentException",
     "EmployeeProfile",
     "RoleProfile",
     "SkillGap",

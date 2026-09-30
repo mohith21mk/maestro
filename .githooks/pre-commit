@@ -1,0 +1,24 @@
+#!/bin/sh
+# ==============================================================================
+# POWER HOUSE Pre-Commit Hook: Isolation Guardrail
+# Automatically blocks commits containing cross-project coupling with MINEGUARD AI
+# ==============================================================================
+
+echo "[Git Hook] Running POWER HOUSE isolation validation..."
+
+node scripts/verify-isolation.mjs
+STATUS=$?
+
+if [ $STATUS -ne 0 ]; then
+  echo ""
+  echo "======================================================================"
+  echo "[Git Hook] COMMIT REJECTED: Cross-project isolation violations found!"
+  echo "POWER HOUSE and MINEGUARD AI must remain completely decoupled."
+  echo "Fix the reported violations before committing."
+  echo "======================================================================"
+  echo ""
+  exit 1
+fi
+
+echo "[Git Hook] Isolation verification passed. Proceeding with commit."
+exit 0
