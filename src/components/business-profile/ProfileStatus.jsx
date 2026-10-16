@@ -40,7 +40,7 @@ export default function ProfileStatus({ checklist = profileStatusChecklist, comp
               </div>
 
               <span
-                className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${
+                className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${
                   isDone
                     ? 'bg-emerald-950/40 text-emerald-400 border-emerald-800/50'
                     : 'bg-amber-950/40 text-amber-400 border-amber-800/50'

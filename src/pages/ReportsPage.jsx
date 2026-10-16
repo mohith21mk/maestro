@@ -98,10 +98,10 @@ export default function ReportsPage({ showToast, setModalState }) {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">
             Reports &amp; Analytics
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+          <p className="text-sm text-slate-400 mt-1">
             View compliance health analytics, statutory audit reports, and risk summaries.
           </p>
         </div>
@@ -111,9 +111,9 @@ export default function ReportsPage({ showToast, setModalState }) {
             variant="secondary"
             size="sm"
             onClick={() => showToast('Printing summary report...')}
-            className="text-xs font-semibold"
+            className="min-h-[36px] h-9 text-sm font-semibold"
           >
-            <Printer className="w-3.5 h-3.5" />
+            <Printer className="w-4 h-4 mr-1.5" />
             <span className="hidden sm:inline">Print View</span>
           </Button>
 
@@ -121,9 +121,9 @@ export default function ReportsPage({ showToast, setModalState }) {
             variant="primary"
             size="sm"
             onClick={handleGenerateReport}
-            className="text-xs font-semibold"
+            className="min-h-[36px] h-9 text-sm font-semibold"
           >
-            <FileSpreadsheet className="w-3.5 h-3.5" />
+            <FileSpreadsheet className="w-4 h-4 mr-1.5" />
             <span>Generate Full Dossier</span>
           </Button>
         </div>
@@ -132,10 +132,10 @@ export default function ReportsPage({ showToast, setModalState }) {
       {/* Top 4 Summary Metrics */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
-          <div>
-            <div className="text-xs font-semibold text-slate-400">Overall Health Score</div>
-            <div className="text-xl sm:text-2xl font-black text-emerald-400 mt-1">{reportsSummary.complianceScore}%</div>
-            <div className="text-[11px] text-emerald-400 font-semibold mt-0.5">↑ +{trendGrowth}% this quarter</div>
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Overall Health Score</div>
+            <div className="text-3xl font-black text-emerald-400 mt-1">{reportsSummary.complianceScore}%</div>
+            <div className="text-xs text-emerald-400 font-semibold mt-0.5">↑ +{trendGrowth}% this quarter</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center border border-emerald-800/80 shrink-0">
             <Award className="w-5 h-5" />
@@ -143,10 +143,10 @@ export default function ReportsPage({ showToast, setModalState }) {
         </div>
 
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
-          <div>
-            <div className="text-xs font-semibold text-slate-400">Approvals Acquired</div>
-            <div className="text-xl sm:text-2xl font-black text-white mt-1">{reportsSummary.completedApprovals.done}/{reportsSummary.completedApprovals.total}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">{approvalsStats.inProgress || 1} in progress</div>
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Approvals Acquired</div>
+            <div className="text-3xl font-black text-white mt-1">{reportsSummary.completedApprovals.done}/{reportsSummary.completedApprovals.total}</div>
+            <div className="text-xs text-slate-400 mt-0.5">{approvalsStats.inProgress || 1} in progress</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80 shrink-0">
             <FileCheck className="w-5 h-5" />
@@ -154,10 +154,10 @@ export default function ReportsPage({ showToast, setModalState }) {
         </div>
 
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
-          <div>
-            <div className="text-xs font-semibold text-slate-400">Tasks Completed</div>
-            <div className="text-xl sm:text-2xl font-black text-white mt-1">{reportsSummary.completedTasks.done}/{reportsSummary.completedTasks.total}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">{pct(completedTasksCount, totalTasks)}% workflow complete</div>
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tasks Completed</div>
+            <div className="text-3xl font-black text-white mt-1">{reportsSummary.completedTasks.done}/{reportsSummary.completedTasks.total}</div>
+            <div className="text-xs text-slate-400 mt-0.5">{pct(completedTasksCount, totalTasks)}% workflow complete</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-indigo-950/80 text-indigo-400 flex items-center justify-center border border-indigo-800/80 shrink-0">
             <CheckSquare className="w-5 h-5" />
@@ -165,10 +165,10 @@ export default function ReportsPage({ showToast, setModalState }) {
         </div>
 
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
-          <div>
-            <div className="text-xs font-semibold text-slate-400">Verified Documents</div>
-            <div className="text-xl sm:text-2xl font-black text-white mt-1">{reportsSummary.documentsVerified.done}/{reportsSummary.documentsVerified.total}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">{pct(documentsStats.verified, documentsStats.total)}% digital vault secure</div>
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Verified Documents</div>
+            <div className="text-3xl font-black text-white mt-1">{reportsSummary.documentsVerified.done}/{reportsSummary.documentsVerified.total}</div>
+            <div className="text-xs text-slate-400 mt-0.5">{pct(documentsStats.verified, documentsStats.total)}% digital vault secure</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-purple-950/80 text-purple-400 flex items-center justify-center border border-purple-800/80 shrink-0">
             <FolderKanban className="w-5 h-5" />
@@ -182,10 +182,10 @@ export default function ReportsPage({ showToast, setModalState }) {
         <div className="lg:col-span-7 bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-bold text-white leading-none">Compliance Score Trend</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-none">Compliance Score Trend</h2>
               <p className="text-xs text-slate-400 mt-1">Monthly statutory index progression (Jan - Jun 2026)</p>
             </div>
-            <span className="px-2.5 py-1 rounded-lg bg-emerald-950 text-emerald-400 text-xs font-bold border border-emerald-800">
+            <span className="px-2.5 py-1 rounded-lg bg-emerald-950 text-emerald-400 text-xs font-semibold border border-emerald-800">
               +{trendGrowth} pts Growth
             </span>
           </div>
@@ -234,7 +234,7 @@ export default function ReportsPage({ showToast, setModalState }) {
                 ].map((pt, idx) => (
                   <g key={idx}>
                     <circle cx={pt.x} cy={pt.y} r="5" fill="#111827" stroke="#3b82f6" strokeWidth="2.5" />
-                    <text x={pt.x} y={pt.y - 10} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#f8fafc">
+                    <text x={pt.x} y={pt.y - 10} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#f8fafc">
                       {pt.label}
                     </text>
                   </g>
@@ -254,7 +254,7 @@ export default function ReportsPage({ showToast, setModalState }) {
         {/* Approvals Status Donut (5 cols) */}
         <div className="lg:col-span-5 bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6 space-y-4">
           <div>
-            <h2 className="text-base font-bold text-white leading-none">Licences Breakdown</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-none">Licences Breakdown</h2>
             <p className="text-xs text-slate-400 mt-1">{approvalsStats.total || 8} total statutory approvals status</p>
           </div>
 
@@ -305,13 +305,13 @@ export default function ReportsPage({ showToast, setModalState }) {
               </svg>
 
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span className="text-xl font-black text-white leading-none">{approvalsStats.total || 8}</span>
-                <span className="text-[10px] text-slate-400 font-semibold mt-0.5">Total</span>
+                <span className="text-2xl font-black text-white leading-none">{approvalsStats.total || 8}</span>
+                <span className="text-xs text-slate-400 font-semibold mt-0.5">Total</span>
               </div>
             </div>
 
             {/* Donut Legend */}
-            <div className="space-y-2 text-xs w-full sm:w-auto">
+            <div className="space-y-2 text-sm w-full sm:w-auto">
               {approvalDistribution.map((item) => (
                 <div key={item.label} className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-2">
@@ -331,14 +331,14 @@ export default function ReportsPage({ showToast, setModalState }) {
         {/* Tasks Breakdown Bar Metrics (6 cols) */}
         <div className="lg:col-span-6 bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6 space-y-4">
           <div>
-            <h2 className="text-base font-bold text-white leading-none">Compliance Tasks Overview</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-none">Compliance Tasks Overview</h2>
             <p className="text-xs text-slate-400 mt-1">{totalTasks} total statutory tasks distribution</p>
           </div>
 
           <div className="space-y-4 pt-2">
             {taskDistribution.map((item) => (
               <div key={item.label} className="space-y-1.5">
-                <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center justify-between text-sm">
                   <span className="font-semibold text-slate-300">{item.label}</span>
                   <span className="font-bold text-white">{item.count} Tasks</span>
                 </div>
@@ -358,30 +358,30 @@ export default function ReportsPage({ showToast, setModalState }) {
         {/* Compliance Strengths & Highlights (6 cols) */}
         <div className="lg:col-span-6 bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6 space-y-4">
           <div>
-            <h2 className="text-base font-bold text-white leading-none">Statutory Highlights</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-none">Statutory Highlights</h2>
             <p className="text-xs text-slate-400 mt-1">Key operational audit standing points</p>
           </div>
 
           <div className="space-y-3 pt-1">
             {performanceSummary.strongAreas.map((item, idx) => (
-              <div key={`strong-${idx}`} className="p-3 bg-[#141C2B] rounded-xl border border-slate-800 flex items-start gap-3">
+              <div key={`strong-${idx}`} className="p-3.5 bg-[#141C2B] rounded-xl border border-slate-800 flex items-start gap-3">
                 <div className="p-1 rounded-md bg-emerald-950 text-emerald-400 border border-emerald-800 shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold text-white">{item.title}</h3>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">{item.detail}</p>
+                  <h3 className="text-sm font-bold text-white">{item.title}</h3>
+                  <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">{item.detail}</p>
                 </div>
               </div>
             ))}
             {performanceSummary.needsAttention.map((item, idx) => (
-              <div key={`attn-${idx}`} className="p-3 bg-[#141C2B] rounded-xl border border-slate-800 flex items-start gap-3">
+              <div key={`attn-${idx}`} className="p-3.5 bg-[#141C2B] rounded-xl border border-slate-800 flex items-start gap-3">
                 <div className="p-1 rounded-md bg-amber-950 text-amber-400 border border-amber-800 shrink-0 mt-0.5">
-                  <AlertTriangle className="w-3.5 h-3.5" />
+                  <AlertTriangle className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold text-white">{item.title}</h3>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">{item.detail}</p>
+                  <h3 className="text-sm font-bold text-white">{item.title}</h3>
+                  <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">{item.detail}</p>
                 </div>
               </div>
             ))}

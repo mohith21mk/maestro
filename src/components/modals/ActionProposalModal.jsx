@@ -19,23 +19,23 @@ export default function ActionProposalModal({ isOpen, onClose, proposal, onConfi
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-[#111827] border border-[#1E293B] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+        className="bg-[#111827] border border-[#1E293B] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden max-h-[90vh] flex flex-col animate-in zoom-in-95 duration-200"
         role="dialog"
         aria-modal="true"
         aria-labelledby="proposal-modal-title"
       >
         {/* Header */}
-        <div className="p-5 border-b border-slate-800/80 flex items-start justify-between gap-4 bg-[#141C2B]/60">
+        <div className="p-4 sm:p-5 border-b border-slate-800/80 flex items-start justify-between gap-4 bg-[#141C2B]/60">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold text-purple-400 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-800/80 uppercase tracking-wider">
+              <span className="text-xs font-bold text-purple-400 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-800/80 uppercase tracking-wider">
                 Human-in-the-Loop Proposal
               </span>
-              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/80">
+              <span className="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/80">
                 {proposal.risk_level || 'Low Risk'}
               </span>
             </div>
-            <h2 id="proposal-modal-title" className="text-base font-bold text-white tracking-tight">
+            <h2 id="proposal-modal-title" className="text-lg sm:text-xl font-bold text-white tracking-tight">
               {proposal.title || 'Review Proposed Operational Action'}
             </h2>
           </div>
@@ -49,9 +49,9 @@ export default function ActionProposalModal({ isOpen, onClose, proposal, onConfi
         </div>
 
         {/* Content */}
-        <div className="p-5 space-y-4 text-xs text-slate-300">
+        <div className="p-4 sm:p-5 space-y-4 text-xs sm:text-sm text-slate-300 overflow-y-auto">
           {/* AI Security Policy Note */}
-          <div className="p-3 rounded-xl bg-[#0B0F17] border border-blue-900/40 text-[11px] text-slate-300 leading-relaxed flex items-start gap-2.5">
+          <div className="p-3 rounded-xl bg-[#0B0F17] border border-blue-900/40 text-xs text-slate-300 leading-relaxed flex items-start gap-2.5">
             <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
             <span>
               <strong>Security Protocol:</strong> AI agents are restricted from mutating compliance states directly. All mutations require explicit human review and will emit an immutable audit entry for <strong>Mohith K</strong>.
@@ -61,24 +61,24 @@ export default function ActionProposalModal({ isOpen, onClose, proposal, onConfi
           {/* Action Details */}
           <div className="space-y-2">
             <div className="p-3 rounded-xl bg-[#141C2B] border border-slate-800 space-y-1">
-              <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Action Rationale</span>
-              <p className="text-slate-200 text-xs leading-relaxed">
+              <span className="text-xs text-slate-400 uppercase tracking-wider block font-semibold">Action Rationale</span>
+              <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
                 {proposal.reason || 'Document intelligence analysis completed with high confidence. Verification satisfies statutory rule.'}
               </p>
             </div>
 
             {/* State Transition Delta */}
             <div className="p-3 rounded-xl bg-[#141C2B] border border-slate-800">
-              <span className="text-[10px] text-slate-500 uppercase tracking-wider block mb-1.5">State Transition Delta</span>
+              <span className="text-xs text-slate-400 uppercase tracking-wider block mb-1.5 font-semibold">State Transition Delta</span>
               <div className="flex items-center justify-around p-2 rounded-lg bg-[#0B0F17] border border-slate-800">
                 <div className="text-center">
-                  <span className="text-[10px] text-slate-500 block">Previous Status</span>
-                  <span className="font-bold text-amber-400 text-xs">Pending</span>
+                  <span className="text-xs text-slate-400 block">Previous Status</span>
+                  <span className="font-bold text-amber-400 text-sm">Pending</span>
                 </div>
                 <ArrowRight className="w-4 h-4 text-slate-600" />
                 <div className="text-center">
-                  <span className="text-[10px] text-slate-500 block">New Status</span>
-                  <span className="font-bold text-emerald-400 text-xs">Verified</span>
+                  <span className="text-xs text-slate-400 block">New Status</span>
+                  <span className="font-bold text-emerald-400 text-sm">Verified</span>
                 </div>
               </div>
             </div>
@@ -89,16 +89,16 @@ export default function ActionProposalModal({ isOpen, onClose, proposal, onConfi
         <div className="p-4 border-t border-slate-800/80 bg-[#141C2B]/60 flex items-center justify-between">
           <button
             onClick={onClose}
-            className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold cursor-pointer"
+            className="px-4 py-2 min-h-[36px] rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold cursor-pointer"
           >
             Cancel
           </button>
           <button
             onClick={handleConfirm}
             disabled={isProcessing}
-            className="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm shadow-emerald-500/20 disabled:opacity-50"
+            className="px-4 py-2 min-h-[36px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm shadow-emerald-500/20 disabled:opacity-50"
           >
-            <UserCheck className="w-3.5 h-3.5" />
+            <UserCheck className="w-4 h-4" />
             <span>{isProcessing ? 'Executing...' : 'Confirm Action (Mohith K)'}</span>
           </button>
         </div>

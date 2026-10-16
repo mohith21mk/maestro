@@ -98,14 +98,14 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
         <div className="p-5 border-b border-slate-800/80 flex items-start justify-between gap-4 bg-[#141C2B]/60">
           <div className="space-y-1.5 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[11px] font-bold text-blue-400 bg-blue-950/80 px-2.5 py-0.5 rounded-md border border-blue-800/80 uppercase tracking-wider">
+              <span className="text-xs font-bold text-blue-400 bg-blue-950/80 px-2.5 py-0.5 rounded-md border border-blue-800/80 uppercase tracking-wider">
                 Why This Requirement?
               </span>
-              <span className="text-[11px] font-semibold text-slate-300 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
+              <span className="text-xs font-semibold text-slate-300 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
                 {jurisdiction}
               </span>
               <span
-                className={`text-[11px] font-bold px-2 py-0.5 rounded flex items-center gap-1 ${
+                className={`text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1 ${
                   isVerified
                     ? 'bg-emerald-950/90 text-emerald-400 border border-emerald-800/90'
                     : 'bg-amber-950/90 text-amber-400 border border-amber-800/90'
@@ -122,12 +122,12 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
               <Building className="w-3.5 h-3.5 text-slate-400 shrink-0" />
               <span className="truncate">{approval.authority}</span>
               <span className="text-slate-600">•</span>
-              <Badge variant={approval.status} size="xs">{approval.status}</Badge>
+              <Badge variant={approval.status} size="sm">{approval.status}</Badge>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer shrink-0"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer shrink-0 min-h-[36px] min-w-[36px] flex items-center justify-center"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -135,38 +135,38 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
         </div>
 
         {/* Scrollable Content */}
-        <div className="p-5 overflow-y-auto space-y-5 text-xs text-slate-300">
+        <div className="p-5 overflow-y-auto space-y-5 text-sm text-slate-300">
           {/* Section 1: Plain English Rationale */}
           <div className="p-4 rounded-xl bg-[#141C2B] border border-blue-900/40 space-y-1.5">
-            <div className="text-[11px] font-bold text-blue-400 uppercase tracking-wider flex items-center gap-1.5">
-              <Scale className="w-3.5 h-3.5" />
+            <div className="text-xs font-bold text-blue-400 uppercase tracking-wider flex items-center gap-1.5">
+              <Scale className="w-4 h-4" />
               Statutory Basis & Rationale
             </div>
-            <p className="text-slate-200 leading-relaxed text-xs">
+            <p className="text-slate-200 leading-relaxed text-sm">
               {approval.why_required || approval.trigger_reason || approval.description}
             </p>
           </div>
 
           {/* Section 2: Decision Inputs */}
           <div className="space-y-2">
-            <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wide">
+            <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wide">
               Deterministic Decision Inputs
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div className="p-2.5 rounded-lg bg-[#0B0F17] border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Business Category</span>
-                <span className="font-semibold text-slate-200 mt-0.5 block">{decisionInputs.category_label || decisionInputs.business_category}</span>
+                <span className="text-xs text-slate-400 uppercase tracking-wider block">Business Category</span>
+                <span className="font-semibold text-slate-200 mt-1 block text-sm">{decisionInputs.category_label || decisionInputs.business_category}</span>
               </div>
               <div className="p-2.5 rounded-lg bg-[#0B0F17] border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Operational Location</span>
-                <span className="font-semibold text-slate-200 mt-0.5 flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-slate-400" />
+                <span className="text-xs text-slate-400 uppercase tracking-wider block">Operational Location</span>
+                <span className="font-semibold text-slate-200 mt-1 flex items-center gap-1 text-sm">
+                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
                   {decisionInputs.location}
                 </span>
               </div>
               <div className="p-2.5 rounded-lg bg-[#0B0F17] border border-slate-800/80 sm:col-span-2">
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Statutory Trigger Condition</span>
-                <span className="text-slate-300 mt-0.5 block">{decisionInputs.condition_or_threshold}</span>
+                <span className="text-xs text-slate-400 uppercase tracking-wider block">Statutory Trigger Condition</span>
+                <span className="text-slate-300 mt-1 block text-sm">{decisionInputs.condition_or_threshold}</span>
               </div>
             </div>
           </div>
@@ -174,11 +174,11 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
           {/* Section 3: 8-Step Decision Trace */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wide">
                 Decision Trace (8 Stages)
               </h3>
-              <span className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
-                <CheckCircle2 className="w-3 h-3" />
+              <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5" />
                 Deterministic Match
               </span>
             </div>
@@ -187,11 +187,11 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
               {decisionTrace.map((st, idx) => (
                 <div key={st.step || idx} className="relative group">
                   <div className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-blue-500 border-2 border-[#111827]" />
-                  <div className="text-[11px] text-slate-400 font-medium">
-                    <span className="font-bold text-slate-200">Step {st.step_number || idx + 1}: {st.title || st.stage || st.step}</span>
-                    <span className="text-slate-500 ml-1.5 text-[10px]">({st.stage || st.title})</span>
+                  <div className="text-xs text-slate-400 font-medium">
+                    <span className="font-bold text-slate-200 text-sm">Step {st.step_number || idx + 1}: {st.title || st.stage || st.step}</span>
+                    <span className="text-slate-400 ml-1.5 text-xs">({st.stage || st.title})</span>
                   </div>
-                  <div className="text-xs text-slate-300 mt-0.5 leading-snug">
+                  <div className="text-sm text-slate-300 mt-0.5 leading-snug">
                     {st.description}
                   </div>
                 </div>
@@ -202,35 +202,35 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
           {/* Section 4: Hybrid Regulatory Engine Split & Vector RAG Evidence */}
           <div className="p-4 rounded-xl bg-[#0B0F17] border border-slate-800 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 Dual-Engine Verification & Statutory Citations
               </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-950 text-emerald-400 border border-emerald-800/80">
+              <span className="px-2.5 py-0.5 rounded text-xs font-black bg-emerald-950 text-emerald-400 border border-emerald-800/80">
                 VERIFIED SOURCE
               </span>
             </div>
 
             {/* Architecture Engine Distinction */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               <div className="p-2.5 rounded-lg bg-[#141C2B] border border-blue-900/40 space-y-1">
-                <div className="flex items-center gap-1.5 text-blue-400 font-bold uppercase text-[10px]">
-                  <Cpu className="w-3 h-3" />
+                <div className="flex items-center gap-1.5 text-blue-400 font-bold uppercase text-xs">
+                  <Cpu className="w-3.5 h-3.5" />
                   <span>Authoritative Selection</span>
                 </div>
-                <div className="text-slate-200 font-semibold">Deterministic Rules Engine</div>
-                <div className="text-slate-400 text-[10px] leading-tight">
+                <div className="text-slate-200 font-semibold text-sm">Deterministic Rules Engine</div>
+                <div className="text-slate-400 text-xs leading-tight">
                   Evaluates enterprise profile conditions to select applicable legal mandates.
                 </div>
               </div>
 
               <div className="p-2.5 rounded-lg bg-[#141C2B] border border-purple-900/40 space-y-1">
-                <div className="flex items-center gap-1.5 text-purple-400 font-bold uppercase text-[10px]">
-                  <Database className="w-3 h-3" />
+                <div className="flex items-center gap-1.5 text-purple-400 font-bold uppercase text-xs">
+                  <Database className="w-3.5 h-3.5" />
                   <span>Supporting Evidence</span>
                 </div>
-                <div className="text-slate-200 font-semibold">Verified Vector RAG</div>
-                <div className="text-slate-400 text-[10px] leading-tight">
+                <div className="text-slate-200 font-semibold text-sm">Verified Vector RAG</div>
+                <div className="text-slate-400 text-xs leading-tight">
                   Performs dense 384-d semantic retrieval across official gazettes and statutes.
                 </div>
               </div>
@@ -239,18 +239,18 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
             {/* Vector RAG Retrieved Evidence Snippet */}
             {ragCitation && (
               <div className="p-3 rounded-lg bg-emerald-950/20 border border-emerald-800/40 space-y-1.5">
-                <div className="flex items-center justify-between text-[11px]">
+                <div className="flex items-center justify-between text-xs">
                   <span className="text-emerald-400 font-bold flex items-center gap-1">
-                    <Database className="w-3 h-3" />
+                    <Database className="w-3.5 h-3.5" />
                     ChromaDB Vector Retrieval Match
                   </span>
                   {ragCitation.composite_relevance && (
-                    <span className="text-[10px] font-mono font-bold text-emerald-300 bg-emerald-900/50 px-1.5 py-0.5 rounded border border-emerald-700/60">
+                    <span className="text-xs font-mono font-bold text-emerald-300 bg-emerald-900/50 px-2 py-0.5 rounded border border-emerald-700/60">
                       {Math.round(ragCitation.composite_relevance * 100)}% Match
                     </span>
                   )}
                 </div>
-                <p className="text-slate-300 text-[11px] leading-relaxed italic">
+                <p className="text-slate-300 text-xs leading-relaxed italic">
                   "{ragCitation.content_preview || ragCitation.chunk_text || ragCitation.citation}"
                 </p>
                 {ragCitation.source_url && (
@@ -258,17 +258,17 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
                     href={ragCitation.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[10px] text-blue-400 hover:text-blue-300 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     <span>Official Ministry Source Document</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
               </div>
             )}
 
             {loadingRag && (
-              <div className="text-[11px] text-slate-400 italic flex items-center gap-2">
+              <div className="text-xs text-slate-400 italic flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
                 Querying local ChromaDB vector index for statutory evidence...
               </div>
@@ -277,41 +277,41 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
             {/* Statutory Metadata */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
               <div>
-                <span className="text-[10px] text-slate-500 block">Enforcing Body</span>
-                <span className="font-semibold text-slate-200">{ragCitation?.statutory_authority || regBasis.source}</span>
+                <span className="text-xs text-slate-400 block">Enforcing Body</span>
+                <span className="font-semibold text-slate-200 text-sm">{ragCitation?.statutory_authority || regBasis.source}</span>
               </div>
               <div>
-                <span className="text-[10px] text-slate-500 block">Statutory Act</span>
-                <span className="font-semibold text-slate-200">{ragCitation?.act || regBasis.act}</span>
+                <span className="text-xs text-slate-400 block">Statutory Act</span>
+                <span className="font-semibold text-slate-200 text-sm">{ragCitation?.act || regBasis.act}</span>
               </div>
               <div className="sm:col-span-2">
-                <span className="text-[10px] text-slate-500 block">Section / Provision</span>
-                <span className="text-slate-300 font-mono text-[11px]">{ragCitation?.section || regBasis.section}</span>
+                <span className="text-xs text-slate-400 block">Section / Provision</span>
+                <span className="text-slate-300 font-mono text-xs">{ragCitation?.section || regBasis.section}</span>
               </div>
               <div className="sm:col-span-2">
-                <span className="text-[10px] text-slate-500 block">Official Gazette / Order Citation</span>
-                <span className="text-slate-400 italic text-[11px] block">{regBasis.citation}</span>
+                <span className="text-xs text-slate-400 block">Official Gazette / Order Citation</span>
+                <span className="text-slate-300 italic text-xs block">{regBasis.citation}</span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-slate-800 text-[11px] text-slate-500 leading-tight">
+            <div className="pt-2 border-t border-slate-800 text-xs text-slate-400 leading-normal">
               Evidence grounded in official statutory gazettes and circulars. Verified regulatory Vector RAG provides supporting citations without overriding deterministic compliance selection.
             </div>
           </div>
 
           {/* Section 5: Mandatory Required Documents */}
           <div className="space-y-2">
-            <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wide">
+            <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wide">
               Mandatory Evidence Documents ({docs.length})
             </h3>
             <div className="space-y-1.5">
               {docs.map((d, i) => (
-                <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-[#141C2B] border border-slate-800/80 text-xs">
+                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-[#141C2B] border border-slate-800/80 text-sm">
                   <span className="text-slate-200 flex items-center gap-2">
-                    <FileText className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                    <FileText className="w-4 h-4 text-blue-400 shrink-0" />
                     {d}
                   </span>
-                  <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/80">
+                  <span className="text-xs font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/80">
                     Mandatory
                   </span>
                 </div>
@@ -329,7 +329,7 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
           <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
             <button
               onClick={onClose}
-              className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-sm font-semibold transition-colors cursor-pointer min-h-[36px]"
             >
               Close
             </button>
@@ -338,10 +338,10 @@ export default function WhyRequirementModal({ isOpen, onClose, approval, busines
                 onClose();
                 if (onTakeAction) onTakeAction(approval);
               }}
-              className="px-4 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm shadow-blue-500/20"
+              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm shadow-blue-500/20 min-h-[36px]"
             >
               <span>Take Action</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>

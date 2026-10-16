@@ -56,14 +56,14 @@ export default function StatCard({ item, onClick }) {
   return (
     <div
       onClick={onClick}
-      className={`group relative bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between ${accent.hoverBorder}`}
+      className={`group relative bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between ${accent.hoverBorder}`}
     >
       <div className="flex items-start justify-between gap-4">
         <div>
           <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
             {item.title}
           </span>
-          <div className="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">
+          <div className="mt-2 text-3xl font-black text-slate-900 tracking-tight">
             {item.value}
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function StatCard({ item, onClick }) {
         </div>
 
         {item.trend && (
-          <span className="text-[11px] font-medium text-slate-400">
+          <span className="text-xs font-medium text-slate-400">
             {item.trend}
           </span>
         )}

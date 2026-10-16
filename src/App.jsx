@@ -200,7 +200,7 @@ function MainAppContent() {
                     ) : isCurrent ? (
                       <Loader2 className="w-4 h-4 text-blue-400 animate-spin shrink-0" />
                     ) : (
-                      <span className="w-4 h-4 rounded-full border border-slate-700 flex items-center justify-center text-[9px] shrink-0 text-slate-500">
+                      <span className="w-4 h-4 rounded-full border border-slate-700 flex items-center justify-center text-xs shrink-0 text-slate-500">
                         {idx + 1}
                       </span>
                     )}
@@ -241,8 +241,8 @@ function MainAppContent() {
         />
 
         {/* Page Content Viewport - Only this scrolls */}
-        <main className="flex-1 min-h-0 overflow-y-auto w-full px-2.5 sm:px-3.5 py-2.5 scrollbar-thin">
-          <div className="max-w-[1680px] mx-auto w-full space-y-2.5">
+        <main className="flex-1 min-h-0 overflow-y-auto w-full px-4 sm:px-6 py-4 scrollbar-thin">
+          <div className="max-w-[1680px] mx-auto w-full space-y-5 sm:space-y-6">
             {(activeNav === 'dashboard' || activeNav === 'overview') && (
               <Dashboard
                 modalState={modalState}
@@ -511,7 +511,7 @@ function MainAppContent() {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-100 text-base">{modalState.title}</h3>
-                  <span className="text-[11px] text-slate-400">POWER HOUSE Intelligence View</span>
+                  <span className="text-xs text-slate-400">POWER HOUSE Intelligence View</span>
                 </div>
               </div>
               <button
@@ -612,11 +612,11 @@ function MainAppContent() {
                   </div>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div className="p-2.5 bg-[#0B0F17] border border-[#1E293B] rounded-lg">
-                      <span className="text-slate-500 block text-[10px]">Assignee</span>
+                      <span className="text-slate-400 block text-xs">Assignee</span>
                       <span className="font-bold text-slate-200">{modalState.data?.assignee}</span>
                     </div>
                     <div className="p-2.5 bg-[#0B0F17] border border-[#1E293B] rounded-lg">
-                      <span className="text-slate-500 block text-[10px]">Due Date</span>
+                      <span className="text-slate-400 block text-xs">Due Date</span>
                       <span className="font-bold text-slate-200">{modalState.data?.dueDate}</span>
                     </div>
                   </div>
@@ -672,11 +672,11 @@ function MainAppContent() {
                                 : 'text-slate-400 bg-[#0B0F17] border border-[#1E293B]'
                             }`}
                           >
-                            <span className="w-5 h-5 rounded-full bg-[#141C2B] flex items-center justify-center text-[10px] font-bold border border-slate-700 text-slate-300">
+                            <span className="w-5 h-5 rounded-full bg-[#141C2B] flex items-center justify-center text-xs font-bold border border-slate-700 text-slate-300">
                               {idx + 1}
                             </span>
                             <span>{stage}</span>
-                            {isCurrent && <span className="ml-auto text-[10px] text-blue-400 uppercase font-bold">Active Stage</span>}
+                            {isCurrent && <span className="ml-auto text-xs text-blue-400 uppercase font-bold">Active Stage</span>}
                           </div>
                         );
                       })}
@@ -875,7 +875,7 @@ function AppGate() {
             <span className="text-sm font-bold text-white tracking-widest uppercase block leading-none">
               POWER HOUSE
             </span>
-            <span className="text-[11px] text-slate-400 font-medium tracking-normal mt-1 block">
+            <span className="text-xs text-slate-400 font-medium tracking-normal mt-1 block">
               Compliance. Simplified.
             </span>
           </div>

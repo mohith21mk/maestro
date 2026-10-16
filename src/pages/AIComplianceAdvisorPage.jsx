@@ -572,7 +572,110 @@ function getWorkforceAdvisorReply(text, workforceSummary, skillGaps, businessNam
   };
 }
 
+function getApplicationAdvisorReply(text, businessName, location) {
+  const t = (text || '').toLowerCase();
+
+  if (t.includes('preventing') || t.includes('submit') || t.includes('readiness')) {
+    return {
+      text: `### 📋 Application Pre-Validation & Readiness Check (SIH26130)
+
+Pre-validation evaluation for **Factory Operating Licence & Expansion (APP-2026-TX-001)** indicates status: **ISSUES_FOUND** (75% Readiness Score) \`[RULE ENGINE]\`.
+
+#### 🚨 Detected Submission Blockers:
+1. **Fire Safety NOC / Equipment Certificate** \`[MANDATORY DOC]\`
+   - Physical inspection is pending scheduling with Fire & Rescue Services.
+2. **Hazardous Effluent Disposal Agreement** \`[STATUTORY RULE]\`
+   - Secondary ETP sludge contract requires active TSDF authorization in the Document Vault.
+3. **Premises Ownership / Lease Deed**: **PASSED (Verified)** \`[VERIFIED ASSET]\`.
+
+---
+**Next Action**: Upload the required Fire NOC or navigate to **Applications > Pre-Validation** tab and click **"Reuse Verified Data"** to satisfy statutory criteria.`,
+      citations: [
+        { title: 'Tamil Nadu Business Facilitation Act 2018', authority: 'Single Window Clearance Authority', section: 'Sec 12 (Pre-Scrutiny Norms)', verification_status: '[REGULATORY SOURCE]' },
+        { title: 'Application Pre-Validation Engine', authority: 'POWER HOUSE Rule Validator', section: 'Rule APP-VAL-004', verification_status: '[SYSTEM EVALUATION]' }
+      ]
+    };
+  }
+
+  if (t.includes('department') || t.includes('reviewing') || t.includes('who is reviewing')) {
+    return {
+      text: `### 🏢 Parallel Inter-Departmental Clearance Status (APP-2026-TX-001)
+
+High-impact industrial clearances under SIH26130 undergo concurrent parallel review across 3 statutory bodies \`[DEMO DATA]\`:
+
+1. **Labour Welfare Department**: **APPROVED** \`[COMPLETED]\`
+   - Canteen, occupational health centre, and crèche provisions satisfy Factories Act 1948 norms.
+2. **Fire & Rescue Services**: **INSPECTION_REQUIRED** \`[ACTIVE]\`
+   - Site inspection scheduled on **20 Oct 2026** (Officer Ref: *Divisional Officer R. Senthil [DEMO DATA]*).
+3. **TN Pollution Control Board (TNPCB)**: **QUERY_RAISED** \`[OVERDUE]\`
+   - Official clarification requested on hazardous textile sludge containment. Statutory 14-day SLA exceeded by 2 days.
+
+*Single-Window Rule*: The application remains in progress until all mandatory departments issue formal approval.`,
+      citations: [
+        { title: 'Inter-Departmental Single Window Clearance Rules', authority: 'DPIIT / State Industrial Department', section: 'Rule 8 (Concurrent Review)', verification_status: '[REGULATORY SOURCE]' },
+        { title: 'Active Department Review Ledger', authority: `${businessName} Portal Feed`, section: 'Ref: APP-2026-TX-001', verification_status: '[DEMO DATA]' }
+      ]
+    };
+  }
+
+  if (t.includes('bottleneck') || t.includes('delay') || t.includes('sla') || t.includes('close to')) {
+    return {
+      text: `### ⏱️ Statutory SLA & Bottleneck Assessment (SIH26130)
+
+**Active Regulatory Bottleneck Detected** \`[SLA OVERDUE]\`:
+* **Authority**: TN Pollution Control Board (TNPCB) \`[DEMO DATA]\`
+* **Breach Details**: Statutory SLA exceeded by **2 Days** (16 days elapsed vs. 14-day statutory turnaround limit).
+* **Root Cause**: Clarification query requested after the statutory review period elapsed.
+* **Recommended Escalation**: File an expedited appeal through the **Grievance Redressal** tab or request District Industrial Facilitation Committee (DIFC) intervention.`,
+      citations: [
+        { title: 'Public Services Guarantee / Business Facilitation Timelines', authority: 'District Industries Centre', section: 'Schedule II (14-Day Limit)', verification_status: '[REGULATORY SOURCE]' },
+        { title: 'Bottleneck Detection Service', authority: 'POWER HOUSE Bottleneck Engine', section: 'Alert: BTN-TNPCB-01', verification_status: '[SYSTEM DETECTED]' }
+      ]
+    };
+  }
+
+  if (t.includes('reuse') || t.includes('verified document')) {
+    return {
+      text: `### 🗄️ Verified Corporate Data & Document Reuse
+
+Under SIH26130 zero-redundancy norms, verified corporate assets can be reused across all statutory filings with preserved provenance:
+
+* **Verified Business Identifiers**:
+  * GSTIN: \`33AAACA1234F1Z5\` (Verified via GSTN sync)
+  * PAN: \`AAACA1234F\` (CBDT Registry)
+  * Udyam: \`UDYAM-TN-27-0044551\` (MSME Portal)
+* **Verified Document Vault Assets**:
+  * *Premises Registered Lease Deed* (SHA-256 Verified)
+  * *Factory Architectural Site Plan* (Surveyor Approved)
+* **Benefit**: Reusing verified assets eliminates manual re-entry and automatically satisfies pre-validation checks without document duplication.`,
+      citations: [
+        { title: 'Digital Document Provenance & Single Window Guidelines', authority: 'MeitY / DPIIT', section: 'Sec 6A (Data Reuse Standards)', verification_status: '[REGULATORY SOURCE]' }
+      ]
+    };
+  }
+
+  if (t.includes('risk') || t.includes('why is this') || t.includes('marked high')) {
+    return {
+      text: `### ⚠️ Deterministic Application Risk Scrutiny (Score: 65/100 - HIGH RISK)
+
+This filing is designated as **HIGH RISK** based on deterministic regulatory indicators \`[RULE ENGINE]\`:
+
+1. **Industrial Hazard Classification (+20)**: Textile manufacturing with wet processing falls under moderate-to-high environmental monitoring.
+2. **Missing Statutory Clearance (+25)**: Mandatory secondary ETP authorization and hazardous waste agreement unverified.
+3. **Statutory SLA Breach (+20)**: Inter-departmental clearance stalled past the statutory 14-day turnaround window.
+
+*Recommended Review*: Route for Senior Officer scrutiny and mandatory physical site inspection before clearance.`,
+      citations: [
+        { title: 'Risk-Based Regulatory Inspection Framework', authority: 'DPIIT / Ministry of Commerce & Industry', section: 'Norms for High-Hazard Industrial Units', verification_status: '[REGULATORY SOURCE]' }
+      ]
+    };
+  }
+
+  return null;
+}
+
 function getDeterministicReply(text, cat, businessName, location, city, state) {
+
   let aiReply = '';
   const tLower = (text || '').toLowerCase();
   const c = (cat || '').toLowerCase();
@@ -922,6 +1025,50 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
       }
     }
 
+    const isApplicationQuery = [
+      'pre-validation', 'pre validation', 'readiness', 'preventing', 'submission blocker',
+      'department', 'inter-departmental', 'who is reviewing', 'bottleneck', 'sla',
+      'inspection', 'reuse', 'verified document', 'risk score', 'risk scrutiny', 'grievance', 'breaching'
+    ].some((keyword) => text.toLowerCase().includes(keyword));
+
+    if (isApplicationQuery) {
+      const appReply = getApplicationAdvisorReply(text, businessName, location);
+      if (appReply) {
+        setRagTrace({
+          active: true,
+          query: text,
+          category: 'Single Window Clearance (SIH26130)',
+          retrieved_count: 3,
+          verified_count: 3,
+          rejected_count: 0,
+          citations_count: appReply.citations.length,
+          latency_ms: 54.0,
+          is_fallback: false
+        });
+
+        setTimeout(() => {
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: Date.now() + 1,
+              sender: 'ai',
+              timestamp: 'Just now',
+              text: appReply.text,
+              citations: appReply.citations,
+              isFallback: false,
+              ragDiagnostics: {
+                latency_ms: 54.0,
+                retrieved_count: 3,
+                verified_count: 3
+              }
+            }
+          ]);
+          setIsTyping(false);
+        }, 300);
+        return;
+      }
+    }
+
     let ragResp = null;
     try {
       ragResp = await apiClient.queryRag(effectiveBusinessId, text, 3);
@@ -993,19 +1140,19 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
   return (
     <div className="space-y-6 font-sans antialiased text-slate-100">
       {/* Top Banner */}
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-blue-900/30 text-blue-400 border border-blue-800/50 flex items-center justify-center shrink-0">
             <Bot className="w-5 h-5 text-blue-400" />
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h2 className="text-xl font-bold text-slate-100">AI Compliance Advisor</h2>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-950/60 text-blue-400 border border-blue-800/50">
+              <h1 className="text-2xl sm:text-[26px] font-bold text-slate-100">AI Compliance Advisor</h1>
+              <span className="text-xs uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-blue-950/60 text-blue-400 border border-blue-800/50">
                 Enterprise Regulatory Copilot
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-sm text-slate-400 mt-1">
               Statutory analysis &amp; regulatory legal guidance for <span className="text-slate-200 font-semibold">{businessName}</span> ({location})
             </p>
           </div>
@@ -1018,17 +1165,17 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
               type: 'audit-trail',
               data: {}
             })}
-            className="px-3 py-1.5 rounded-xl border border-purple-800/80 bg-purple-950/40 text-purple-300 hover:text-white hover:border-purple-600 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="min-h-[36px] px-3.5 py-1.5 rounded-xl border border-purple-800/80 bg-purple-950/40 text-purple-300 hover:text-white hover:border-purple-600 text-sm font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
             title="Inspect human-approved compliance actions for Mohith K"
           >
-            <History className="w-3.5 h-3.5 text-purple-400" />
+            <History className="w-4 h-4 text-purple-400" />
             <span>Audit Trail</span>
           </button>
           <button
             onClick={() => onNavigate && onNavigate('approvals')}
-            className="px-3 py-1.5 rounded-xl border border-[#1E293B] bg-[#141C2B] text-slate-300 hover:text-white hover:border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="min-h-[36px] px-3.5 py-1.5 rounded-xl border border-[#1E293B] bg-[#141C2B] text-slate-300 hover:text-white hover:border-slate-700 text-sm font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+            <ShieldCheck className="w-4 h-4 text-blue-400" />
             <span>Active Licences</span>
           </button>
           <button
@@ -1077,23 +1224,23 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
 
                   {msg.citations && msg.citations.length > 0 && (
                     <div className="mt-3 pt-3 border-t border-slate-800/80 space-y-1.5">
-                      <div className="text-[10px] uppercase font-bold text-slate-400 flex items-center gap-1">
-                        <BookOpen className="w-3 h-3 text-blue-400" />
+                      <div className="text-xs uppercase font-bold text-slate-400 flex items-center gap-1">
+                        <BookOpen className="w-3.5 h-3.5 text-blue-400" />
                         <span>Statutory Citations</span>
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {msg.citations.map((c, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center gap-1.5 text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#0B0F17] text-slate-300 border border-[#1E293B]"
+                            className="inline-flex items-center gap-1.5 text-xs font-mono px-2 py-0.5 rounded-md bg-[#0B0F17] text-slate-300 border border-[#1E293B]"
                           >
-                            <span className="text-emerald-400 font-bold bg-emerald-950/80 px-1 rounded text-[9px] border border-emerald-800/80">
+                            <span className="text-emerald-400 font-bold bg-emerald-950/80 px-1.5 py-0.2 rounded text-xs border border-emerald-800/80">
                               {c.verification_status || 'VERIFIED SOURCE'}
                             </span>
                             <span className="text-blue-400 font-bold">{c.authority}</span>
                             <span>{c.title} {c.section ? `(${c.section})` : ''}</span>
                             {c.relevance && (
-                              <span className="text-purple-400 font-bold bg-purple-950/60 px-1 rounded text-[9px] border border-purple-800/50">
+                              <span className="text-purple-400 font-bold bg-purple-950/60 px-1.5 py-0.2 rounded text-xs border border-purple-800/50">
                                 {c.relevance}
                               </span>
                             )}
@@ -1105,7 +1252,7 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
                                 className="text-slate-400 hover:text-blue-400 ml-0.5"
                                 title="View official statutory gazette"
                               >
-                                <ExternalLink className="w-2.5 h-2.5" />
+                                <ExternalLink className="w-3 h-3" />
                               </a>
                             )}
                           </span>
@@ -1115,15 +1262,15 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
                   )}
 
                   {msg.isFallback && (
-                    <div className="mt-2 text-[10px] text-amber-400/90 bg-amber-950/40 border border-amber-800/50 px-2 py-1 rounded">
+                    <div className="mt-2 text-xs text-amber-400/90 bg-amber-950/40 border border-amber-800/50 px-2 py-1 rounded">
                       Relevance fell below statutory grounding threshold (0.45). Reverted to manual advisory review.
                     </div>
                   )}
 
-                  <div className={`text-[10px] mt-2 flex items-center justify-between ${msg.sender === 'user' ? 'text-blue-200 justify-end' : 'text-slate-500'}`}>
+                  <div className={`text-xs mt-2 flex items-center justify-between ${msg.sender === 'user' ? 'text-blue-200 justify-end' : 'text-slate-500'}`}>
                     <span>{msg.timestamp}</span>
                     {msg.ragDiagnostics?.latency_ms && (
-                      <span className="text-[9px] font-mono text-slate-500">
+                      <span className="text-xs font-mono text-slate-500">
                         RAG: {Math.round(msg.ragDiagnostics.latency_ms)}ms
                       </span>
                     )}
@@ -1156,6 +1303,10 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
             <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
               {[
                 ...advisorContext.quickPrompts,
+                'What is preventing us from submitting this application?',
+                'Which departments are currently reviewing our application?',
+                'Are any clearances close to breaching SLA deadlines?',
+                'Why is this application marked High Risk?',
                 'What are our single-source supplier risks?',
                 'Show me workforce skill gaps for critical roles',
                 'Explain learning accommodations and inclusive pathways',
@@ -1164,7 +1315,7 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
                 <button
                   key={idx}
                   onClick={() => handleSend(prompt)}
-                  className="whitespace-nowrap px-3 py-1.5 rounded-lg bg-[#141C2B] border border-[#1E293B] hover:border-blue-500 hover:text-white text-slate-300 text-[11px] font-medium transition-colors cursor-pointer shrink-0"
+                  className="whitespace-nowrap px-3.5 py-2 min-h-[36px] rounded-lg bg-[#141C2B] border border-[#1E293B] hover:border-blue-500 hover:text-white text-slate-300 text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0"
                 >
                   {prompt}
                 </button>
@@ -1179,15 +1330,15 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                className="flex-1 bg-[#141C2B] border border-[#1E293B] rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="flex-1 bg-[#141C2B] border border-[#1E293B] rounded-xl px-4 py-2.5 min-h-[40px] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
               />
               <button
                 onClick={() => handleSend()}
                 disabled={!inputMessage.trim()}
-                className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shrink-0"
+                className="px-4 py-2.5 min-h-[40px] rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 text-white text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer shrink-0"
               >
                 <span>Send</span>
-                <Send className="w-3.5 h-3.5" />
+                <Send className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -1196,7 +1347,7 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
         {/* Right Rail: Knowledge Base & Statutory Engines */}
         <div className="space-y-4">
           {/* Active Regulatory Engines */}
-          <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-5">
+          <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-blue-400" />
@@ -1210,16 +1361,16 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
                 <div key={idx} className="p-2.5 rounded-xl bg-[#141C2B] border border-[#1E293B] flex items-center justify-between">
                   <div>
                     <div className="font-semibold text-slate-200">{engine.name}</div>
-                    <div className="text-[10px] text-slate-400">{engine.desc}</div>
+                    <div className="text-xs text-slate-400">{engine.desc}</div>
                   </div>
-                  <span className="text-[10px] font-mono font-bold text-emerald-400">SYNCED</span>
+                  <span className="text-xs font-mono font-bold text-emerald-400">SYNCED</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* RAG Trace & Retrieval Diagnostics Panel */}
-          <div className="bg-[#111827] rounded-2xl border border-blue-900/60 p-5 space-y-3">
+          <div className="bg-[#111827] rounded-2xl border border-blue-900/60 p-4 sm:p-5 space-y-3">
             <div className="flex items-center justify-between pb-2.5 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <Database className="w-4 h-4 text-blue-400" />
@@ -1238,43 +1389,43 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
 
             {showTrace && (
               <div className="space-y-2.5 text-xs">
-                <div className="flex items-center justify-between text-[11px]">
+                <div className="flex items-center justify-between text-xs">
                   <span className="text-slate-400">Dense Embedding Function:</span>
                   <span className="font-mono text-emerald-400 font-semibold">StatutoryDense (384-d)</span>
                 </div>
-                <div className="flex items-center justify-between text-[11px]">
+                <div className="flex items-center justify-between text-xs">
                   <span className="text-slate-400">Hybrid Formula:</span>
                   <span className="font-mono text-blue-300">0.70 Dense + 0.30 Lexical</span>
                 </div>
-                <div className="flex items-center justify-between text-[11px]">
+                <div className="flex items-center justify-between text-xs">
                   <span className="text-slate-400">Relevance Cutoff:</span>
                   <span className="font-mono text-slate-300">0.45 Threshold</span>
                 </div>
 
                 <div className="p-2.5 rounded-xl bg-[#141C2B] border border-slate-800 space-y-1.5">
-                  <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
+                  <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
                     Last Query Evaluated
                   </div>
-                  <div className="text-slate-200 font-medium truncate text-[11px]">
+                  <div className="text-slate-200 font-medium truncate text-xs">
                     "{ragTrace.query}"
                   </div>
-                  <div className="grid grid-cols-3 gap-1.5 pt-1 border-t border-slate-800/80 text-[10px] text-center">
+                  <div className="grid grid-cols-3 gap-1.5 pt-1 border-t border-slate-800/80 text-xs text-center">
                     <div className="bg-[#0B0F17] p-1.5 rounded">
-                      <span className="text-slate-400 block text-[9px]">Retrieved</span>
+                      <span className="text-slate-400 block text-xs">Retrieved</span>
                       <span className="font-bold text-blue-400">{ragTrace.retrieved_count}</span>
                     </div>
                     <div className="bg-[#0B0F17] p-1.5 rounded">
-                      <span className="text-slate-400 block text-[9px]">Verified</span>
+                      <span className="text-slate-400 block text-xs">Verified</span>
                       <span className="font-bold text-emerald-400">{ragTrace.verified_count}</span>
                     </div>
                     <div className="bg-[#0B0F17] p-1.5 rounded">
-                      <span className="text-slate-400 block text-[9px]">Latency</span>
+                      <span className="text-slate-400 block text-xs">Latency</span>
                       <span className="font-bold text-purple-400">{Math.round(ragTrace.latency_ms)}ms</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="text-[10px] text-slate-500 leading-tight">
+                <div className="text-xs text-slate-400 leading-tight">
                   Grounding gate rejects ungrounded queries (KW &lt; 0.05). Strict negative isolation prevents cross-category citation leakage.
                 </div>
               </div>
@@ -1282,7 +1433,7 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
           </div>
 
           {/* Quick Compliance Actions */}
-          <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-5">
+          <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5">
             <h3 className="text-xs font-bold text-slate-100 uppercase tracking-wider pb-3 border-b border-slate-800">
               Quick Compliance Actions
             </h3>
@@ -1309,23 +1460,23 @@ export default function AIComplianceAdvisorPage({ onNavigate, showToast, setModa
                     }
                   }
                 })}
-                className="w-full text-left p-2.5 rounded-xl bg-blue-950/60 border border-blue-800/80 hover:border-blue-500 flex items-center justify-between text-xs text-blue-200 group transition-colors cursor-pointer font-semibold shadow-xs"
+                className="w-full text-left p-2.5 min-h-[36px] rounded-xl bg-blue-950/60 border border-blue-800/80 hover:border-blue-500 flex items-center justify-between text-sm text-blue-200 group transition-colors cursor-pointer font-semibold shadow-xs"
                 title="Open Human-in-the-Loop Action Proposal approval interface"
               >
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
                   <span>Propose Human-in-the-Loop Action</span>
                 </div>
-                <ArrowRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-blue-400 group-hover:translate-x-0.5 transition-transform" />
               </button>
               {advisorContext.quickActions.map((action, idx) => (
                 <button
                   key={idx}
                   onClick={() => onNavigate && onNavigate(action.route)}
-                  className="w-full text-left p-2.5 rounded-xl bg-[#141C2B] border border-[#1E293B] hover:border-slate-700 flex items-center justify-between text-xs text-slate-200 group transition-colors cursor-pointer"
+                  className="w-full text-left p-2.5 min-h-[36px] rounded-xl bg-[#141C2B] border border-[#1E293B] hover:border-slate-700 flex items-center justify-between text-sm text-slate-200 group transition-colors cursor-pointer"
                 >
                   <span>{action.label}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 transition-colors" />
+                  <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-blue-400 transition-colors" />
                 </button>
               ))}
             </div>

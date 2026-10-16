@@ -104,7 +104,7 @@ export default function BusinessLocation({ data, isEditing, onChange }) {
           <span className="text-xs font-bold text-white block">
             {data.city || 'Tiruppur'}, {data.state || 'Tamil Nadu'}
           </span>
-          <p className="text-[11px] text-slate-400 max-w-[200px] mt-1">
+          <p className="text-xs text-slate-400 max-w-[200px] mt-1">
             Statutory jurisdiction: {data.city || 'Tiruppur'} Municipal Corporation &amp; State Commercial Taxes.
           </p>
         </div>

@@ -52,7 +52,7 @@ export default function EvidenceDrawer({
           <div className="p-3 bg-[#141C2B] rounded-xl border border-slate-800 text-xs space-y-1">
             <div className="text-slate-400">Agent Origin:</div>
             <div className="font-bold text-white font-mono">{opportunity.agent_type}</div>
-            <div className="text-[11px] text-slate-400 mt-1">
+            <div className="text-xs text-slate-400 mt-1">
               Category: <span className="text-slate-300 font-semibold">{opportunity.category}</span>
             </div>
           </div>
@@ -73,11 +73,11 @@ export default function EvidenceDrawer({
                     Observation #{idx + 1}
                   </span>
                   {item.is_demo ? (
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950/60 text-amber-400 border border-amber-800">
+                    <span className="px-2 py-0.5 rounded text-xs font-bold bg-amber-950/60 text-amber-400 border border-amber-800">
                       DEMO DATA
                     </span>
                   ) : (
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-950/60 text-blue-400 border border-blue-800">
+                    <span className="px-2 py-0.5 rounded text-xs font-bold bg-blue-950/60 text-blue-400 border border-blue-800">
                       {item.source_type || 'TELEMETRY'}
                     </span>
                   )}
@@ -87,7 +87,7 @@ export default function EvidenceDrawer({
                   {item.evidence_summary}
                 </p>
 
-                <div className="pt-2 border-t border-slate-800/60 space-y-1 text-[11px] text-slate-400">
+                <div className="pt-2 border-t border-slate-800/60 space-y-1 text-xs text-slate-400">
                   {item.metric && (
                     <div className="flex justify-between">
                       <span>Metric:</span>
@@ -109,7 +109,7 @@ export default function EvidenceDrawer({
                   {item.source_id && (
                     <div className="flex justify-between">
                       <span>Source ID:</span>
-                      <span className="font-mono text-[10px] text-slate-400 truncate max-w-[180px]">{item.source_id}</span>
+                      <span className="font-mono text-xs text-slate-400 truncate max-w-[180px]">{item.source_id}</span>
                     </div>
                   )}
                 </div>
@@ -120,7 +120,7 @@ export default function EvidenceDrawer({
 
         {/* Footer */}
         <div className="pt-4 border-t border-slate-800 flex justify-end">
-          <Button variant="secondary" size="sm" onClick={onClose}>
+          <Button variant="secondary" size="sm" onClick={onClose} className="min-h-[36px] text-sm">
             Close Drawer
           </Button>
         </div>

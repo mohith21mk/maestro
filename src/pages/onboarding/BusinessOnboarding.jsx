@@ -106,7 +106,7 @@ export default function BusinessOnboarding() {
               />
 
               <div className="space-y-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                   Try an example
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -115,7 +115,7 @@ export default function BusinessOnboarding() {
                       key={example}
                       type="button"
                       onClick={() => handleUseExample(example)}
-                      className="text-[11px] font-medium px-2.5 py-1.5 rounded-lg bg-[#141C2B] hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors cursor-pointer"
+                      className="text-xs font-medium px-3 py-1.5 min-h-[36px] rounded-lg bg-[#141C2B] hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors cursor-pointer"
                     >
                       {example}
                     </button>
@@ -126,7 +126,7 @@ export default function BusinessOnboarding() {
               <Button
                 variant="primary"
                 size="lg"
-                className="w-full font-semibold"
+                className="w-full font-semibold min-h-[40px] text-base"
                 disabled={!description.trim()}
                 onClick={handleAnalyse}
               >
@@ -134,7 +134,7 @@ export default function BusinessOnboarding() {
                 <ArrowRight className="w-4 h-4" />
               </Button>
 
-              <p className="text-[11px] text-center text-slate-400">
+              <p className="text-xs text-center text-slate-400">
                 Classification runs locally on your device — enterprise data isolation verified.
               </p>
             </div>
@@ -184,7 +184,7 @@ export default function BusinessOnboarding() {
                     <Building2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                       Business Category
                     </span>
                     <p className="text-sm font-bold text-white mt-0.5">
@@ -198,7 +198,7 @@ export default function BusinessOnboarding() {
                     <Building2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                       Proposed Workspace Name
                     </span>
                     <p className="text-sm font-bold text-white mt-0.5">
@@ -212,7 +212,7 @@ export default function BusinessOnboarding() {
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                       Location
                     </span>
                     <p className="text-sm font-bold text-white mt-0.5">
@@ -226,30 +226,30 @@ export default function BusinessOnboarding() {
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                       Statutory Compliance Status
                     </span>
                     <p className="text-xs text-slate-300 mt-1">
                       PAN: <span className="text-amber-400 font-medium">Pending Setup</span> • GSTIN: <span className="text-amber-400 font-medium">Pending Registration</span> • Udyam: <span className="text-amber-400 font-medium">Pending Registration</span>
                     </p>
-                    <p className="text-[11px] text-slate-400 mt-0.5">
+                    <p className="text-xs text-slate-400 mt-0.5">
                       Zero fabricated legal credentials. You can update verified registration IDs anytime in Business Profile.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <p className="text-[11px] text-slate-400 text-center leading-relaxed">
+              <p className="text-xs text-slate-400 text-center leading-relaxed">
                 We&apos;ll load a statutory compliance roadmap tailored to this category. You can always
                 switch business type later from the sidebar.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-2.5">
-                <Button variant="secondary" size="lg" className="flex-1 font-semibold" onClick={handleEdit} disabled={isSubmitting}>
+                <Button variant="secondary" size="lg" className="flex-1 font-semibold min-h-[40px] text-base" onClick={handleEdit} disabled={isSubmitting}>
                   <Pencil className="w-4 h-4" />
                   <span>Edit</span>
                 </Button>
-                <Button variant="primary" size="lg" className="flex-1 font-semibold" onClick={handleConfirm} disabled={isSubmitting}>
+                <Button variant="primary" size="lg" className="flex-1 font-semibold min-h-[40px] text-base" onClick={handleConfirm} disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin mr-1.5" />
@@ -267,7 +267,7 @@ export default function BusinessOnboarding() {
           )}
         </div>
 
-        <p className="text-[11px] text-center text-slate-500 mt-5">
+        <p className="text-xs text-center text-slate-500 mt-5">
           Recommendations are generated for prototype planning. Always verify final filing
           mandates with respective state and central authorities.
         </p>

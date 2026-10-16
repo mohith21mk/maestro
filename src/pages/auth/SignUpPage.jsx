@@ -121,7 +121,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                 <span className="text-sm font-bold text-white tracking-widest uppercase block leading-none">
                   POWER HOUSE
                 </span>
-                <span className="text-[11px] text-slate-400 font-medium tracking-normal mt-1 block">
+                <span className="text-xs text-slate-400 font-medium tracking-normal mt-1 block">
                   Compliance. Simplified.
                 </span>
               </div>
@@ -145,7 +145,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-white">Understand required licences</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                  <p className="text-xs text-slate-400 mt-0.5 leading-snug">
                     Instant mapping of central and state statutory mandates for your industry.
                   </p>
                 </div>
@@ -157,7 +157,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-white">Track compliance deadlines</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                  <p className="text-xs text-slate-400 mt-0.5 leading-snug">
                     Proactive alerts on statutory filings, recurring returns, and licence renewals.
                   </p>
                 </div>
@@ -169,7 +169,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-white">Manage documents and approvals</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                  <p className="text-xs text-slate-400 mt-0.5 leading-snug">
                     Secure audit-ready vault for verified statutory certificates and applications.
                   </p>
                 </div>
@@ -178,7 +178,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
           </div>
 
           {/* Security Assurance Badge */}
-          <div className="pt-8 mt-6 border-t border-[#1E293B] flex items-center gap-2.5 text-slate-400 text-[11px]">
+          <div className="pt-8 mt-6 border-t border-[#1E293B] flex items-center gap-2.5 text-slate-400 text-xs">
             <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>Secure authentication • Multi-tenant data isolation</span>
           </div>
@@ -283,7 +283,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                     />
                   </div>
                   {emailTouched && !isEmailValid && email && (
-                    <p className="text-[11px] text-rose-400 pl-0.5">Enter a valid email address.</p>
+                    <p className="text-xs text-rose-400 pl-0.5">Enter a valid email address.</p>
                   )}
                 </div>
 
@@ -292,11 +292,11 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                   {/* Password */}
                   <div className="space-y-1">
                     <div className="flex items-center justify-between">
-                      <label htmlFor="signup-password" className="block text-xs font-semibold text-slate-300">
+                      <label htmlFor="signup-password" className="block text-xs sm:text-sm font-semibold text-slate-300">
                         Password
                       </label>
                       <span
-                        className={`text-[10px] font-medium ${
+                        className={`text-xs font-medium ${
                           password.length >= 6 ? 'text-emerald-400' : 'text-slate-400'
                         }`}
                       >
@@ -305,7 +305,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                     </div>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Lock className="w-3.5 h-3.5" />
+                        <Lock className="w-4 h-4" />
                       </div>
                       <input
                         id="signup-password"
@@ -315,7 +315,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                         placeholder="••••••••"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full pl-9 pr-9 py-2 text-xs rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                        className="w-full pl-10 pr-9 py-2 min-h-[36px] h-9 text-sm rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                       />
                       <button
                         type="button"
@@ -323,7 +323,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
                         aria-label={showPassword ? 'Hide password' : 'Show password'}
                       >
-                        {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
                   </div>
@@ -331,12 +331,12 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                   {/* Confirm Password */}
                   <div className="space-y-1">
                     <div className="flex items-center justify-between">
-                      <label htmlFor="signup-confirm-password" className="block text-xs font-semibold text-slate-300">
+                      <label htmlFor="signup-confirm-password" className="block text-xs sm:text-sm font-semibold text-slate-300">
                         Confirm
                       </label>
                       {confirmPassword && (
                         <span
-                          className={`text-[10px] font-medium ${
+                          className={`text-xs font-medium ${
                             passwordsMatch ? 'text-emerald-400' : 'text-rose-400'
                           }`}
                         >
@@ -346,7 +346,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                     </div>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Lock className="w-3.5 h-3.5" />
+                        <Lock className="w-4 h-4" />
                       </div>
                       <input
                         id="signup-confirm-password"
@@ -357,7 +357,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                         value={confirmPassword}
                         onBlur={() => setConfirmTouched(true)}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className={`w-full pl-9 pr-9 py-2 text-xs rounded-xl bg-[#141C2B] border text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 transition-colors ${
+                        className={`w-full pl-10 pr-9 py-2 min-h-[36px] h-9 text-sm rounded-xl bg-[#141C2B] border text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 transition-colors ${
                           confirmTouched && confirmPassword && !passwordsMatch
                             ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500'
                             : 'border-[#1E293B] focus:border-blue-500 focus:ring-blue-500'
@@ -369,7 +369,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
                         aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                       >
-                        {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                        {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
                   </div>
@@ -378,14 +378,14 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                 {/* Optional Phone Number */}
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
-                    <label htmlFor="signup-phone" className="block text-xs font-semibold text-slate-300">
+                    <label htmlFor="signup-phone" className="block text-xs sm:text-sm font-semibold text-slate-300">
                       Phone Number
                     </label>
-                    <span className="text-[10px] text-slate-400 font-medium">Optional</span>
+                    <span className="text-xs text-slate-400 font-medium">Optional</span>
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                      <Phone className="w-3.5 h-3.5" />
+                      <Phone className="w-4 h-4" />
                     </div>
                     <input
                       id="signup-phone"
@@ -394,7 +394,7 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                       placeholder="+91 98765 43210"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="w-full pl-9 pr-3.5 py-2 text-xs rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                      className="w-full pl-10 pr-3.5 py-2 min-h-[36px] h-9 text-sm rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -405,11 +405,11 @@ export default function SignUpPage({ onNavigateToLogin, onSuccess }) {
                   variant="primary"
                   size="md"
                   disabled={isLoading || (confirmPassword && !passwordsMatch)}
-                  className="w-full mt-2 font-semibold text-xs justify-center py-2.5 shadow-sm shadow-blue-500/20"
+                  className="w-full mt-2 font-semibold min-h-[36px] text-sm justify-center py-2.5 shadow-sm shadow-blue-500/20"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin mr-2" />
+                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
                       <span>Creating account…</span>
                     </>
                   ) : (

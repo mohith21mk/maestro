@@ -113,10 +113,10 @@ export default function DocumentsPage({ showToast, setModalState }) {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">
             Documents Vault
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+          <p className="text-sm text-slate-400 mt-1 leading-relaxed">
             Securely manage and track all business statutory licenses and compliance filings.
           </p>
         </div>
@@ -125,111 +125,111 @@ export default function DocumentsPage({ showToast, setModalState }) {
           variant="primary"
           size="sm"
           onClick={handleOpenUpload}
-          className="self-start sm:self-auto text-xs font-semibold"
+          className="self-start sm:self-auto text-sm font-semibold min-h-[36px]"
         >
-          <UploadCloud className="w-3.5 h-3.5" />
+          <UploadCloud className="w-4 h-4" />
           <span>Upload Document</span>
         </Button>
       </div>
 
       {/* Top 4 Stats Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">Total Documents</div>
-            <div className="text-xl sm:text-2xl font-black text-white mt-1">{totalDocsCount}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Digital vault</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">Total Documents</div>
+            <div className="text-3xl font-black text-white mt-1 leading-none">{totalDocsCount}</div>
+            <div className="text-xs text-slate-400 mt-1">Digital vault</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80 shrink-0">
             <FolderKanban className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">Verified</div>
-            <div className="text-xl sm:text-2xl font-black text-emerald-400 mt-1">{verifiedDocsCount}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Authority approved</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">Verified</div>
+            <div className="text-3xl font-black text-emerald-400 mt-1 leading-none">{verifiedDocsCount}</div>
+            <div className="text-xs text-slate-400 mt-1">Authority approved</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center border border-emerald-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center border border-emerald-800/80 shrink-0">
             <FileCheck className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">Pending Review</div>
-            <div className="text-xl sm:text-2xl font-black text-amber-400 mt-1">{pendingDocsCount}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Under audit / verification</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">Pending Review</div>
+            <div className="text-3xl font-black text-amber-400 mt-1 leading-none">{pendingDocsCount}</div>
+            <div className="text-xs text-slate-400 mt-1">Under audit / verification</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-amber-950/80 text-amber-400 flex items-center justify-center border border-amber-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-amber-950/80 text-amber-400 flex items-center justify-center border border-amber-800/80 shrink-0">
             <Clock className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">Expiring Soon</div>
-            <div className="text-xl sm:text-2xl font-black text-rose-400 mt-1">{expiringDocsCount}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Renewal required</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">Expiring Soon</div>
+            <div className="text-3xl font-black text-rose-400 mt-1 leading-none">{expiringDocsCount}</div>
+            <div className="text-xs text-slate-400 mt-1">Renewal required</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-rose-950/80 text-rose-400 flex items-center justify-center border border-rose-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-rose-950/80 text-rose-400 flex items-center justify-center border border-rose-800/80 shrink-0">
             <XCircle className="w-5 h-5" />
           </div>
         </div>
       </div>
 
       {/* STATUTORY EVIDENCE COVERAGE MATRIX */}
-      <div className="bg-[#111827] rounded-2xl border border-blue-900/50 p-4 sm:p-5 shadow-lg">
+      <div className="bg-[#111827] rounded-xl border border-blue-900/50 p-4 sm:p-5 shadow-lg">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-blue-950/80 text-blue-400 border border-blue-800 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-sm font-bold text-white tracking-wide">Statutory Evidence Coverage</h3>
-                <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">
+                <h3 className="text-base font-bold text-white tracking-wide">Statutory Evidence Coverage</h3>
+                <span className="text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">
                   {coveragePercent}% COVERED
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
                 Document intelligence extracts regulatory identifiers and binds files directly to mandatory licenses.
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2 shrink-0 text-xs font-semibold">
-            <span className="px-2.5 py-1 rounded-lg bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">
+            <span className="px-3 py-1 rounded-lg bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">
               {verifiedDocsCount} Supported
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-800/80">
+            <span className="px-3 py-1 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-800/80">
               {pendingDocsCount} Under Review
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-rose-950/80 text-rose-400 border border-rose-800/80">
+            <span className="px-3 py-1 rounded-lg bg-rose-950/80 text-rose-400 border border-rose-800/80">
               {expiringDocsCount} Expired / Flagged
             </span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 text-xs">
-          <div className="p-2.5 rounded-xl bg-[#141C2B] border border-slate-800">
-            <span className="text-[11px] text-slate-400 block">Identity &amp; Constitution Evidence</span>
-            <span className="font-semibold text-slate-200 mt-0.5 block">PAN, Udyam Registration, Partnership Deed</span>
-            <span className="text-[10px] text-emerald-400 mt-1 font-mono font-bold block">100% Verified</span>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 text-xs sm:text-sm">
+          <div className="p-3 rounded-xl bg-[#141C2B] border border-slate-800">
+            <span className="text-xs text-slate-400 block">Identity &amp; Constitution Evidence</span>
+            <span className="font-semibold text-slate-200 mt-1 block">PAN, Udyam Registration, Partnership Deed</span>
+            <span className="text-xs text-emerald-400 mt-1.5 font-mono font-bold block">100% Verified</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-[#141C2B] border border-slate-800">
-            <span className="text-[11px] text-slate-400 block">Premises &amp; Safety Proofs</span>
-            <span className="font-semibold text-slate-200 mt-0.5 block">Property Tax Challan, Fire NOC, EB Bill</span>
-            <span className="text-[10px] text-amber-400 mt-1 font-mono font-bold block">Renewal Due (15 Jun)</span>
+          <div className="p-3 rounded-xl bg-[#141C2B] border border-slate-800">
+            <span className="text-xs text-slate-400 block">Premises &amp; Safety Proofs</span>
+            <span className="font-semibold text-slate-200 mt-1 block">Property Tax Challan, Fire NOC, EB Bill</span>
+            <span className="text-xs text-amber-400 mt-1.5 font-mono font-bold block">Renewal Due (15 Jun)</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-[#141C2B] border border-slate-800">
-            <span className="text-[11px] text-slate-400 block">Environmental &amp; Factory Permits</span>
-            <span className="font-semibold text-slate-200 mt-0.5 block">TNPCB Consent (CTO), Factory Building Plan</span>
-            <span className="text-[10px] text-blue-400 mt-1 font-mono font-bold block">Active &amp; Mapped</span>
+          <div className="p-3 rounded-xl bg-[#141C2B] border border-slate-800">
+            <span className="text-xs text-slate-400 block">Environmental &amp; Factory Permits</span>
+            <span className="font-semibold text-slate-200 mt-1 block">TNPCB Consent (CTO), Factory Building Plan</span>
+            <span className="text-xs text-blue-400 mt-1.5 font-mono font-bold block">Active &amp; Mapped</span>
           </div>
         </div>
       </div>
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="flex-1 max-w-sm">
           <SearchInput
             value={search}
@@ -243,7 +243,7 @@ export default function DocumentsPage({ showToast, setModalState }) {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-2 text-xs font-medium rounded-xl border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
+            className="px-3 py-1.5 min-h-[36px] h-9 text-sm font-medium rounded-lg border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
           >
             {categories.map((c) => (
               <option key={c} value={c}>
@@ -255,7 +255,7 @@ export default function DocumentsPage({ showToast, setModalState }) {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 text-xs font-medium rounded-xl border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
+            className="px-3 py-1.5 min-h-[36px] h-9 text-sm font-medium rounded-lg border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
           >
             {statuses.map((s) => (
               <option key={s} value={s}>
@@ -279,12 +279,12 @@ export default function DocumentsPage({ showToast, setModalState }) {
           }}
         />
       ) : (
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs overflow-hidden">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs overflow-hidden">
           {/* Desktop Table View */}
           <div className="hidden md:block overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase tracking-wider text-[11px] bg-[#141C2B]/50">
+                <tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase tracking-wider text-xs bg-[#141C2B]/50">
                   <th className="py-3.5 px-4">Document Name</th>
                   <th className="py-3.5 px-4">Category</th>
                   <th className="py-3.5 px-4">Related Approval</th>
@@ -299,14 +299,14 @@ export default function DocumentsPage({ showToast, setModalState }) {
                   <tr key={doc.id} className="hover:bg-[#141C2B]/60 transition-colors group">
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-blue-950 text-blue-400 flex items-center justify-center font-bold text-[10px] border border-blue-800 shrink-0">
+                        <div className="w-9 h-9 rounded-lg bg-blue-950 text-blue-400 flex items-center justify-center font-bold text-xs border border-blue-800 shrink-0">
                           {doc.fileType || 'PDF'}
                         </div>
                         <div>
-                          <div className="font-bold text-white group-hover:text-blue-400 transition-colors">
+                          <div className="font-bold text-white text-sm group-hover:text-blue-400 transition-colors">
                             {doc.name}
                           </div>
-                          <span className="text-[11px] text-slate-400">{doc.fileSize}</span>
+                          <span className="text-xs text-slate-400">{doc.fileSize}</span>
                         </div>
                       </div>
                     </td>
@@ -320,7 +320,7 @@ export default function DocumentsPage({ showToast, setModalState }) {
                       </Badge>
                     </td>
                     <td className="py-4 px-4 text-right">
-                      <div className="flex items-center justify-end gap-1.5">
+                      <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => handleOpenDetail(doc)}
                           className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
@@ -362,12 +362,12 @@ export default function DocumentsPage({ showToast, setModalState }) {
               <div key={doc.id} className="p-4 space-y-3">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2.5">
-                    <span className="w-7 h-7 rounded-md bg-blue-950 text-blue-400 flex items-center justify-center font-bold text-[10px] border border-blue-800">
+                    <span className="w-8 h-8 rounded-lg bg-blue-950 text-blue-400 flex items-center justify-center font-bold text-xs border border-blue-800">
                       {doc.fileType || doc.file_type || 'PDF'}
                     </span>
                     <div>
-                      <h3 className="font-bold text-white text-xs">{doc.name}</h3>
-                      <span className="text-[10px] text-slate-400">
+                      <h3 className="font-bold text-white text-sm">{doc.name}</h3>
+                      <span className="text-xs text-slate-400">
                         {doc.fileSize || doc.file_size || 'Standard Size'} • {doc.category}
                       </span>
                     </div>
@@ -377,9 +377,9 @@ export default function DocumentsPage({ showToast, setModalState }) {
                   </Badge>
                 </div>
 
-                <div className="text-xs text-slate-300 bg-[#141C2B] p-2.5 rounded-xl border border-slate-800 space-y-1">
+                <div className="text-xs sm:text-sm text-slate-300 bg-[#141C2B] p-3 rounded-xl border border-slate-800 space-y-1.5">
                   <div><strong>Approval:</strong> {doc.mapped_approval || doc.relatedApproval}</div>
-                  <div className="flex items-center justify-between text-[11px] text-slate-400">
+                  <div className="flex items-center justify-between text-xs text-slate-400">
                     <span>Uploaded: {doc.upload_date || doc.uploadDate}</span>
                     <span>Expiry: {doc.expiry_date || doc.expiryDate}</span>
                   </div>
@@ -388,7 +388,7 @@ export default function DocumentsPage({ showToast, setModalState }) {
                 <div className="flex items-center justify-end gap-2 pt-1">
                   <button
                     onClick={() => handleOpenDetail(doc)}
-                    className="px-3 py-1.5 rounded-lg bg-blue-950 text-blue-400 text-xs font-semibold hover:bg-blue-900 border border-blue-800 cursor-pointer"
+                    className="min-h-[32px] h-8 px-3 rounded-lg bg-blue-950 text-blue-400 text-xs font-semibold hover:bg-blue-900 border border-blue-800 cursor-pointer"
                   >
                     View Details
                   </button>
@@ -405,7 +405,7 @@ export default function DocumentsPage({ showToast, setModalState }) {
                         if (showToast) showToast(`Downloading statutory record for "${doc.name}"...`);
                       }
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-[#141C2B] text-slate-300 text-xs font-semibold hover:bg-slate-800 border border-slate-700 cursor-pointer"
+                    className="min-h-[32px] h-8 px-3 rounded-lg bg-[#141C2B] text-slate-300 text-xs font-semibold hover:bg-slate-800 border border-slate-700 cursor-pointer"
                   >
                     Download
                   </button>

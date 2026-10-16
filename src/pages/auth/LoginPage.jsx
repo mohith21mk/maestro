@@ -85,7 +85,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                 <span className="text-sm font-bold text-white tracking-widest uppercase block leading-none">
                   POWER HOUSE
                 </span>
-                <span className="text-[11px] text-slate-400 font-medium tracking-normal mt-1 block">
+                <span className="text-xs text-slate-400 font-medium tracking-normal mt-1 block">
                   Compliance. Simplified.
                 </span>
               </div>
@@ -109,7 +109,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-white">Multi-tenant data isolation</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                  <p className="text-xs text-slate-400 mt-0.5 leading-snug">
                     Dedicated statutory data boundaries protected by enterprise tenant isolation.
                   </p>
                 </div>
@@ -121,7 +121,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-white">Continuous deadline tracking</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                  <p className="text-xs text-slate-400 mt-0.5 leading-snug">
                     Automated calendar alerts for central, state, and labour compliance filings.
                   </p>
                 </div>
@@ -133,7 +133,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-white">Unified compliance workspace</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                  <p className="text-xs text-slate-400 mt-0.5 leading-snug">
                     Single source of truth for registrations, approvals, and verified dossiers.
                   </p>
                 </div>
@@ -142,7 +142,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
           </div>
 
           {/* Security Assurance Badge */}
-          <div className="pt-8 mt-6 border-t border-[#1E293B] flex items-center gap-2.5 text-slate-400 text-[11px]">
+          <div className="pt-8 mt-6 border-t border-[#1E293B] flex items-center gap-2.5 text-slate-400 text-xs">
             <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>Secure authentication • Multi-tenant data isolation</span>
           </div>
@@ -198,27 +198,27 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                   />
                 </div>
                 {emailTouched && !isEmailValid && email && (
-                  <p className="text-[11px] text-rose-400 pl-0.5">Enter a valid email address.</p>
+                  <p className="text-xs text-rose-400 pl-0.5">Enter a valid email address.</p>
                 )}
               </div>
 
               {/* Password Field */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <label htmlFor="login-password" className="block text-xs font-semibold text-slate-300">
+                  <label htmlFor="login-password" className="block text-xs sm:text-sm font-semibold text-slate-300">
                     Password
                   </label>
                   <button
                     type="button"
                     onClick={() => setForgotOpen(true)}
-                    className="text-[11px] font-medium text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                    className="text-xs font-medium text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
                   >
                     Forgot Password?
                   </button>
                 </div>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <Lock className="w-3.5 h-3.5" />
+                    <Lock className="w-4 h-4" />
                   </div>
                   <input
                     id="login-password"
@@ -231,7 +231,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                       setPassword(e.target.value);
                       if (errorMessage) setErrorMessage('');
                     }}
-                    className="w-full pl-9 pr-10 py-2.5 text-xs rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full pl-10 pr-10 py-2.5 min-h-[36px] h-9 text-sm rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                   <button
                     type="button"
@@ -239,7 +239,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                     className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
-                    {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
@@ -250,17 +250,17 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                 variant="primary"
                 size="md"
                 disabled={isLoading}
-                className="w-full mt-2 font-semibold text-xs justify-center py-2.5 shadow-sm shadow-blue-500/20"
+                className="w-full mt-2 font-semibold min-h-[36px] text-sm justify-center py-2.5 shadow-sm shadow-blue-500/20"
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-3.5 h-3.5 animate-spin mr-2" />
+                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
                     <span>Signing in…</span>
                   </>
                 ) : (
                   <>
                     <span>Sign In</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                    <ArrowRight className="w-4 h-4 ml-1.5" />
                   </>
                 )}
               </Button>
@@ -268,7 +268,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
 
             {/* Navigation to Signup */}
             <div className="mt-6 pt-5 border-t border-slate-800/80 text-center">
-              <p className="text-xs text-slate-400">
+              <p className="text-xs sm:text-sm text-slate-400">
                 Don&apos;t have an account?{' '}
                 <button
                   type="button"
@@ -292,7 +292,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
           aria-modal="true"
         >
           <div
-            className="bg-[#111827] rounded-2xl max-w-md w-full p-6 border border-[#1E293B] shadow-2xl space-y-4 animate-in zoom-in-95 duration-150"
+            className="bg-[#111827] rounded-2xl max-w-md w-full p-5 sm:p-6 border border-[#1E293B] shadow-2xl space-y-4 animate-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
@@ -301,8 +301,8 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                   <HelpCircle className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-sm">Enterprise Account Recovery</h3>
-                  <span className="text-[11px] text-slate-400">Identity verification protocol</span>
+                  <h3 className="font-bold text-white text-base">Enterprise Account Recovery</h3>
+                  <span className="text-xs text-slate-400">Identity verification protocol</span>
                 </div>
               </div>
               <button
@@ -315,15 +315,15 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
               </button>
             </div>
 
-            <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
+            <div className="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
               <p>
                 To maintain strict statutory audit compliance and multi-tenant data protection, automated password resets require verified domain administrator approval.
               </p>
-              <div className="p-3.5 bg-[#141C2B] rounded-xl border border-[#1E293B] space-y-1.5 text-slate-300">
+              <div className="p-3.5 bg-[#141C2B] rounded-xl border border-[#1E293B] space-y-1.5 text-slate-300 text-xs">
                 <div className="text-slate-400 font-medium">Compliance Helpdesk:</div>
                 <div>Hotline: <strong className="text-white font-mono">1800-419-7000</strong></div>
                 <div>Email: <strong className="text-blue-400 font-mono">support@powerhouse.in</strong></div>
-                <div className="text-[11px] text-slate-400 pt-1 border-t border-slate-800">
+                <div className="text-xs text-slate-400 pt-1 border-t border-slate-800">
                   Please provide your registered Business PAN and primary contact number for verification.
                 </div>
               </div>
@@ -334,7 +334,7 @@ export default function LoginPage({ onNavigateToSignup, onSuccess }) {
                 variant="secondary"
                 size="sm"
                 onClick={() => setForgotOpen(false)}
-                className="text-xs font-semibold"
+                className="min-h-[36px] text-sm font-semibold"
               >
                 Understood
               </Button>

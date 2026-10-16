@@ -26,16 +26,16 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
         aria-labelledby="compliance-health-title"
       >
         {/* Header */}
-        <div className="p-5 border-b border-slate-800/80 flex items-center justify-between bg-[#141C2B]/60">
+        <div className="p-4 sm:p-5 border-b border-slate-800/80 flex items-center justify-between bg-[#141C2B]/60">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-800/80 flex items-center justify-center text-emerald-400">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h2 id="compliance-health-title" className="text-base font-bold text-white tracking-tight">
+              <h2 id="compliance-health-title" className="text-lg sm:text-xl font-bold text-white tracking-tight">
                 Compliance Health Score Explainability
               </h2>
-              <p className="text-xs text-slate-400">Deterministic mathematical breakdown based on live database records</p>
+              <p className="text-xs sm:text-sm text-slate-400">Deterministic mathematical breakdown based on live database records</p>
             </div>
           </div>
           <button
@@ -48,19 +48,19 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
         </div>
 
         {/* Content */}
-        <div className="p-5 overflow-y-auto space-y-4 text-xs text-slate-300">
+        <div className="p-4 sm:p-5 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-300">
           {/* Top Gauge & Standing Banner */}
           <div className="p-4 rounded-xl bg-[#0B0F17] border border-slate-800 flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full bg-emerald-950/90 border-2 border-emerald-500 flex flex-col items-center justify-center text-emerald-400 shadow-lg shadow-emerald-500/10 shrink-0">
-                <span className="text-xl font-black text-white leading-none">{score}</span>
-                <span className="text-[9px] text-emerald-400 font-bold uppercase mt-0.5">/100</span>
+                <span className="text-2xl font-black text-white leading-none">{score}</span>
+                <span className="text-xs text-emerald-400 font-bold uppercase mt-0.5">/100</span>
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-bold text-emerald-400">Regulatory Standing: Excellent</span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1 leading-snug">
+                <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-snug">
                   Your business meets 92% of statutory requirements. Low regulatory enforcement and penalty exposure.
                 </p>
               </div>
@@ -80,13 +80,13 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
                   <FileText className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">Statutory Licences & Approvals</div>
-                  <div className="text-[11px] text-slate-400">{breakdown.licences?.description}</div>
+                  <div className="font-semibold text-white text-sm">Statutory Licences &amp; Approvals</div>
+                  <div className="text-xs text-slate-400">{breakdown.licences?.description}</div>
                 </div>
               </div>
               <div className="text-right shrink-0">
                 <span className="text-sm font-extrabold text-emerald-400">+{breakdown.licences?.contribution || 33}</span>
-                <span className="text-[10px] text-slate-500 block">/ {breakdown.licences?.max_points || 35} max</span>
+                <span className="text-xs text-slate-400 block">/ {breakdown.licences?.max_points || 35} max</span>
               </div>
             </div>
 
@@ -97,13 +97,13 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
                   <FolderLock className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">Document Evidence Verification</div>
-                  <div className="text-[11px] text-slate-400">{breakdown.documents?.description}</div>
+                  <div className="font-semibold text-white text-sm">Document Evidence Verification</div>
+                  <div className="text-xs text-slate-400">{breakdown.documents?.description}</div>
                 </div>
               </div>
               <div className="text-right shrink-0">
                 <span className="text-sm font-extrabold text-emerald-400">+{breakdown.documents?.contribution || 25}</span>
-                <span className="text-[10px] text-slate-500 block">/ {breakdown.documents?.max_points || 30} max</span>
+                <span className="text-xs text-slate-400 block">/ {breakdown.documents?.max_points || 30} max</span>
               </div>
             </div>
 
@@ -114,13 +114,13 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
                   <Calendar className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">Compliance Tasks & Filings</div>
-                  <div className="text-[11px] text-slate-400">{breakdown.tasks?.description}</div>
+                  <div className="font-semibold text-white text-sm">Compliance Tasks &amp; Filings</div>
+                  <div className="text-xs text-slate-400">{breakdown.tasks?.description}</div>
                 </div>
               </div>
               <div className="text-right shrink-0">
                 <span className="text-sm font-extrabold text-emerald-400">+{breakdown.tasks?.contribution || 24}</span>
-                <span className="text-[10px] text-slate-500 block">/ {breakdown.tasks?.max_points || 25} max</span>
+                <span className="text-xs text-slate-400 block">/ {breakdown.tasks?.max_points || 25} max</span>
               </div>
             </div>
 
@@ -131,25 +131,25 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
                   <AlertCircle className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">Statutory Risk Deductions</div>
-                  <div className="text-[11px] text-slate-400">{breakdown.deductions?.description}</div>
+                  <div className="font-semibold text-white text-sm">Statutory Risk Deductions</div>
+                  <div className="text-xs text-slate-400">{breakdown.deductions?.description}</div>
                 </div>
               </div>
               <div className="text-right shrink-0">
                 <span className="text-sm font-extrabold text-rose-400">
                   {breakdown.deductions?.deadline_risk || 0} pts
                 </span>
-                <span className="text-[10px] text-slate-500 block">penalty applied</span>
+                <span className="text-xs text-slate-400 block">penalty applied</span>
               </div>
             </div>
           </div>
 
           {/* Transparent Formula */}
-          <div className="p-3 rounded-xl bg-[#0B0F17] border border-slate-800/80 space-y-1">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+          <div className="p-3.5 rounded-xl bg-[#0B0F17] border border-slate-800/80 space-y-1.5">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
               Transparent Calculation Arithmetic
             </span>
-            <div className="font-mono text-[11px] text-blue-400 bg-black/40 p-2 rounded-md overflow-x-auto">
+            <div className="font-mono text-xs text-blue-400 bg-black/40 p-2.5 rounded-lg overflow-x-auto">
               {breakdown.formula || 'Base (10) + Licences (33) + Documents (25) + Tasks (24) - Deductions (0) = 92/100'}
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
 
         {/* Footer */}
         <div className="p-4 border-t border-slate-800/80 bg-[#141C2B]/60 flex items-center justify-between">
-          <span className="text-xs text-slate-400">
+          <span className="text-xs sm:text-sm text-slate-400">
             Next target: <strong className="text-white">98%</strong> by uploading Fire Safety Certificate.
           </span>
           <button
@@ -165,10 +165,10 @@ export default function ComplianceHealthModal({ isOpen, onClose, healthData, onN
               onClose();
               if (onNavigate) onNavigate('documents');
             }}
-            className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-colors cursor-pointer flex items-center gap-1 shadow-sm shadow-blue-500/20"
+            className="px-4 py-2 min-h-[36px] rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm shadow-blue-500/20"
           >
             <span>Upload Document</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>
       </div>

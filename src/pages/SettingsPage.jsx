@@ -74,23 +74,23 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
     <div className="space-y-6 max-w-5xl">
       {/* Top Header */}
       <div className="pb-1">
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">
           Settings
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+        <p className="text-sm text-slate-400 mt-1">
           Manage your POWER HOUSE platform configuration and compliance parameters.
         </p>
       </div>
 
       {/* Section 1: Business Settings */}
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6">
+      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5">
         <div className="flex items-center justify-between pb-4 border-b border-slate-800">
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 rounded-lg bg-blue-950 text-blue-400 border border-blue-800">
               <Building className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white leading-none">
+              <h2 className="text-lg sm:text-xl font-bold text-white leading-tight">
                 Business Settings
               </h2>
               <p className="text-xs text-slate-400 mt-1">
@@ -104,18 +104,18 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
               variant="secondary"
               size="sm"
               onClick={handleSwitchBusinessType}
-              className="text-xs font-semibold text-slate-200"
+              className="min-h-[36px] text-sm font-semibold text-slate-200"
             >
-              <Repeat className="w-3.5 h-3.5" />
+              <Repeat className="w-4 h-4" />
               <span>Switch Business Type</span>
             </Button>
             <Button
               variant="secondary"
               size="sm"
               onClick={onNavigateToProfile}
-              className="text-xs font-semibold text-blue-400 hover:text-blue-300"
+              className="min-h-[36px] text-sm font-semibold text-blue-400 hover:text-blue-300"
             >
-              <Pencil className="w-3.5 h-3.5" />
+              <Pencil className="w-4 h-4" />
               <span>Edit Business Profile</span>
             </Button>
           </div>
@@ -142,13 +142,13 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
       </div>
 
       {/* Section 2: Notification Preferences */}
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6">
+      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5">
         <div className="flex items-center gap-2.5 pb-4 border-b border-slate-800">
           <div className="p-1.5 rounded-lg bg-blue-950 text-blue-400 border border-blue-800">
             <Bell className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-white leading-none">
+            <h2 className="text-lg sm:text-xl font-bold text-white leading-tight">
               Notification Preferences
             </h2>
             <p className="text-xs text-slate-400 mt-1">
@@ -196,13 +196,13 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
       </div>
 
       {/* Section 3: Display Preferences */}
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6">
+      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5">
         <div className="flex items-center gap-2.5 pb-4 border-b border-slate-800">
           <div className="p-1.5 rounded-lg bg-blue-950 text-blue-400 border border-blue-800">
             <Sliders className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-white leading-none">
+            <h2 className="text-lg sm:text-xl font-bold text-white leading-tight">
               Display Preferences
             </h2>
             <p className="text-xs text-slate-400 mt-1">
@@ -219,7 +219,7 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
                 <button
                   key={d}
                   onClick={() => handleDensityChange(d)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all ${
+                  className={`px-3 py-1.5 min-h-[36px] rounded-lg text-sm font-semibold cursor-pointer transition-all ${
                     settings.display.density === d
                       ? 'bg-blue-600 text-white shadow-2xs'
                       : 'bg-[#111827] text-slate-300 border border-slate-700'
@@ -241,7 +241,7 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
                     setSettings((prev) => ({ ...prev, display: { ...prev.display, sidebar: s } }));
                     showToast(`Sidebar mode set to ${s}.`);
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all ${
+                  className={`px-3 py-1.5 min-h-[36px] rounded-lg text-sm font-semibold cursor-pointer transition-all ${
                     settings.display.sidebar === s
                       ? 'bg-blue-600 text-white shadow-2xs'
                       : 'bg-[#111827] text-slate-300 border border-slate-700'
@@ -256,13 +256,13 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
       </div>
 
       {/* Section 4: Data & Privacy */}
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-5 sm:p-6">
+      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5">
         <div className="flex items-center gap-2.5 pb-4 border-b border-slate-800">
           <div className="p-1.5 rounded-lg bg-blue-950 text-blue-400 border border-blue-800">
             <ShieldAlert className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-white leading-none">
+            <h2 className="text-lg sm:text-xl font-bold text-white leading-tight">
               Data &amp; Privacy
             </h2>
             <p className="text-xs text-slate-400 mt-1">
@@ -276,7 +276,7 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
             variant="secondary"
             size="sm"
             onClick={() => showToast('Enterprise data sandbox settings verified.')}
-            className="text-xs font-semibold"
+            className="min-h-[36px] text-sm font-semibold"
           >
             <span>Manage Business Data</span>
           </Button>
@@ -285,9 +285,9 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
             variant="secondary"
             size="sm"
             onClick={() => showToast('Exporting business compliance vault JSON...')}
-            className="text-xs font-semibold text-slate-200"
+            className="min-h-[36px] text-sm font-semibold text-slate-200"
           >
-            <Download className="w-3.5 h-3.5" />
+            <Download className="w-4 h-4" />
             <span>Export Business Data</span>
           </Button>
 
@@ -295,18 +295,18 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
             variant="secondary"
             size="sm"
             onClick={handleOpenDeleteConfirm}
-            className="text-xs font-semibold text-rose-400 hover:bg-rose-950/40 hover:border-rose-800 ml-auto"
+            className="min-h-[36px] text-sm font-semibold text-rose-400 hover:bg-rose-950/40 hover:border-rose-800 ml-auto"
           >
-            <Trash2 className="w-3.5 h-3.5 text-rose-400" />
+            <Trash2 className="w-4 h-4 text-rose-400" />
             <span>Delete Business Data</span>
           </Button>
         </div>
       </div>
 
       {/* Section 5: About POWER HOUSE */}
-      <div className="bg-[#111827] rounded-2xl p-5 sm:p-6 text-white border border-[#1E293B] shadow-md">
+      <div className="bg-[#111827] rounded-2xl p-4 sm:p-5 text-white border border-[#1E293B] shadow-md">
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white text-sm">
+          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white text-base">
             PH
           </div>
           <div>
@@ -317,20 +317,20 @@ export default function SettingsPage({ onNavigateToProfile, showToast, setModalS
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-3 border-t border-slate-800 text-slate-300">
           <div>
-            <span className="text-slate-400 block text-[11px]">Version</span>
-            <span className="font-semibold">{settings.about.version}</span>
+            <span className="text-slate-400 block text-xs">Version</span>
+            <span className="font-semibold text-sm">{settings.about.version}</span>
           </div>
           <div>
-            <span className="text-slate-400 block text-[11px]">Build</span>
-            <span className="font-semibold">{settings.about.build}</span>
+            <span className="text-slate-400 block text-xs">Build</span>
+            <span className="font-semibold text-sm">{settings.about.build}</span>
           </div>
           <div>
-            <span className="text-slate-400 block text-[11px]">Engine</span>
-            <span className="font-semibold text-blue-400">Deterministic Engine v2.4</span>
+            <span className="text-slate-400 block text-xs">Engine</span>
+            <span className="font-semibold text-sm text-blue-400">Deterministic Engine v2.4</span>
           </div>
           <div>
-            <span className="text-slate-400 block text-[11px]">Environment</span>
-            <span className="font-semibold text-emerald-400">Operational</span>
+            <span className="text-slate-400 block text-xs">Environment</span>
+            <span className="font-semibold text-sm text-emerald-400">Operational</span>
           </div>
         </div>
       </div>

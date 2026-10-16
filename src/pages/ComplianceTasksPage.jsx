@@ -85,10 +85,10 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">
             Compliance Tasks
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+          <p className="text-sm text-slate-400 mt-1 leading-relaxed">
             Track and execute your business compliance calendars and statutory filings.
           </p>
         </div>
@@ -97,62 +97,62 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
           variant="primary"
           size="sm"
           onClick={handleOpenAddTask}
-          className="self-start sm:self-auto text-xs font-semibold"
+          className="self-start sm:self-auto text-sm font-semibold min-h-[36px]"
         >
-          <Plus className="w-3.5 h-3.5" />
+          <Plus className="w-4 h-4" />
           <span>Add Task</span>
         </Button>
       </div>
 
       {/* Top Stats Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">Total Tasks</div>
-            <div className="text-xl sm:text-2xl font-black text-white mt-1">{totalCount}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Active schedule</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">Total Tasks</div>
+            <div className="text-3xl font-black text-white mt-1 leading-none">{totalCount}</div>
+            <div className="text-xs text-slate-400 mt-1">Active schedule</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80 shrink-0">
             <CheckSquare className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">Completed</div>
-            <div className="text-xl sm:text-2xl font-black text-emerald-400 mt-1">{completedCount}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Filed on schedule</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">Completed</div>
+            <div className="text-3xl font-black text-emerald-400 mt-1 leading-none">{completedCount}</div>
+            <div className="text-xs text-slate-400 mt-1">Filed on schedule</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center border border-emerald-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center border border-emerald-800/80 shrink-0">
             <CheckCircle2 className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">In Progress / Due Soon</div>
-            <div className="text-xl sm:text-2xl font-black text-blue-400 mt-1">{inProgressCount}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Under filing window</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">In Progress / Due Soon</div>
+            <div className="text-3xl font-black text-blue-400 mt-1 leading-none">{inProgressCount}</div>
+            <div className="text-xs text-slate-400 mt-1">Under filing window</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80 shrink-0">
             <Clock className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div className="text-xs font-semibold text-slate-400">Overdue / Critical</div>
-            <div className="text-xl sm:text-2xl font-black text-rose-400 mt-1">{tasks.filter((t) => t.status === 'Overdue').length || 2}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Action required</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400">Overdue / Critical</div>
+            <div className="text-3xl font-black text-rose-400 mt-1 leading-none">{tasks.filter((t) => t.status === 'Overdue').length || 2}</div>
+            <div className="text-xs text-slate-400 mt-1">Action required</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-rose-950/80 text-rose-400 flex items-center justify-center border border-rose-800/80 shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-rose-950/80 text-rose-400 flex items-center justify-center border border-rose-800/80 shrink-0">
             <Calendar className="w-5 h-5" />
           </div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="bg-[#111827] rounded-xl border border-[#1E293B] shadow-2xs p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="flex-1 max-w-sm">
           <SearchInput
             value={search}
@@ -166,7 +166,7 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 text-xs font-medium rounded-xl border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
+            className="px-3 py-1.5 min-h-[36px] h-9 text-sm font-medium rounded-lg border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
           >
             <option value="All">All Statuses</option>
             <option value="Upcoming">Upcoming / Overdue</option>
@@ -177,7 +177,7 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
           <select
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="px-3 py-2 text-xs font-medium rounded-xl border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
+            className="px-3 py-1.5 min-h-[36px] h-9 text-sm font-medium rounded-lg border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
           >
             <option value="All">All Priorities</option>
             <option value="High">High Priority</option>
@@ -204,7 +204,7 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
           {filteredTasks.map((task) => (
             <div
               key={task.id}
-              className={`p-4 rounded-2xl border transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+              className={`p-4 rounded-xl border transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
                 task.completed
                   ? 'bg-[#141C2B]/40 border-slate-800 opacity-75'
                   : 'bg-[#111827] border-[#1E293B] hover:border-slate-700'
@@ -228,7 +228,7 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
                 <div className="space-y-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span
-                      className={`text-sm font-semibold truncate ${
+                      className={`text-sm sm:text-base font-semibold truncate ${
                         task.completed ? 'line-through text-slate-500' : 'text-white'
                       }`}
                     >
@@ -238,7 +238,7 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
                       {task.statusText || task.status}
                     </Badge>
                     <span
-                      className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                      className={`text-xs font-bold px-2 py-0.5 rounded ${
                         task.priority === 'High'
                           ? 'bg-rose-950/80 text-rose-400 border border-rose-800/80'
                           : 'bg-[#141C2B] text-slate-300 border border-slate-700'
@@ -248,19 +248,19 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-400 leading-snug">
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                     {task.subtext || task.description || task.relatedApproval}
                   </p>
 
-                  <div className="flex items-center gap-4 text-[11px] text-slate-400 pt-1 flex-wrap">
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-slate-400" />
+                  <div className="flex items-center gap-4 text-xs text-slate-400 pt-1 flex-wrap">
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-slate-400" />
                       <span className={task.status === 'Overdue' ? 'text-rose-400 font-semibold' : ''}>
                         {task.statusText || task.dueDate}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <User className="w-3 h-3 text-slate-400" />
+                    <div className="flex items-center gap-1.5">
+                      <User className="w-3.5 h-3.5 text-slate-400" />
                       <span>{task.assignee || 'Business Owner'}</span>
                     </div>
                   </div>
@@ -272,7 +272,7 @@ export default function ComplianceTasksPage({ showToast, setModalState }) {
                   variant="ghost"
                   size="sm"
                   onClick={() => handleOpenTaskDetail(task)}
-                  className="text-xs text-slate-300 hover:text-white"
+                  className="min-h-[32px] h-8 px-3 text-xs sm:text-sm text-slate-300 hover:text-white"
                 >
                   <span>Details</span>
                   <ChevronRight className="w-3.5 h-3.5" />

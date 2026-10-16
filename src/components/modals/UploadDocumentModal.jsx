@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, X, FileText, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { UploadCloud, X, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import Button from '../ui/Button';
 import apiClient from '../../services/apiClient';
 
@@ -191,10 +191,10 @@ export default function UploadDocumentModal({
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-800">
           <div>
-            <h3 id="upload-modal-title" className="font-bold text-slate-100 text-base">
+            <h3 id="upload-modal-title" className="font-bold text-slate-100 text-lg sm:text-xl">
               Upload Business Document
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-400 mt-1">
               Secure Document Vault with automatic entity extraction &amp; statutory evidence linkage.
             </p>
           </div>
@@ -202,7 +202,7 @@ export default function UploadDocumentModal({
             type="button"
             onClick={onClose}
             disabled={isUploading}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -211,7 +211,7 @@ export default function UploadDocumentModal({
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="mt-4 p-3 rounded-xl bg-rose-950/60 border border-rose-800 text-xs text-rose-300 flex items-center gap-2">
+          <div className="mt-4 p-3 rounded-xl bg-rose-950/60 border border-rose-800 text-sm text-rose-300 flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
             <span>{errorMessage}</span>
           </div>
@@ -245,21 +245,21 @@ export default function UploadDocumentModal({
             {file ? (
               <div className="flex flex-col items-center gap-1.5">
                 <CheckCircle2 className="w-8 h-8 text-emerald-400 mb-1" />
-                <span className="text-xs font-bold text-slate-100">{file.name}</span>
-                <span className="text-[11px] text-slate-400">
+                <span className="text-sm font-bold text-slate-100">{file.name}</span>
+                <span className="text-xs text-slate-400">
                   {(file.size / (1024 * 1024)).toFixed(2)} MB • Ready to upload
                 </span>
-                <span className="text-[10px] text-blue-400 underline mt-1">
+                <span className="text-xs text-blue-400 underline mt-1">
                   Click or drop to replace file
                 </span>
               </div>
             ) : (
               <>
                 <UploadCloud className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                <span className="text-xs font-bold text-slate-200 block">
+                <span className="text-sm font-semibold text-slate-200 block">
                   Click to upload or drag &amp; drop
                 </span>
-                <span className="text-[11px] text-slate-500 block mt-0.5">
+                <span className="text-xs text-slate-400 block mt-1">
                   PDF, DOCX, XLSX up to 25MB
                 </span>
               </>
@@ -268,7 +268,7 @@ export default function UploadDocumentModal({
 
           {/* Document Title */}
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">
+            <label className="block text-sm font-semibold text-slate-300 mb-1.5">
               Document Title <span className="text-rose-400">*</span>
             </label>
             <input
@@ -276,20 +276,20 @@ export default function UploadDocumentModal({
               placeholder="e.g. Factory Licence Certificate"
               value={docTitle}
               onChange={(e) => setDocTitle(e.target.value)}
-              className="w-full px-3 py-2 text-xs rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+              className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
           {/* Category and Related License */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1">
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">
                 Category
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 focus:border-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 focus:border-blue-500 focus:outline-none"
               >
                 {CATEGORY_OPTIONS.map((cat) => (
                   <option key={cat} value={cat} className="bg-[#111827]">
@@ -300,13 +300,13 @@ export default function UploadDocumentModal({
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1">
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">
                 Related License
               </label>
               <select
                 value={effectiveApproval}
                 onChange={(e) => setRelatedApproval(e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 focus:border-blue-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-[#141C2B] border border-[#1E293B] text-slate-100 focus:border-blue-500 focus:outline-none"
               >
                 {approvalOptions.map((name) => (
                   <option key={name} value={name} className="bg-[#111827]">
@@ -325,7 +325,7 @@ export default function UploadDocumentModal({
               size="sm"
               onClick={onClose}
               disabled={isUploading}
-              className="text-xs font-semibold"
+              className="min-h-[36px]"
             >
               Close
             </Button>
@@ -335,11 +335,11 @@ export default function UploadDocumentModal({
               variant="primary"
               size="sm"
               disabled={!file || !docTitle.trim() || isUploading}
-              className="text-xs font-semibold flex items-center gap-1.5"
+              className="min-h-[36px] flex items-center gap-1.5"
             >
               {isUploading ? (
                 <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin" />
                   <span>Uploading...</span>
                 </>
               ) : (

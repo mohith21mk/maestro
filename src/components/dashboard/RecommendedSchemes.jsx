@@ -15,7 +15,7 @@ const iconMap = {
 
 export default function RecommendedSchemes({ schemes, onViewAll, onSchemeDetails }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-5 sm:p-6 flex flex-col justify-between">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-4 sm:p-5 flex flex-col justify-between">
       <div>
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-100">
@@ -24,10 +24,10 @@ export default function RecommendedSchemes({ schemes, onViewAll, onSchemeDetails
               <Gift className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900 leading-none">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight">
                 Recommended Schemes
               </h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-sm text-slate-500 mt-0.5">
                 Subsidies matched to your profile
               </p>
             </div>
@@ -37,10 +37,10 @@ export default function RecommendedSchemes({ schemes, onViewAll, onSchemeDetails
             variant="secondary"
             size="sm"
             onClick={onViewAll}
-            className="text-xs font-semibold text-blue-600 hover:text-blue-700"
+            className="min-h-[36px] text-sm font-semibold text-blue-600 hover:text-blue-700"
           >
             <span>View All</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
 
@@ -61,16 +61,16 @@ export default function RecommendedSchemes({ schemes, onViewAll, onSchemeDetails
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                      <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
                         {scheme.title}
                       </h3>
                       {scheme.badge && (
-                        <span className="text-[10px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-100 shrink-0">
+                        <span className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-100 shrink-0">
                           {scheme.badge}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-500 mt-1 line-clamp-2 leading-relaxed">
                       {scheme.description}
                     </p>
                   </div>
@@ -78,7 +78,7 @@ export default function RecommendedSchemes({ schemes, onViewAll, onSchemeDetails
 
                 <div className="pt-2.5 border-t border-slate-200/60 flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[11px] font-medium text-slate-500">
+                    <span className="text-xs font-medium text-slate-500">
                       Benefit:
                     </span>
                     <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
@@ -89,7 +89,7 @@ export default function RecommendedSchemes({ schemes, onViewAll, onSchemeDetails
                   <button
                     type="button"
                     onClick={() => onSchemeDetails(scheme)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors cursor-pointer min-h-[32px]"
                   >
                     <span>View Details</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

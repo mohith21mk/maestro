@@ -55,10 +55,10 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">
             Alerts &amp; Notifications
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+          <p className="text-sm text-slate-400 mt-1">
             Stay informed about statutory compliance deadlines, inspections, and regulatory notices.
           </p>
         </div>
@@ -67,9 +67,9 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
           variant="secondary"
           size="sm"
           onClick={handleMarkAllAsRead}
-          className="self-start sm:self-auto text-xs font-semibold"
+          className="self-start sm:self-auto min-h-[36px] h-9 text-sm font-semibold"
         >
-          <CheckCheck className="w-3.5 h-3.5" />
+          <CheckCheck className="w-4 h-4 mr-1.5" />
           <span>Mark All as Read</span>
         </Button>
       </div>
@@ -77,10 +77,10 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
       {/* Top 3 Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
-          <div>
-            <div className="text-xs font-semibold text-rose-400 uppercase tracking-wider">Critical Alerts</div>
-            <div className="text-2xl font-black text-white mt-1">{alertsStats.critical || 1}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Immediate action required</div>
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-rose-400 uppercase tracking-wider">Critical Alerts</div>
+            <div className="text-3xl font-black text-white mt-1">{alertsStats.critical || 1}</div>
+            <div className="text-xs text-slate-400 mt-0.5">Immediate action required</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-rose-950/80 text-rose-400 flex items-center justify-center border border-rose-800/80">
             <AlertTriangle className="w-5 h-5" />
@@ -88,10 +88,10 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
         </div>
 
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
-          <div>
-            <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Upcoming Deadlines</div>
-            <div className="text-2xl font-black text-white mt-1">{alertsStats.upcoming || 2}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Due in next 14 days</div>
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-amber-400 uppercase tracking-wider">Upcoming Deadlines</div>
+            <div className="text-3xl font-black text-white mt-1">{alertsStats.upcoming || 2}</div>
+            <div className="text-xs text-slate-400 mt-0.5">Due in next 14 days</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-amber-950/80 text-amber-400 flex items-center justify-center border border-amber-800/80">
             <Clock className="w-5 h-5" />
@@ -99,10 +99,10 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
         </div>
 
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 sm:p-5 flex items-center justify-between">
-          <div>
-            <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Information</div>
-            <div className="text-2xl font-black text-white mt-1">{alertsStats.information || 1}</div>
-            <div className="text-[11px] text-slate-400 mt-0.5">Advisories &amp; scheme notices</div>
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-blue-400 uppercase tracking-wider">Information</div>
+            <div className="text-3xl font-black text-white mt-1">{alertsStats.information || 1}</div>
+            <div className="text-xs text-slate-400 mt-0.5">Advisories &amp; scheme notices</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-blue-950/80 text-blue-400 flex items-center justify-center border border-blue-800/80">
             <Info className="w-5 h-5" />
@@ -112,12 +112,12 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
 
       {/* Search and Category Filter Tabs */}
       <div className="bg-[#111827] rounded-2xl border border-[#1E293B] shadow-2xs p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
+              className={`min-h-[36px] h-9 px-4 rounded-xl text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === tab
                   ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-400 hover:text-white hover:bg-[#141C2B]'
@@ -158,7 +158,7 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
             return (
               <div
                 key={alert.id}
-                className={`bg-[#111827] rounded-2xl border transition-all p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+                className={`bg-[#111827] rounded-2xl border transition-all p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm ${
                   !alert.read
                     ? isCritical
                       ? 'border-rose-900/60 bg-rose-950/20'
@@ -189,21 +189,21 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-sm font-bold text-white">{alert.title}</h3>
+                      <h3 className="text-base font-bold text-white">{alert.title}</h3>
                       {!alert.read && (
                         <span className="w-2 h-2 rounded-full bg-blue-500" />
                       )}
-                      <span className="text-[10px] font-bold text-slate-300 bg-[#141C2B] px-2 py-0.5 rounded border border-slate-700">
+                      <span className="text-xs font-semibold text-slate-300 bg-[#141C2B] px-2.5 py-0.5 rounded border border-slate-700">
                         {alert.category}
                       </span>
                     </div>
 
-                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    <p className="text-sm text-slate-300 mt-1 leading-relaxed">
                       {alert.description}
                     </p>
 
-                    <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-2">
-                      <Calendar className="w-3 h-3 text-slate-400" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-400 mt-2">
+                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
                       <span>{alert.date}</span>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
                   {!alert.read && (
                     <button
                       onClick={() => handleMarkAsRead(alert.id)}
-                      className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer"
+                      className="min-h-[36px] h-9 px-3.5 py-1.5 rounded-lg text-sm font-semibold text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer"
                     >
                       Mark as read
                     </button>
@@ -222,10 +222,10 @@ export default function AlertsPage({ onNavigate, showToast, setModalState }) {
                   {alert.actionRoute && (
                     <button
                       onClick={() => onNavigate(alert.actionRoute)}
-                      className="px-3 py-1.5 rounded-lg bg-blue-950 text-blue-400 hover:bg-blue-900 text-xs font-semibold transition-colors flex items-center gap-1 cursor-pointer border border-blue-800"
+                      className="min-h-[36px] h-9 px-4 py-1.5 rounded-lg bg-blue-950 text-blue-400 hover:bg-blue-900 text-sm font-semibold transition-colors flex items-center gap-1.5 cursor-pointer border border-blue-800"
                     >
                       <span>Take Action</span>
-                      <ArrowRight className="w-3 h-3" />
+                      <ArrowRight className="w-4 h-4" />
                     </button>
                   )}
                 </div>

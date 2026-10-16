@@ -145,18 +145,18 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-950/60 text-teal-400 border border-teal-800 flex items-center gap-1">
-              <Leaf className="w-3 h-3" />
+            <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-teal-950/60 text-teal-400 border border-teal-800 flex items-center gap-1.5">
+              <Leaf className="w-3.5 h-3.5" />
               GREEN INDUSTRY FLOW AI
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-sm text-slate-400">
               {businessTemplateBundle?.meta?.categoryLabel || 'Governed Sustainability Layer'}
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">
             Green Operations &amp; Sustainability Intelligence
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+          <p className="text-sm text-slate-400 mt-1">
             Real agentic energy diagnostics, compute optimization, and deterministic impact verification.
           </p>
         </div>
@@ -167,9 +167,9 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
             size="sm"
             onClick={handleSeedDemo}
             disabled={isOrchestrating}
-            className="text-xs font-semibold"
+            className="min-h-[36px] h-9 text-sm font-semibold"
           >
-            <Database className="w-3.5 h-3.5 mr-1" />
+            <Database className="w-4 h-4 mr-1.5" />
             Seed Demo Telemetry
           </Button>
 
@@ -178,16 +178,16 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
             size="sm"
             onClick={handleRunAgent}
             disabled={isOrchestrating}
-            className="text-xs font-semibold bg-teal-600 hover:bg-teal-500 border-teal-500"
+            className="min-h-[36px] h-9 text-sm font-semibold bg-teal-600 hover:bg-teal-500 border-teal-500"
           >
             {isOrchestrating ? (
               <>
-                <Loader2 className="w-3.5 h-3.5 mr-1 animate-spin" />
+                <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />
                 Orchestrating...
               </>
             ) : (
               <>
-                <RotateCw className="w-3.5 h-3.5 mr-1" />
+                <RotateCw className="w-4 h-4 mr-1.5" />
                 Run Agent Orchestrator
               </>
             )}
@@ -202,23 +202,23 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
           onClick={() => setShowScoreModal(true)}
           className="bg-[#111827] rounded-2xl border border-[#1E293B] hover:border-teal-800 p-4 sm:p-5 flex items-center justify-between cursor-pointer transition-colors shadow-2xs group"
         >
-          <div>
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-400">
+          <div className="space-y-1">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider">
               <span>Green Score</span>
-              <HelpCircle className="w-3 h-3 text-slate-400 group-hover:text-teal-400" />
+              <HelpCircle className="w-3.5 h-3.5 text-slate-400 group-hover:text-teal-400" />
             </div>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-xl sm:text-2xl font-black text-white">
+              <span className="text-3xl font-black text-white">
                 {summary?.green_score ?? 72}
               </span>
               <span className="text-xs text-slate-400">/ 100</span>
-              <span className="text-[10px] font-bold text-teal-400">
+              <span className="text-xs font-semibold text-teal-400">
                 {summary?.score_rating || 'Good'}
               </span>
             </div>
-            <div className="text-[11px] text-teal-400/90 mt-1 font-medium flex items-center gap-1">
+            <div className="text-xs text-teal-400/90 mt-1 font-medium flex items-center gap-1">
               <span>Why this score?</span>
-              <ArrowRight className="w-2.5 h-2.5" />
+              <ArrowRight className="w-3 h-3" />
             </div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-teal-950/60 border border-teal-800 text-teal-400 flex items-center justify-center shrink-0">
@@ -228,12 +228,12 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
 
         {/* Card 2: Potential Cost Savings */}
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5 flex items-center justify-between shadow-2xs">
-          <div>
-            <div className="text-xs font-semibold text-slate-400">Potential Savings</div>
-            <div className="text-lg sm:text-xl font-black text-white mt-1">
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Potential Savings</div>
+            <div className="text-3xl font-black text-white mt-1">
               {summary?.potential_cost_savings || 'DATA REQUIRED'}
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
+            <div className="text-xs text-slate-400 mt-1">
               At ₹7.50/kWh commercial tariff
             </div>
           </div>
@@ -244,12 +244,12 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
 
         {/* Card 3: Energy Opportunity */}
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5 flex items-center justify-between shadow-2xs">
-          <div>
-            <div className="text-xs font-semibold text-slate-400">Energy Opportunity</div>
-            <div className="text-lg sm:text-xl font-black text-white mt-1">
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Energy Opportunity</div>
+            <div className="text-3xl font-black text-white mt-1">
               {summary?.energy_opportunity || 'Insufficient energy data'}
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
+            <div className="text-xs text-slate-400 mt-1">
               Compute &amp; off-peak shifting
             </div>
           </div>
@@ -260,12 +260,12 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
 
         {/* Card 4: Estimated Carbon Reduction */}
         <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5 flex items-center justify-between shadow-2xs">
-          <div>
-            <div className="text-xs font-semibold text-slate-400">Carbon Abatement</div>
-            <div className="text-lg sm:text-xl font-black text-white mt-1">
+          <div className="space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Carbon Abatement</div>
+            <div className="text-3xl font-black text-white mt-1">
               {summary?.estimated_carbon_reduction || 'Factor unconfigured'}
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
+            <div className="text-xs text-slate-400 mt-1">
               CEA National Grid Baseline v19
             </div>
           </div>
@@ -276,7 +276,7 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
       </div>
 
       {/* Tabs Navigation */}
-      <div className="border-b border-slate-800 flex gap-4 text-xs font-bold">
+      <div className="border-b border-slate-800 flex gap-4 text-sm font-semibold overflow-x-auto scrollbar-none">
         {[
           { id: 'opportunities', label: `Opportunities Radar (${opportunities.length})` },
           { id: 'traces', label: `Agent Runs & Traces (${agentRuns.length})` },
@@ -286,7 +286,7 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`pb-3 transition-colors cursor-pointer border-b-2 -mb-px ${
+            className={`pb-3 transition-colors cursor-pointer border-b-2 -mb-px whitespace-nowrap min-h-[36px] ${
               activeTab === tab.id
                 ? 'border-teal-400 text-teal-400'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
@@ -300,13 +300,13 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
       {/* Tab 1: Opportunities Radar */}
       {activeTab === 'opportunities' && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400">Category Filter:</span>
+              <span className="text-sm text-slate-400">Category Filter:</span>
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="px-2.5 py-1 text-xs rounded-lg bg-[#141C2B] border border-slate-800 text-slate-200 focus:outline-none"
+                className="h-9 min-h-[36px] px-3 text-sm rounded-lg bg-[#141C2B] border border-slate-800 text-slate-200 focus:outline-none"
               >
                 <option value="All">All Categories</option>
                 <option value="Compute Efficiency">Compute Efficiency</option>
@@ -315,24 +315,24 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
               </select>
             </div>
 
-            <div className="text-xs text-slate-400">
+            <div className="text-sm text-slate-400">
               Data Quality: <span className="font-bold text-teal-400">{summary?.data_quality || 'MEDIUM'}</span>
             </div>
           </div>
 
           {isLoading ? (
-            <div className="p-12 text-center text-slate-500 flex flex-col items-center gap-2">
+            <div className="p-12 text-center text-slate-400 flex flex-col items-center gap-2">
               <Loader2 className="w-6 h-6 animate-spin text-teal-400" />
-              <span>Analyzing green telemetry...</span>
+              <span className="text-sm">Analyzing green telemetry...</span>
             </div>
           ) : filteredOpps.length === 0 ? (
             <div className="p-8 text-center rounded-2xl bg-[#111827] border border-slate-800 text-slate-400 space-y-3">
               <CheckCircle2 className="w-8 h-8 text-teal-400 mx-auto" />
-              <div className="font-bold text-white text-sm">No Open Inefficiencies Detected</div>
-              <p className="text-xs max-w-md mx-auto text-slate-400">
+              <div className="font-bold text-white text-base">No Open Inefficiencies Detected</div>
+              <p className="text-sm max-w-md mx-auto text-slate-400">
                 All telemetry matches optimal operational baseline thresholds, or telemetry data is unconfigured.
               </p>
-              <Button size="sm" variant="secondary" onClick={handleSeedDemo}>
+              <Button size="sm" variant="secondary" onClick={handleSeedDemo} className="min-h-[36px] h-9 text-sm">
                 Seed Demo Telemetry
               </Button>
             </div>
@@ -341,14 +341,14 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
               {filteredOpps.map((opp) => (
                 <div
                   key={opp.id}
-                  className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors hover:border-slate-700 shadow-2xs"
+                  className="bg-[#111827] rounded-2xl border border-[#1E293B] p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors hover:border-slate-700 shadow-2xs text-sm"
                 >
                   <div className="space-y-1.5 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-950/60 text-teal-400 border border-teal-800">
+                      <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-teal-950/60 text-teal-400 border border-teal-800">
                         {opp.category}
                       </span>
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
+                      <span className={`px-2.5 py-0.5 rounded text-xs font-semibold border ${
                         opp.priority === 'High'
                           ? 'bg-rose-950/60 text-rose-400 border-rose-800'
                           : 'bg-amber-950/60 text-amber-400 border-amber-800'
@@ -358,17 +358,17 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                       <span className="text-xs text-slate-400">
                         Confidence: <strong className="text-slate-200">{Math.round((opp.confidence || 0.85) * 100)}%</strong>
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono">
+                      <span className="text-xs text-slate-400 font-mono">
                         Policy: <strong className="text-teal-400">{opp.policy_status}</strong>
                       </span>
                     </div>
 
-                    <h3 className="font-bold text-white text-sm">{opp.title}</h3>
-                    <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
+                    <h3 className="font-bold text-white text-base">{opp.title}</h3>
+                    <p className="text-sm text-slate-300 leading-relaxed max-w-2xl">
                       {opp.detected_issue}
                     </p>
 
-                    <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-400">
+                    <div className="pt-2 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-400">
                       {opp.estimated_cost_impact?.value && (
                         <div>
                           Est. Savings: <strong className="text-emerald-400">₹{opp.estimated_cost_impact.value.toLocaleString()}</strong>
@@ -391,13 +391,13 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setSelectedWhyOpp(opp)}
-                        className="px-3 py-1.5 rounded-lg bg-teal-950/60 text-teal-400 border border-teal-800 hover:bg-teal-900/60 text-xs font-semibold cursor-pointer transition-colors"
+                        className="min-h-[36px] h-9 px-3.5 py-1.5 rounded-lg bg-teal-950/60 text-teal-400 border border-teal-800 hover:bg-teal-900/60 text-sm font-semibold cursor-pointer transition-colors"
                       >
                         Why?
                       </button>
                       <button
                         onClick={() => setSelectedEvidenceOpp(opp)}
-                        className="px-3 py-1.5 rounded-lg bg-[#141C2B] text-slate-300 border border-slate-700 hover:bg-slate-800 text-xs font-semibold cursor-pointer transition-colors"
+                        className="min-h-[36px] h-9 px-3.5 py-1.5 rounded-lg bg-[#141C2B] text-slate-300 border border-slate-700 hover:bg-slate-800 text-sm font-semibold cursor-pointer transition-colors"
                       >
                         Evidence
                       </button>
@@ -408,12 +408,12 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                         size="sm"
                         variant="primary"
                         onClick={() => handleCreateProposal(opp)}
-                        className="text-xs font-semibold bg-teal-600 hover:bg-teal-500"
+                        className="min-h-[36px] h-9 text-sm font-semibold bg-teal-600 hover:bg-teal-500"
                       >
                         Create Task
                       </Button>
                     ) : (
-                      <span className="px-2.5 py-1 rounded text-xs font-bold bg-slate-800 text-slate-300">
+                      <span className="px-3 py-1 rounded text-xs font-semibold bg-slate-800 text-slate-300">
                         {opp.status}
                       </span>
                     )}
@@ -428,7 +428,7 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
       {/* Tab 2: Agent Orchestration & Traces */}
       {activeTab === 'traces' && (
         <div className="space-y-4">
-          <div className="p-4 rounded-xl bg-[#111827] border border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+          <div className="p-4 rounded-xl bg-[#111827] border border-slate-800 text-sm text-slate-400 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <span>Orchestration Engine: <strong className="text-white">GreenAgentOrchestrator</strong></span>
             <span>Lifecycle: <strong className="text-teal-400">Observe → Retrieve → Detect → Analyze → Reason → Recommend → Validate</strong></span>
           </div>
@@ -442,8 +442,8 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                 <div className="flex items-center justify-between pb-2 border-b border-slate-800/80">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-                    <span className="font-bold text-white text-xs">{run.agent_type}</span>
-                    <span className="text-[11px] text-slate-400">Run #{run.id.slice(0, 8)}</span>
+                    <span className="font-bold text-white text-sm">{run.agent_type}</span>
+                    <span className="text-xs text-slate-400">Run #{run.id.slice(0, 8)}</span>
                   </div>
                   <Badge variant={run.status === 'COMPLETED' ? 'Verified' : 'Pending'}>
                     {run.status}
@@ -451,21 +451,21 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                 </div>
 
                 <div className="space-y-2">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase">Execution Steps ({run.trace_steps?.length || 0}):</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Execution Steps ({run.trace_steps?.length || 0}):</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {run.trace_steps?.map((step, sIdx) => (
-                      <div key={sIdx} className="p-2.5 rounded-lg bg-[#0B0F17] border border-slate-800/80 text-xs space-y-1">
+                      <div key={sIdx} className="p-3 rounded-lg bg-[#0B0F17] border border-slate-800/80 text-xs space-y-1">
                         <div className="flex items-center justify-between">
                           <span className="font-bold text-teal-400">{step.step}</span>
-                          <span className="text-[10px] text-slate-500">{step.duration_ms}ms</span>
+                          <span className="text-xs text-slate-500">{step.duration_ms}ms</span>
                         </div>
-                        <p className="text-[11px] text-slate-400 leading-snug">{step.summary}</p>
+                        <p className="text-xs text-slate-400 leading-snug">{step.summary}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-2 flex justify-between text-[11px] text-slate-500">
+                <div className="pt-2 flex justify-between text-xs text-slate-500">
                   <span>Input Sources: {run.input_sources?.join(', ') || 'Telemetry'}</span>
                   <span>Generated: {run.output_count} opportunities</span>
                 </div>
@@ -478,8 +478,8 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
       {/* Tab 3: Impact Verification (Before / After) */}
       {activeTab === 'impact' && (
         <div className="space-y-4">
-          <div className="p-4 rounded-xl bg-teal-950/40 border border-teal-800/60 text-xs text-slate-300">
-            <strong>Empirical Measurement Verification:</strong> POWER HOUSE stores baseline measurements before executing human-approved tasks, and compares them against actual post-implementation telemetry readings.
+          <div className="p-4 sm:p-5 rounded-xl bg-teal-950/40 border border-teal-800/60 text-sm text-slate-300 leading-relaxed">
+            <strong className="text-teal-200">Empirical Measurement Verification:</strong> POWER HOUSE stores baseline measurements before executing human-approved tasks, and compares them against actual post-implementation telemetry readings.
           </div>
 
           <div className="space-y-3">
@@ -488,43 +488,43 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                 key={imp.id}
                 className="bg-[#111827] rounded-2xl border border-slate-800 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
               >
-                <div className="space-y-1.5 flex-1">
+                <div className="space-y-2 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-white">{imp.metric_name}</span>
+                    <span className="text-base font-bold text-white">{imp.metric_name}</span>
                     <Badge variant={imp.verification_status === 'VERIFIED' ? 'Verified' : 'Pending'}>
                       {imp.verification_status === 'VERIFIED' ? 'Verified Improvement' : 'Impact verification pending'}
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-1">
-                    <div className="p-2 bg-[#0B0F17] rounded-lg border border-slate-800">
-                      <span className="text-[10px] text-slate-500 block">Baseline</span>
-                      <span className="font-bold text-slate-200">{imp.baseline_value} {imp.unit}</span>
+                    <div className="p-2.5 bg-[#0B0F17] rounded-lg border border-slate-800">
+                      <span className="text-xs text-slate-400 block mb-0.5">Baseline</span>
+                      <span className="font-bold text-slate-200 text-sm">{imp.baseline_value} {imp.unit}</span>
                     </div>
 
-                    <div className="p-2 bg-[#0B0F17] rounded-lg border border-slate-800">
-                      <span className="text-[10px] text-slate-500 block">Measured</span>
-                      <span className="font-bold text-teal-400">
+                    <div className="p-2.5 bg-[#0B0F17] rounded-lg border border-slate-800">
+                      <span className="text-xs text-slate-400 block mb-0.5">Measured</span>
+                      <span className="font-bold text-teal-400 text-sm">
                         {imp.measured_value !== null ? `${imp.measured_value} ${imp.unit}` : 'Pending Reading'}
                       </span>
                     </div>
 
-                    <div className="p-2 bg-[#0B0F17] rounded-lg border border-slate-800">
-                      <span className="text-[10px] text-slate-500 block">Absolute Delta</span>
-                      <span className="font-bold text-emerald-400">
+                    <div className="p-2.5 bg-[#0B0F17] rounded-lg border border-slate-800">
+                      <span className="text-xs text-slate-400 block mb-0.5">Absolute Delta</span>
+                      <span className="font-bold text-emerald-400 text-sm">
                         {imp.absolute_change !== null ? `-${imp.absolute_change} ${imp.unit}` : '—'}
                       </span>
                     </div>
 
-                    <div className="p-2 bg-[#0B0F17] rounded-lg border border-slate-800">
-                      <span className="text-[10px] text-slate-500 block">Improvement</span>
-                      <span className="font-bold text-emerald-400">
+                    <div className="p-2.5 bg-[#0B0F17] rounded-lg border border-slate-800">
+                      <span className="text-xs text-slate-400 block mb-0.5">Improvement</span>
+                      <span className="font-bold text-emerald-400 text-sm">
                         {imp.percentage_change !== null ? `+${imp.percentage_change}%` : '—'}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-[11px] text-slate-400 pt-1">
+                  <p className="text-xs text-slate-400 pt-1">
                     Formula: <code className="text-slate-300 font-mono">{imp.formula}</code> • {imp.assumptions}
                   </p>
                 </div>
@@ -534,7 +534,7 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                     size="sm"
                     variant="secondary"
                     onClick={() => handleVerifyImpact(imp.id, roundToTenth(imp.baseline_value * 0.78))}
-                    className="text-xs font-semibold shrink-0"
+                    className="min-h-[36px] h-9 text-sm font-semibold shrink-0"
                   >
                     Simulate Post-Action Reading
                   </Button>
@@ -549,9 +549,9 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
       {activeTab === 'factors' && (
         <div className="space-y-4">
           <div className="bg-[#111827] rounded-2xl border border-slate-800 overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 text-[11px] uppercase font-semibold">
+                <tr className="border-b border-slate-800 text-slate-400 text-xs uppercase font-semibold tracking-wider">
                   <th className="p-4">Factor Name &amp; Scope</th>
                   <th className="p-4">Value &amp; Unit</th>
                   <th className="p-4">Statutory Source</th>
@@ -563,18 +563,18 @@ export default function GreenOperationsPage({ showToast, onNavigate, _setModalSt
                 {emissionFactors.map((fac) => (
                   <tr key={fac.id} className="hover:bg-slate-800/20">
                     <td className="p-4">
-                      <div className="font-bold text-white">{fac.name}</div>
-                      <div className="text-[10px] text-slate-400">{fac.scope}</div>
+                      <div className="font-bold text-white text-sm">{fac.name}</div>
+                      <div className="text-xs text-slate-400 mt-0.5">{fac.scope}</div>
                     </td>
-                    <td className="p-4 font-mono font-bold text-teal-400">
+                    <td className="p-4 font-mono font-bold text-teal-400 text-sm">
                       {fac.value} {fac.unit}
                     </td>
-                    <td className="p-4 text-slate-300 max-w-xs leading-snug">
+                    <td className="p-4 text-slate-300 max-w-xs leading-relaxed text-sm">
                       {fac.source}
                     </td>
-                    <td className="p-4 text-slate-400">{fac.geography}</td>
+                    <td className="p-4 text-slate-400 text-sm">{fac.geography}</td>
                     <td className="p-4">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950/60 text-emerald-400 border border-emerald-800">
+                      <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-800">
                         {fac.status}
                       </span>
                     </td>

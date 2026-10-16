@@ -1,38 +1,14 @@
 @import "tailwindcss";
 
-/* ============================================================
-   GLOBAL TYPOGRAPHY SCALE OVERRIDE — compact enterprise density
-   Tailwind v4 exposes font-size as CSS custom properties.
-   Overriding here reduces ALL text-* utilities app-wide.
-   ============================================================
-   Default → Target
-   text-xs   : 12px  → 11px
-   text-sm   : 14px  → 12px
-   text-base : 16px  → 13px
-   text-lg   : 18px  → 14px
-   text-xl   : 20px  → 16px
-   text-2xl  : 24px  → 18px
-   text-3xl  : 30px  → 22px
-   text-4xl  : 36px  → 26px
-   ============================================================ */
-@theme {
-  /* Tailwind v4 font-size variables with 78% root font-size base */
-  --text-2xs: 0.75rem;     /* ~9.5px  — micro badges, status dots */
-  --text-xs: 0.85rem;      /* ~10.5px — badges, tooltips, metadata */
-  --text-sm: 0.95rem;      /* ~11.8px — body, nav labels, buttons */
-  --text-base: 1.05rem;    /* ~13px   — card body, inputs, secondary */
-  --text-lg: 1.15rem;      /* ~14.4px — card titles, tab labels */
-  --text-xl: 1.3rem;       /* ~16.2px — section headings */
-  --text-2xl: 1.5rem;      /* ~18.8px — page sub-headings, KPI values */
-  --text-3xl: 1.75rem;     /* ~21.8px — page headings */
-  --text-4xl: 2rem;        /* ~25px   — hero / page titles */
-  --text-5xl: 2.4rem;      /* ~30px   — large metric display */
-}
-
 @layer base {
   /* Global box-sizing reset */
   *, *::before, *::after {
     box-sizing: border-box;
+  }
+
+  /* Explicit 100% / 16px root typography - no artificial scaling */
+  html {
+    font-size: 100%;
   }
 
   /* Fixed viewport app shell - window never scrolls */
@@ -44,19 +20,12 @@
     padding: 0;
   }
 
-  html {
-    -webkit-text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
-    /* 78% root font size: creates universal ~22-25% compact enterprise scale across all rem values */
-    font-size: 78%;
-  }
-
   :root {
-    --sidebar-width: clamp(200px, 16.5vw, 320px);
-    --sidebar-collapsed-width: 60px;
-    --header-height: 44px;
-    --card-radius: 10px;
-    --card-padding: 11px;
+    --sidebar-width: 268px;
+    --sidebar-collapsed-width: 76px;
+    --header-height: 52px;
+    --card-radius: 12px;
+    --card-padding: 18px;
     --background: #0B0F17;
     --surface: #111827;
     --surface-secondary: #141C2B;
@@ -78,11 +47,9 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 1.05rem; /* ~13px body text */
-    line-height: 1.35;
   }
 
-  /* Compact enterprise table typography & spacing */
+  /* Enterprise table styling */
   table {
     border-collapse: separate;
     border-spacing: 0;
@@ -115,4 +82,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }
-

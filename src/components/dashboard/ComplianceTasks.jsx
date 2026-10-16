@@ -10,7 +10,7 @@ import Button from '../ui/Button';
 
 export default function ComplianceTasks({ tasks, onViewAll }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-5 sm:p-6 flex flex-col justify-between">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-4 sm:p-5 flex flex-col justify-between">
       <div>
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-100">
@@ -19,11 +19,11 @@ export default function ComplianceTasks({ tasks, onViewAll }) {
               <ClipboardList className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-none">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight">
                 Compliance Tasks
               </h2>
-              <p className="text-xs text-slate-500 mt-1">
-                Upcoming regulatory filings & statutory requirements
+              <p className="text-sm text-slate-500 mt-0.5">
+                Upcoming regulatory filings &amp; statutory requirements
               </p>
             </div>
           </div>
@@ -32,10 +32,10 @@ export default function ComplianceTasks({ tasks, onViewAll }) {
             variant="secondary"
             size="sm"
             onClick={onViewAll}
-            className="text-xs font-semibold text-blue-600 hover:text-blue-700"
+            className="min-h-[36px] text-sm font-semibold text-blue-600 hover:text-blue-700"
           >
             <span>View All</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
 
@@ -59,11 +59,11 @@ export default function ComplianceTasks({ tasks, onViewAll }) {
                     {task.title}
                   </h3>
                   <div className="flex items-center gap-2 mt-0.5 text-xs text-slate-500">
-                    <span className="text-[11px] font-medium text-slate-500">
+                    <span className="text-xs font-medium text-slate-500">
                       {task.due}
                     </span>
                     {task.priority && (
-                      <span className="text-[10px] text-slate-400">
+                      <span className="text-xs text-slate-400">
                         • Priority: {task.priority}
                       </span>
                     )}
@@ -82,10 +82,10 @@ export default function ComplianceTasks({ tasks, onViewAll }) {
       </div>
 
       <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 bg-slate-50/50 p-2.5 rounded-lg border border-slate-100">
-        <span className="text-[11px] font-medium text-slate-600">
+        <span className="text-xs font-medium text-slate-600">
           Auto-reminders enabled for authorized signatory
         </span>
-        <span className="font-semibold text-emerald-600 text-[11px]">
+        <span className="font-semibold text-emerald-600 text-xs">
           All Active
         </span>
       </div>

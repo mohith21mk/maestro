@@ -103,7 +103,7 @@ export default function RegistrationDetails({ data, isEditing, onChange }) {
                 )}
 
                 {item.desc && (
-                  <span className="text-[10px] text-slate-500 mt-1 block">
+                  <span className="text-xs text-slate-500 mt-1 block">
                     {item.desc}
                   </span>
                 )}

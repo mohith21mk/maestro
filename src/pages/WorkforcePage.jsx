@@ -132,24 +132,24 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
   const hasDemo = employees.some((e) => e.is_demo) || roles.some((r) => r.is_demo);
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto pb-12">
+    <div className="space-y-6 max-w-7xl mx-auto pb-12 font-sans antialiased text-slate-100">
       {/* Top Banner / Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#111827] p-6 rounded-2xl border border-[#1E293B]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#111827] p-5 sm:p-6 rounded-2xl border border-[#1E293B]">
         <div className="space-y-1">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-900/30 text-purple-400 border border-purple-800/50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-purple-900/30 text-purple-400 border border-purple-800/50 flex items-center justify-center shrink-0">
               <Users className="w-5 h-5 text-purple-400" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl font-bold text-white tracking-tight">Inclusive Workforce Intelligence</h1>
+                <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">Inclusive Workforce Intelligence</h1>
                 {hasDemo && (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-950/80 text-purple-400 border border-purple-800/60 font-mono">
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-purple-950/80 text-purple-400 border border-purple-800/60 font-mono">
                     [DEMO DATA]
                   </span>
                 )}
               </div>
-              <p className="text-xs text-slate-400">
+              <p className="text-sm text-slate-400 mt-1">
                 Ethical Skill-Gap Detection • Multimodal Learning Pathways • Privacy-Preserving Upskilling
               </p>
             </div>
@@ -163,9 +163,9 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
             size="sm"
             onClick={loadData}
             disabled={loading}
-            className="border-slate-800 text-slate-300 hover:bg-slate-800 cursor-pointer"
+            className="min-h-[36px] h-9 text-sm border-slate-800 text-slate-300 hover:bg-slate-800 cursor-pointer"
           >
-            <RotateCw className={`w-3.5 h-3.5 mr-1.5 ${loading ? 'animate-spin' : ''}`} />
+            <RotateCw className={`w-4 h-4 mr-1.5 ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
 
@@ -174,9 +174,9 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
             size="sm"
             onClick={handleRunAnalysis}
             disabled={analyzing}
-            className="border-purple-800/60 bg-purple-950/30 text-purple-300 hover:bg-purple-900/40 cursor-pointer"
+            className="min-h-[36px] h-9 text-sm border-purple-800/60 bg-purple-950/30 text-purple-300 hover:bg-purple-900/40 cursor-pointer font-semibold"
           >
-            <Activity className={`w-3.5 h-3.5 mr-1.5 ${analyzing ? 'animate-spin text-purple-400' : 'text-purple-400'}`} />
+            <Activity className={`w-4 h-4 mr-1.5 ${analyzing ? 'animate-spin text-purple-400' : 'text-purple-400'}`} />
             {analyzing ? 'Evaluating...' : 'Run Analysis'}
           </Button>
 
@@ -185,9 +185,9 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
               variant="outline"
               size="sm"
               onClick={handleSeedDemo}
-              className="border-emerald-800/50 bg-emerald-950/20 text-emerald-300 hover:bg-emerald-900/30 cursor-pointer"
+              className="min-h-[36px] h-9 text-sm border-emerald-800/50 bg-emerald-950/20 text-emerald-300 hover:bg-emerald-900/30 cursor-pointer font-semibold"
             >
-              <Database className="w-3.5 h-3.5 mr-1.5 text-emerald-400" />
+              <Database className="w-4 h-4 mr-1.5 text-emerald-400" />
               Seed Demo Data
             </Button>
           ) : (
@@ -196,9 +196,9 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                 variant="outline"
                 size="sm"
                 onClick={handleCleanupDemo}
-                className="border-rose-900/40 text-rose-400 hover:bg-rose-950/30 cursor-pointer"
+                className="min-h-[36px] h-9 text-sm border-rose-900/40 text-rose-400 hover:bg-rose-950/30 cursor-pointer font-semibold"
               >
-                <Trash2 className="w-3.5 h-3.5 mr-1.5 text-rose-400" />
+                <Trash2 className="w-4 h-4 mr-1.5 text-rose-400" />
                 Clear Demo Data
               </Button>
             )
@@ -207,10 +207,10 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#1E293B] pb-2 text-sm">
+      <div className="flex items-center gap-2 border-b border-[#1E293B] pb-2 text-sm overflow-x-auto scrollbar-none">
         <button
           onClick={() => setActiveTab('overview')}
-          className={`px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer min-h-[36px] flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'overview'
               ? 'bg-[#1E293B] text-white border border-slate-700'
               : 'text-slate-400 hover:text-slate-200 hover:bg-[#141C2B]'
@@ -221,7 +221,7 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
         </button>
         <button
           onClick={() => setActiveTab('roles')}
-          className={`px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer min-h-[36px] flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'roles'
               ? 'bg-[#1E293B] text-white border border-slate-700'
               : 'text-slate-400 hover:text-slate-200 hover:bg-[#141C2B]'
@@ -232,7 +232,7 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
         </button>
         <button
           onClick={() => setActiveTab('gaps')}
-          className={`px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer min-h-[36px] flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'gaps'
               ? 'bg-[#1E293B] text-white border border-slate-700'
               : 'text-slate-400 hover:text-slate-200 hover:bg-[#141C2B]'
@@ -243,7 +243,7 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
         </button>
         <button
           onClick={() => setActiveTab('pathways')}
-          className={`px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer min-h-[36px] flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'pathways'
               ? 'bg-[#1E293B] text-white border border-slate-700'
               : 'text-slate-400 hover:text-slate-200 hover:bg-[#141C2B]'
@@ -259,65 +259,65 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
         <div className="space-y-6">
           {/* Key Metric Cards */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B]">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Staff Profiles</span>
-              <span className="text-2xl font-bold text-white mt-1 block">
+            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B] space-y-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Staff Profiles</span>
+              <span className="text-3xl font-black text-white mt-1 block">
                 {summary?.total_employees || employees.length || 0}
               </span>
-              <span className="text-[10px] text-slate-500 mt-0.5 block">Privacy-preserved</span>
+              <span className="text-xs text-slate-500 mt-0.5 block">Privacy-preserved</span>
             </div>
 
-            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B]">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Role Profiles</span>
-              <span className="text-2xl font-bold text-blue-400 mt-1 block">
+            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B] space-y-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Role Profiles</span>
+              <span className="text-3xl font-black text-blue-400 mt-1 block">
                 {summary?.total_roles || roles.length || 0}
               </span>
-              <span className="text-[10px] text-slate-500 mt-0.5 block">Industry benchmarks</span>
+              <span className="text-xs text-slate-500 mt-0.5 block">Industry benchmarks</span>
             </div>
 
-            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B]">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Role Coverage</span>
-              <span className="text-2xl font-bold text-emerald-400 mt-1 block">
+            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B] space-y-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Role Coverage</span>
+              <span className="text-3xl font-black text-emerald-400 mt-1 block">
                 {summary?.role_coverage_pct !== undefined ? `${summary.role_coverage_pct}%` : '85%'}
               </span>
-              <span className="text-[10px] text-emerald-500/80 mt-0.5 block">Operational readiness</span>
+              <span className="text-xs text-emerald-500/80 mt-0.5 block">Operational readiness</span>
             </div>
 
-            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B]">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Open Skill Gaps</span>
-              <span className="text-2xl font-bold text-amber-400 mt-1 block">
+            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B] space-y-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Open Skill Gaps</span>
+              <span className="text-3xl font-black text-amber-400 mt-1 block">
                 {summary?.open_skill_gaps !== undefined ? summary.open_skill_gaps : skillGaps.length}
               </span>
-              <span className="text-[10px] text-slate-500 mt-0.5 block">Targeted for upskilling</span>
+              <span className="text-xs text-slate-500 mt-0.5 block">Targeted for upskilling</span>
             </div>
 
-            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B]">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Active Pathways</span>
-              <span className="text-2xl font-bold text-purple-400 mt-1 block">
+            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B] space-y-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Active Pathways</span>
+              <span className="text-3xl font-black text-purple-400 mt-1 block">
                 {summary?.active_learning_paths !== undefined ? summary.active_learning_paths : learningPaths.length}
               </span>
-              <span className="text-[10px] text-slate-500 mt-0.5 block">Enrolled or In Progress</span>
+              <span className="text-xs text-slate-500 mt-0.5 block">Enrolled or In Progress</span>
             </div>
 
-            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B]">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Accommodations</span>
-              <span className="text-2xl font-bold text-teal-400 mt-1 block">
+            <div className="bg-[#111827] p-4 rounded-xl border border-[#1E293B] space-y-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Accommodations</span>
+              <span className="text-3xl font-black text-teal-400 mt-1 block">
                 {summary?.accommodations_count !== undefined ? summary.accommodations_count : 4}
               </span>
-              <span className="text-[10px] text-teal-500/80 mt-0.5 block">Accessibility enabled</span>
+              <span className="text-xs text-teal-500/80 mt-0.5 block">Accessibility enabled</span>
             </div>
           </div>
 
           {/* Ethical AI & Privacy Guardrails Banner */}
-          <div className="p-4 rounded-2xl bg-teal-950/20 border border-teal-800/40 flex items-start gap-4">
+          <div className="p-4 sm:p-5 rounded-2xl bg-teal-950/20 border border-teal-800/40 flex items-start gap-4">
             <div className="w-10 h-10 rounded-xl bg-teal-900/30 text-teal-400 border border-teal-700/50 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <div className="space-y-1 text-xs">
-              <h4 className="font-bold text-teal-200 text-sm flex items-center gap-2">
+            <div className="space-y-1 text-sm">
+              <h4 className="font-bold text-teal-200 text-base flex items-center gap-2">
                 Ethical Workforce AI Guardrails Enforced
               </h4>
-              <p className="text-slate-300 leading-relaxed">
+              <p className="text-slate-300 leading-relaxed text-sm">
                 POWER HOUSE operates under strict privacy and non-punitive governance. Staff profiles use synthetic reference codes (e.g. <span className="font-mono text-teal-300">EMP-TX-101</span>). The system does not evaluate compensation, rank human workers against each other, or make automated hiring or termination decisions. Recommendations are strictly focused on capability building, accessibility accommodations, and statutory safety readiness.
               </p>
             </div>
@@ -326,37 +326,37 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
           {/* Action Proposals / Gaps Needing Attention */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Urgent Competency Gaps */}
-            <div className="bg-[#111827] p-5 rounded-2xl border border-[#1E293B] space-y-4">
+            <div className="bg-[#111827] p-4 sm:p-5 rounded-2xl border border-[#1E293B] space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-amber-400" />
-                  <h3 className="font-bold text-white text-sm">Targeted Competency Gaps</h3>
+                  <AlertTriangle className="w-5 h-5 text-amber-400" />
+                  <h3 className="font-bold text-white text-base tracking-tight">Targeted Competency Gaps</h3>
                 </div>
                 <button
                   onClick={() => setActiveTab('gaps')}
-                  className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1 cursor-pointer"
+                  className="text-sm font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1 cursor-pointer"
                 >
-                  View All <ChevronRight className="w-3.5 h-3.5" />
+                  View All <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
 
               {skillGaps.length === 0 ? (
                 <div className="p-8 text-center bg-[#141C2B] rounded-xl border border-slate-800/60">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
-                  <p className="text-xs font-medium text-slate-300">No open competency gaps identified.</p>
-                  <p className="text-[11px] text-slate-500 mt-1">Run analysis or seed demo data to review roles.</p>
+                  <p className="text-sm font-medium text-slate-300">No open competency gaps identified.</p>
+                  <p className="text-xs text-slate-500 mt-1">Run analysis or seed demo data to review roles.</p>
                 </div>
               ) : (
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {skillGaps.slice(0, 3).map((gap) => (
                     <div
                       key={gap.id}
-                      className="p-3 bg-[#141C2B] rounded-xl border border-slate-800/80 flex items-center justify-between gap-3 hover:border-purple-800/50 transition-colors"
+                      className="p-3.5 bg-[#141C2B] rounded-xl border border-slate-800/80 flex items-center justify-between gap-3 hover:border-purple-800/50 transition-colors"
                     >
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-white">{gap.required_skill}</span>
-                          <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
+                          <span className="text-sm font-bold text-white">{gap.required_skill}</span>
+                          <span className={`text-xs font-semibold px-2 py-0.5 rounded ${
                             gap.gap_level === 'High'
                               ? 'bg-rose-950/80 text-rose-400 border border-rose-800/50'
                               : 'bg-amber-950/80 text-amber-400 border border-amber-800/50'
@@ -364,24 +364,24 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                             {gap.gap_level} Priority
                           </span>
                         </div>
-                        <p className="text-[11px] text-slate-400">
-                          Ref: <span className="text-purple-300 font-mono">{gap.employee_reference || 'EMP'}</span> • Role: {gap.role_name || 'Assigned Role'}
+                        <p className="text-xs text-slate-400">
+                          Ref: <span className="text-purple-300 font-mono font-semibold">{gap.employee_reference || 'EMP'}</span> • Role: {gap.role_name || 'Assigned Role'}
                         </p>
                       </div>
 
-                      <div className="flex items-center gap-1.5 shrink-0">
+                      <div className="flex items-center gap-2 shrink-0">
                         <button
                           onClick={() => openWhyGap(gap)}
-                          className="px-2 py-1 rounded-lg text-xs text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 cursor-pointer flex items-center gap-1"
+                          className="min-h-[32px] px-2.5 py-1 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 cursor-pointer flex items-center gap-1"
                         >
-                          <HelpCircle className="w-3 h-3 text-purple-400" />
+                          <HelpCircle className="w-3.5 h-3.5 text-purple-400" />
                           Why?
                         </button>
                         <button
                           onClick={() => handleCreateProposal(gap)}
-                          className="px-2.5 py-1 rounded-lg text-xs font-medium text-purple-300 hover:text-purple-100 bg-purple-950/60 hover:bg-purple-900/60 border border-purple-800/50 cursor-pointer flex items-center gap-1"
+                          className="min-h-[32px] px-3 py-1 rounded-lg text-xs font-semibold text-purple-300 hover:text-purple-100 bg-purple-950/60 hover:bg-purple-900/60 border border-purple-800/50 cursor-pointer flex items-center gap-1.5"
                         >
-                          <CheckCircle2 className="w-3 h-3" />
+                          <CheckCircle2 className="w-3.5 h-3.5" />
                           Propose
                         </button>
                       </div>
@@ -392,46 +392,46 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
             </div>
 
             {/* Active Learning Pathways */}
-            <div className="bg-[#111827] p-5 rounded-2xl border border-[#1E293B] space-y-4">
+            <div className="bg-[#111827] p-4 sm:p-5 rounded-2xl border border-[#1E293B] space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-teal-400" />
-                  <h3 className="font-bold text-white text-sm">Active Learning Pathways</h3>
+                  <BookOpen className="w-5 h-5 text-teal-400" />
+                  <h3 className="font-bold text-white text-base tracking-tight">Active Learning Pathways</h3>
                 </div>
                 <button
                   onClick={() => setActiveTab('pathways')}
-                  className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1 cursor-pointer"
+                  className="text-sm font-semibold text-teal-400 hover:text-teal-300 flex items-center gap-1 cursor-pointer"
                 >
-                  View All <ChevronRight className="w-3.5 h-3.5" />
+                  View All <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
 
               {learningPaths.length === 0 ? (
                 <div className="p-8 text-center bg-[#141C2B] rounded-xl border border-slate-800/60">
                   <GraduationCap className="w-8 h-8 text-teal-400/60 mx-auto mb-2" />
-                  <p className="text-xs font-medium text-slate-300">No active pathways currently underway.</p>
-                  <p className="text-[11px] text-slate-500 mt-1">Enroll employees from the Skill Gaps tab.</p>
+                  <p className="text-sm font-medium text-slate-300">No active pathways currently underway.</p>
+                  <p className="text-xs text-slate-500 mt-1">Enroll employees from the Skill Gaps tab.</p>
                 </div>
               ) : (
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {learningPaths.slice(0, 3).map((path) => (
                     <div
                       key={path.id}
-                      className="p-3 bg-[#141C2B] rounded-xl border border-slate-800/80 space-y-2"
+                      className="p-3.5 bg-[#141C2B] rounded-xl border border-slate-800/80 space-y-2.5"
                     >
-                      <div className="flex items-center justify-between text-xs">
+                      <div className="flex items-center justify-between text-sm">
                         <span className="font-bold text-white">{path.title}</span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-950/80 text-teal-400 border border-teal-800/50">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-950/80 text-teal-400 border border-teal-800/50">
                           {path.status}
                         </span>
                       </div>
-                      <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                      <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
                         <div
                           className="bg-teal-500 h-full rounded-full transition-all"
                           style={{ width: `${path.progress_pct || 30}%` }}
                         />
                       </div>
-                      <div className="flex items-center justify-between text-[10px] text-slate-400">
+                      <div className="flex items-center justify-between text-xs text-slate-400">
                         <span>Provider: {path.provider || 'Internal Academy'}</span>
                         <span className="text-teal-400 font-mono font-bold">{path.progress_pct || 30}% Completed</span>
                       </div>
@@ -449,8 +449,8 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-white text-base">Standardized Industry Role Profiles</h3>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <h3 className="font-bold text-white text-lg sm:text-xl tracking-tight">Standardized Industry Role Profiles</h3>
+              <p className="text-sm text-slate-400 mt-1">
                 Competency benchmarks and compliance requirements mapped to business sector
               </p>
             </div>
@@ -462,38 +462,38 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
           {loading ? (
             <div className="p-12 text-center bg-[#111827] rounded-2xl border border-[#1E293B]">
               <RotateCw className="w-8 h-8 text-purple-400 mx-auto mb-3 animate-spin" />
-              <h4 className="text-sm font-bold text-white">Loading standardized role profiles...</h4>
-              <p className="text-xs text-slate-400 mt-1">Retrieving competency standards and sector benchmarks</p>
+              <h4 className="text-base font-bold text-white">Loading standardized role profiles...</h4>
+              <p className="text-sm text-slate-400 mt-1">Retrieving competency standards and sector benchmarks</p>
             </div>
           ) : rolesError ? (
             <div className="p-10 text-center bg-rose-950/20 rounded-2xl border border-rose-900/50">
               <AlertTriangle className="w-8 h-8 text-rose-400 mx-auto mb-2" />
-              <h4 className="text-sm font-bold text-rose-200">Unable to load role profiles</h4>
-              <p className="text-xs text-rose-400/80 mt-1 max-w-md mx-auto">{rolesError}</p>
+              <h4 className="text-base font-bold text-rose-200">Unable to load role profiles</h4>
+              <p className="text-sm text-rose-400/80 mt-1 max-w-md mx-auto">{rolesError}</p>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={loadData}
-                className="mt-4 border-rose-800/60 text-rose-300 hover:bg-rose-900/40 cursor-pointer"
+                className="mt-4 min-h-[36px] h-9 text-sm border-rose-800/60 text-rose-300 hover:bg-rose-900/40 cursor-pointer"
               >
-                <RotateCw className="w-3.5 h-3.5 mr-1.5" />
+                <RotateCw className="w-4 h-4 mr-1.5" />
                 Retry
               </Button>
             </div>
           ) : roles.length === 0 ? (
             <div className="p-12 text-center bg-[#111827] rounded-2xl border border-[#1E293B]">
               <Briefcase className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-              <h4 className="text-sm font-bold text-white">No role profiles available for this business.</h4>
-              <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto">
+              <h4 className="text-base font-bold text-white">No role profiles available for this business.</h4>
+              <p className="text-sm text-slate-400 mt-1 max-w-md mx-auto">
                 Seed industry demo data to populate standard role definitions and required competencies.
               </p>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleSeedDemo}
-                className="mt-4 border-purple-800 text-purple-300 hover:bg-purple-950/30 cursor-pointer"
+                className="mt-4 min-h-[36px] h-9 text-sm border-purple-800 text-purple-300 hover:bg-purple-950/30 cursor-pointer font-semibold"
               >
-                <Database className="w-3.5 h-3.5 mr-1.5 text-purple-400" />
+                <Database className="w-4 h-4 mr-1.5 text-purple-400" />
                 Seed Industry Roles
               </Button>
             </div>
@@ -507,10 +507,10 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                   <div className="space-y-3">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <h4 className="font-bold text-white text-sm">{role.role_name}</h4>
-                        <p className="text-xs text-slate-400">{role.department || 'Operations'}</p>
+                        <h4 className="font-bold text-white text-base">{role.role_name}</h4>
+                        <p className="text-sm text-slate-400">{role.department || 'Operations'}</p>
                       </div>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded shrink-0 ${
+                      <span className={`text-xs font-semibold px-2.5 py-0.5 rounded shrink-0 ${
                         role.criticality === 'High' || role.criticality === 'Critical'
                           ? 'bg-rose-950/70 text-rose-400 border border-rose-800/40'
                           : 'bg-blue-950/70 text-blue-400 border border-blue-800/40'
@@ -521,7 +521,7 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
 
                     {/* Required Skills */}
                     <div className="space-y-1.5">
-                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                         Required Competencies:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
@@ -531,11 +531,11 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                           return (
                             <span
                               key={idx}
-                              className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#141C2B] text-slate-300 border border-slate-800 text-[11px]"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#141C2B] text-slate-300 border border-slate-800 text-xs"
                             >
                               <span>{name}</span>
                               {level && (
-                                <span className="text-[9px] px-1 rounded bg-purple-950 text-purple-300 border border-purple-800/40">
+                                <span className="text-xs px-1.5 rounded bg-purple-950 text-purple-300 border border-purple-800/40 font-semibold">
                                   {level}
                                 </span>
                               )}
@@ -548,7 +548,7 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                     {/* Optional Skills */}
                     {role.optional_skills && role.optional_skills.length > 0 && (
                       <div className="space-y-1.5 pt-1">
-                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
                           Optional Skills:
                         </span>
                         <div className="flex flex-wrap gap-1.5">
@@ -558,11 +558,11 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                             return (
                               <span
                                 key={idx}
-                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-900/60 text-slate-400 border border-slate-800/60 text-[11px]"
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-900/60 text-slate-400 border border-slate-800/60 text-xs"
                               >
                                 <span>{name}</span>
                                 {level && (
-                                  <span className="text-[9px] px-1 rounded bg-slate-800 text-slate-400">
+                                  <span className="text-xs px-1.5 rounded bg-slate-800 text-slate-400 font-semibold">
                                     {level}
                                   </span>
                                 )}
@@ -572,15 +572,26 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                         </div>
                       </div>
                     )}
+
+                    {/* Suggested Training Path */}
+                    <div className="space-y-1 pt-2 border-t border-slate-800/60">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                        Suggested Training Path:
+                      </span>
+                      <p className="text-sm text-purple-300 font-medium">
+                        {role.suggested_training_path || `${role.role_name} Industry Standard Qualification (NSQF Level 5)`}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-slate-500" />
-                      Min. {role.min_training_hours || 40}h Training
+                    <span className="flex items-center gap-1.5">
+                      <Users className="w-3.5 h-3.5 text-purple-400" />
+                      <span>Target Headcount: <strong className="text-white">{role.target_headcount || '2–4 Personnel'}</strong></span>
                     </span>
-                    <span className="text-slate-500 text-[11px]">
-                      Standardized Benchmark
+                    <span className="flex items-center gap-1 text-emerald-400 font-medium text-xs">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      Standard Mapped
                     </span>
                   </div>
                 </div>
@@ -595,8 +606,8 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-white text-base">Identified Competency Gaps</h3>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <h3 className="font-bold text-white text-lg sm:text-xl tracking-tight">Identified Competency Gaps</h3>
+              <p className="text-sm text-slate-400 mt-1">
                 Deterministic gap evaluation against role standards with Human-in-the-Loop action proposals
               </p>
             </div>
@@ -608,16 +619,16 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
           {skillGaps.length === 0 ? (
             <div className="p-12 text-center bg-[#111827] rounded-2xl border border-[#1E293B]">
               <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
-              <h4 className="text-sm font-bold text-white">All assessed employees meet role benchmarks</h4>
-              <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto">
+              <h4 className="text-base font-bold text-white">All assessed employees meet role benchmarks</h4>
+              <p className="text-sm text-slate-400 mt-1 max-w-md mx-auto">
                 No active skill gaps detected. Click "Run Analysis" to perform a real-time compliance evaluation.
               </p>
             </div>
           ) : (
             <div className="bg-[#111827] rounded-2xl border border-[#1E293B] overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-slate-300">
-                  <thead className="bg-[#141C2B] text-slate-400 uppercase text-[10px] tracking-wider border-b border-[#1E293B]">
+                <table className="w-full text-left text-sm text-slate-300">
+                  <thead className="bg-[#141C2B] text-slate-400 uppercase text-xs font-semibold tracking-wider border-b border-[#1E293B]">
                     <tr>
                       <th className="py-3 px-4">Staff Ref</th>
                       <th className="py-3 px-4">Target Role</th>
@@ -631,17 +642,17 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                   <tbody className="divide-y divide-slate-800/80">
                     {skillGaps.map((gap) => (
                       <tr key={gap.id} className="hover:bg-[#141C2B]/50 transition-colors">
-                        <td className="py-3 px-4 font-mono font-bold text-purple-400">
+                        <td className="py-3 px-4 font-mono font-bold text-purple-400 text-sm">
                           {gap.employee_reference || 'EMP-101'}
                         </td>
-                        <td className="py-3 px-4 font-medium text-white">
+                        <td className="py-3 px-4 font-medium text-white text-sm">
                           {gap.role_name || 'Operator'}
                         </td>
                         <td className="py-3 px-4">
-                          <span className="font-semibold text-slate-200">{gap.required_skill}</span>
+                          <span className="font-semibold text-slate-200 text-sm">{gap.required_skill}</span>
                         </td>
                         <td className="py-3 px-4">
-                          <span className={`px-2 py-0.5 rounded font-bold text-[10px] ${
+                          <span className={`px-2.5 py-0.5 rounded font-semibold text-xs ${
                             gap.gap_level === 'High'
                               ? 'bg-rose-950/80 text-rose-400 border border-rose-800/50'
                               : 'bg-amber-950/80 text-amber-400 border border-amber-800/50'
@@ -652,29 +663,29 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                         <td className="py-3 px-4">
                           <div className="flex flex-wrap gap-1 max-w-xs">
                             {(gap.accessibility_accommodations || ['Standard Multimodal']).map((acc, idx) => (
-                              <span key={idx} className="px-1.5 py-0.2 rounded bg-teal-950/60 text-teal-300 border border-teal-800/40 text-[10px]">
+                              <span key={idx} className="px-2 py-0.5 rounded bg-teal-950/60 text-teal-300 border border-teal-800/40 text-xs">
                                 {acc}
                               </span>
                             ))}
                           </div>
                         </td>
-                        <td className="py-3 px-4 text-slate-300 max-w-xs truncate">
+                        <td className="py-3 px-4 text-slate-300 text-sm max-w-xs truncate">
                           {gap.recommended_pathway || 'Foundational Certification'}
                         </td>
                         <td className="py-3 px-4 text-right">
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => openWhyGap(gap)}
-                              className="px-2 py-1 rounded-lg text-[11px] text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 cursor-pointer flex items-center gap-1"
+                              className="min-h-[32px] px-2.5 py-1 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 cursor-pointer flex items-center gap-1"
                             >
-                              <HelpCircle className="w-3 h-3 text-purple-400" />
+                              <HelpCircle className="w-3.5 h-3.5 text-purple-400" />
                               Why?
                             </button>
                             <button
                               onClick={() => handleCreateProposal(gap)}
-                              className="px-2.5 py-1 rounded-lg text-[11px] font-medium text-purple-300 hover:text-purple-100 bg-purple-950/60 hover:bg-purple-900/60 border border-purple-800/50 cursor-pointer flex items-center gap-1"
+                              className="min-h-[32px] px-3 py-1 rounded-lg text-xs font-semibold text-purple-300 hover:text-purple-100 bg-purple-950/60 hover:bg-purple-900/60 border border-purple-800/50 cursor-pointer flex items-center gap-1.5"
                             >
-                              <CheckCircle2 className="w-3 h-3" />
+                              <CheckCircle2 className="w-3.5 h-3.5" />
                               Propose
                             </button>
                           </div>
@@ -694,8 +705,8 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-white text-base">Accessible Upskilling Pathways</h3>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <h3 className="font-bold text-white text-lg sm:text-xl tracking-tight">Accessible Upskilling Pathways</h3>
+              <p className="text-sm text-slate-400 mt-1">
                 Targeted curricula with inclusive format adaptations and verified completion tracking
               </p>
             </div>
@@ -707,8 +718,8 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
           {learningPaths.length === 0 ? (
             <div className="p-12 text-center bg-[#111827] rounded-2xl border border-[#1E293B]">
               <BookOpen className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-              <h4 className="text-sm font-bold text-white">No active learning pathways</h4>
-              <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto">
+              <h4 className="text-base font-bold text-white">No active learning pathways</h4>
+              <p className="text-sm text-slate-400 mt-1 max-w-md mx-auto">
                 Generate action proposals from the Skill Gaps tab or seed demo data to initialize learning journeys.
               </p>
             </div>
@@ -722,18 +733,18 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h4 className="font-bold text-white text-sm">{path.title}</h4>
+                        <h4 className="font-bold text-white text-base">{path.title}</h4>
                         {path.is_demo && (
-                          <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-purple-950/80 text-purple-400 border border-purple-800/60 font-mono">
+                          <span className="text-xs font-semibold px-2 py-0.5 rounded bg-purple-950/80 text-purple-400 border border-purple-800/60 font-mono">
                             [DEMO DATA]
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-400 mt-0.5">
+                      <p className="text-sm text-slate-400 mt-1">
                         Target Competency: <strong className="text-purple-300">{path.target_skill}</strong>
                       </p>
                     </div>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-950/80 text-teal-400 border border-teal-800/50">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-950/80 text-teal-400 border border-teal-800/50">
                       {path.status || 'In Progress'}
                     </span>
                   </div>
@@ -769,9 +780,9 @@ export default function WorkforcePage({ showToast, _onNavigate, _setModalState }
                       {(path.accommodations || ['Vernacular Audio', 'Large Print UI', 'Screen Reader']).map((acc, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-0.5 rounded bg-teal-950/40 text-teal-300 border border-teal-800/40 text-[10px] flex items-center gap-1"
+                          className="px-2 py-0.5 rounded bg-teal-950/40 text-teal-300 border border-teal-800/40 text-xs flex items-center gap-1"
                         >
-                          <HeartHandshake className="w-3 h-3 text-teal-400" />
+                          <HeartHandshake className="w-3.5 h-3.5 text-teal-400" />
                           {acc}
                         </span>
                       ))}

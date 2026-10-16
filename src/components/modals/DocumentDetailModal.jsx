@@ -113,10 +113,10 @@ export default function DocumentDetailModal({
               {doc.file_type || doc.fileType || 'PDF'}
             </div>
             <div>
-              <h3 id="document-detail-title" className="font-bold text-slate-100 text-base leading-tight">
+              <h3 id="document-detail-title" className="font-bold text-slate-100 text-lg sm:text-xl leading-tight">
                 {doc.name}
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-400 mt-1">
                 {doc.category} • {doc.file_size || doc.fileSize || 'Standard Size'}
               </p>
             </div>
@@ -125,7 +125,7 @@ export default function DocumentDetailModal({
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -135,7 +135,7 @@ export default function DocumentDetailModal({
         {/* Status & Statutory Alignment Banner */}
         <div className="mt-4 p-3.5 rounded-xl bg-[#141C2B] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div className="space-y-1">
-            <span className="text-[11px] text-slate-400 block font-medium">Mapped Statutory Requirement:</span>
+            <span className="text-xs text-slate-400 block font-medium">Mapped Statutory Requirement:</span>
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
               <span className="font-bold text-white text-xs">{mappedApproval}</span>
@@ -143,7 +143,7 @@ export default function DocumentDetailModal({
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            <span className={`px-2.5 py-1 rounded-lg font-mono font-bold text-[10px] border ${radarColor}`}>
+            <span className={`px-2.5 py-1 rounded-lg font-mono font-bold text-xs border ${radarColor}`}>
               Radar: {radarStatus}
             </span>
             <Badge variant={evidenceStatus === 'Supported' ? 'Verified' : 'Pending'} withDot>
@@ -163,7 +163,7 @@ export default function DocumentDetailModal({
             </div>
             {isLoadingIntel && <Loader2 className="w-3.5 h-3.5 text-blue-400 animate-spin" />}
             {!isLoadingIntel && (
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
+              <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-800">
                 Confidence: {entities.confidence_score ? `${Math.round(entities.confidence_score * 100)}%` : '95%'}
               </span>
             )}
@@ -171,22 +171,22 @@ export default function DocumentDetailModal({
 
           <div className="grid grid-cols-2 gap-3 text-xs">
             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800/60">
-              <span className="text-[10px] text-slate-400 block">GSTIN</span>
-              <span className="font-mono font-bold text-slate-100 mt-0.5 block">
+              <span className="text-xs text-slate-400 block">GSTIN</span>
+              <span className="font-mono font-bold text-slate-100 mt-1 block">
                 {entities.gstin || 'Not detected'}
               </span>
             </div>
 
             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800/60">
-              <span className="text-[10px] text-slate-400 block">PAN</span>
-              <span className="font-mono font-bold text-slate-100 mt-0.5 block">
+              <span className="text-xs text-slate-400 block">PAN</span>
+              <span className="font-mono font-bold text-slate-100 mt-1 block">
                 {entities.pan || 'Not detected'}
               </span>
             </div>
 
             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800/60">
-              <span className="text-[10px] text-slate-400 block">FSSAI / License Ref</span>
-              <span className="font-mono font-bold text-slate-100 mt-0.5 block">
+              <span className="text-xs text-slate-400 block">FSSAI / License Ref</span>
+              <span className="font-mono font-bold text-slate-100 mt-1 block">
                 {entities.fssai_number !== 'Not detected'
                   ? entities.fssai_number
                   : entities.certificate_number || 'Not detected'}
@@ -194,28 +194,28 @@ export default function DocumentDetailModal({
             </div>
 
             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800/60">
-              <span className="text-[10px] text-slate-400 block">Udyam Registration</span>
-              <span className="font-mono font-bold text-slate-100 mt-0.5 block">
+              <span className="text-xs text-slate-400 block">Udyam Registration</span>
+              <span className="font-mono font-bold text-slate-100 mt-1 block">
                 {entities.udyam_number || 'Not detected'}
               </span>
             </div>
 
             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800/60">
-              <span className="text-[10px] text-slate-400 block">Issue Date</span>
-              <span className="font-mono text-slate-300 mt-0.5 block">
+              <span className="text-xs text-slate-400 block">Issue Date</span>
+              <span className="font-mono text-slate-300 mt-1 block">
                 {entities.issue_date || doc.upload_date || doc.uploadDate || 'Not detected'}
               </span>
             </div>
 
             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800/60">
-              <span className="text-[10px] text-slate-400 block">Validity / Expiry</span>
-              <span className="font-mono text-slate-300 mt-0.5 block">
+              <span className="text-xs text-slate-400 block">Validity / Expiry</span>
+              <span className="font-mono text-slate-300 mt-1 block">
                 {entities.expiry_date || doc.expiry_date || doc.expiryDate || 'Perpetual'}
               </span>
             </div>
           </div>
 
-          <p className="text-[11px] text-slate-500 italic">
+          <p className="text-xs text-slate-400 italic">
             Extracted through Document Intelligence OCR with zero hallucinated identifiers.
           </p>
         </div>
@@ -227,9 +227,9 @@ export default function DocumentDetailModal({
               type="button"
               onClick={handleDelete}
               disabled={isDeleting}
-              className="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1.5 p-1.5 rounded-lg hover:bg-rose-950/40 transition-colors cursor-pointer"
+              className="text-sm text-rose-400 hover:text-rose-300 flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-rose-950/40 transition-colors cursor-pointer min-h-[36px]"
             >
-              <Trash2 className="w-3.5 h-3.5" />
+              <Trash2 className="w-4 h-4" />
               <span>Delete File</span>
             </button>
           ) : (
@@ -242,7 +242,7 @@ export default function DocumentDetailModal({
               variant="secondary"
               size="sm"
               onClick={onClose}
-              className="text-xs font-semibold"
+              className="min-h-[36px]"
             >
               Close
             </Button>
@@ -253,16 +253,16 @@ export default function DocumentDetailModal({
               size="sm"
               onClick={handleDownload}
               disabled={isDownloading}
-              className="text-xs font-semibold flex items-center gap-1.5"
+              className="min-h-[36px] flex items-center gap-1.5"
             >
               {isDownloading ? (
                 <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin" />
                   <span>Downloading...</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-3.5 h-3.5" />
+                  <Download className="w-4 h-4" />
                   <span>Download File</span>
                 </>
               )}

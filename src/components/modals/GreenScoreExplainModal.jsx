@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Gauge, CheckCircle2, ShieldAlert, Info, Layers } from 'lucide-react';
+import { X, Gauge, Layers, Info } from 'lucide-react';
 import Button from '../ui/Button';
 
 export default function GreenScoreExplainModal({
@@ -31,10 +31,10 @@ export default function GreenScoreExplainModal({
               <Gauge className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-slate-100 text-base">
+              <h3 className="font-bold text-slate-100 text-lg sm:text-xl">
                 Green Operations Score Breakdown
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-400 mt-0.5">
                 Multi-Pillar Deterministic Calculation Engine
               </p>
             </div>
@@ -42,7 +42,7 @@ export default function GreenScoreExplainModal({
 
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -52,7 +52,7 @@ export default function GreenScoreExplainModal({
         {/* Score Hero Banner */}
         <div className="my-4 p-4 rounded-xl bg-[#141C2B] border border-slate-800 flex items-center justify-between">
           <div>
-            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
               Overall Score
             </span>
             <div className="flex items-baseline gap-2 mt-0.5">
@@ -64,7 +64,7 @@ export default function GreenScoreExplainModal({
             </div>
           </div>
 
-          <div className="text-right text-[11px] text-slate-400">
+          <div className="text-right text-xs text-slate-400">
             <div>Deterministic Model</div>
             <div className="text-slate-300 font-mono mt-0.5">{scoreDetail.last_updated || 'Live Telemetry'}</div>
           </div>
@@ -72,8 +72,8 @@ export default function GreenScoreExplainModal({
 
         {/* 5 Pillars Contribution List */}
         <div className="space-y-2.5">
-          <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5 mb-2">
-            <Layers className="w-3.5 h-3.5 text-teal-400" />
+          <h4 className="text-sm font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+            <Layers className="w-4 h-4 text-teal-400" />
             Component Contributions
           </h4>
 
@@ -83,9 +83,9 @@ export default function GreenScoreExplainModal({
               className="p-3 rounded-xl bg-[#0B0F17] border border-slate-800/80 space-y-1.5"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-200">{comp.name}</span>
+                <span className="text-sm font-bold text-slate-200">{comp.name}</span>
                 <div className="flex items-center gap-2 font-mono text-xs">
-                  <span className="text-slate-400 text-[11px]">Weight: {Math.round(comp.weight * 100)}%</span>
+                  <span className="text-slate-400 text-xs">Weight: {Math.round(comp.weight * 100)}%</span>
                   <span className="text-teal-400 font-bold">+{comp.contribution} pts</span>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function GreenScoreExplainModal({
                 />
               </div>
 
-              <p className="text-[11px] text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 {comp.description}
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function GreenScoreExplainModal({
         </div>
 
         {/* Notice */}
-        <div className="mt-4 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px] text-slate-400 flex items-start gap-2">
+        <div className="mt-4 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400 flex items-start gap-2 leading-relaxed">
           <Info className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
           <span>
             This score reflects operational sustainability and efficiency. It is calculated deterministically from telemetry, verified document vaults, and approved green actions. It is NOT an official government statutory compliance score.
@@ -115,7 +115,7 @@ export default function GreenScoreExplainModal({
 
         {/* Footer */}
         <div className="pt-4 mt-4 border-t border-slate-800 flex justify-end">
-          <Button variant="secondary" size="sm" onClick={onClose}>
+          <Button variant="secondary" size="sm" onClick={onClose} className="min-h-[36px]">
             Close
           </Button>
         </div>

@@ -111,13 +111,13 @@ export default function WhyOpportunityModal({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-teal-400">
+                <span className="text-xs uppercase font-bold tracking-wider text-teal-400">
                   Green Industry Flow AI Decision Trace
                 </span>
-                <span className="text-[10px] font-mono text-slate-500">•</span>
-                <span className="text-[10px] text-slate-400">{opportunity.category}</span>
+                <span className="text-xs font-mono text-slate-500">•</span>
+                <span className="text-xs text-slate-400">{opportunity.category}</span>
               </div>
-              <h3 className="font-bold text-slate-100 text-base mt-0.5">
+              <h3 className="font-bold text-slate-100 text-lg sm:text-xl mt-0.5">
                 Why was this flagged: "{opportunity.title}"?
               </h3>
             </div>
@@ -125,7 +125,7 @@ export default function WhyOpportunityModal({
 
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -146,20 +146,20 @@ export default function WhyOpportunityModal({
                       <div className="w-6 h-6 rounded-lg bg-[#0B0F17] border border-slate-700 flex items-center justify-center text-teal-400">
                         <Icon className="w-3.5 h-3.5" />
                       </div>
-                      <span className="text-xs font-bold text-slate-200">
+                      <span className="text-sm font-bold text-slate-200">
                         {stage.num}. {stage.title}
                       </span>
                     </div>
 
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${stage.badgeColor}`}>
+                    <span className={`px-2 py-0.5 rounded text-xs font-bold border ${stage.badgeColor}`}>
                       {stage.badge}
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed pl-8">
+                  <p className="text-sm text-slate-300 leading-relaxed pl-8">
                     {stage.content}
                   </p>
-                  <p className="text-[10px] text-slate-400 mt-1 pl-8">
+                  <p className="text-xs text-slate-400 mt-1 pl-8">
                     {stage.subDetail}
                   </p>
                 </div>
@@ -176,18 +176,19 @@ export default function WhyOpportunityModal({
 
         {/* Footer Actions */}
         <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-          <div className="text-[11px] text-slate-400">
+          <div className="text-xs text-slate-400">
             Status: <span className="font-bold text-slate-200">{opportunity.status}</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant="secondary" size="sm" onClick={onClose}>
+            <Button variant="secondary" size="sm" onClick={onClose} className="min-h-[36px]">
               Close Trace
             </Button>
             {onReviewProposal && opportunity.status === 'DETECTED' && (
               <Button
                 variant="primary"
                 size="sm"
+                className="min-h-[36px]"
                 onClick={() => {
                   onClose();
                   onReviewProposal(opportunity);

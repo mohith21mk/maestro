@@ -44,9 +44,9 @@ export default function ProfileCompletion({ onCompleteClick, completionPercentag
               />
             </div>
 
-            <div className="text-[11px] text-slate-400 font-medium flex items-center gap-1.5">
+            <div className="text-xs text-slate-400 font-medium flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-              <span>{remainingItems} details remaining (Financial details & Environmental classification)</span>
+              <span>{remainingItems} details remaining (Financial details &amp; Environmental classification)</span>
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function ProfileCompletion({ onCompleteClick, completionPercentag
             variant="primary"
             size="md"
             onClick={onCompleteClick}
-            className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-lg shadow-blue-900/40 border border-blue-400/30"
+            className="bg-blue-600 hover:bg-blue-500 text-white font-semibold min-h-[36px] text-sm shadow-lg shadow-blue-900/40 border border-blue-400/30"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>Complete Profile</span>

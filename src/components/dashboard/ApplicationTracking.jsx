@@ -24,18 +24,18 @@ export default function ApplicationTracking({
   );
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-5 sm:p-6">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-4 sm:p-5">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
         <div className="flex items-center gap-2.5">
           <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-100">
             <FileCheck2 className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-none">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight">
               Application Tracking
             </h2>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-sm text-slate-500 mt-0.5">
               Live status of state and central department approvals
             </p>
           </div>
@@ -44,13 +44,13 @@ export default function ApplicationTracking({
         <div className="flex items-center gap-2.5 self-start sm:self-auto">
           {/* Quick Search */}
           <div className="relative">
-            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search applications..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-8 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 bg-slate-50/50 hover:bg-white focus:bg-white focus:border-blue-500 focus:outline-none w-36 sm:w-48 transition-all"
+              className="pl-8 pr-3 py-1.5 min-h-[36px] h-9 text-sm rounded-lg border border-slate-200 bg-slate-50/50 hover:bg-white focus:bg-white focus:border-blue-500 focus:outline-none w-36 sm:w-48 transition-all"
             />
           </div>
 
@@ -58,19 +58,19 @@ export default function ApplicationTracking({
             variant="secondary"
             size="sm"
             onClick={onViewAll}
-            className="text-xs font-semibold text-blue-600 hover:text-blue-700"
+            className="min-h-[36px] text-sm font-semibold text-blue-600 hover:text-blue-700"
           >
             <span>View All</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
       </div>
 
       {/* Desktop & Tablet Table */}
       <div className="hidden md:block overflow-x-auto mt-4">
-        <table className="w-full text-left text-xs">
+        <table className="w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-slate-200/80 text-slate-400 font-semibold uppercase tracking-wider text-[11px]">
+            <tr className="border-b border-slate-200/80 text-slate-400 font-semibold uppercase tracking-wider text-xs">
               <th className="py-3 px-3">Application ID</th>
               <th className="py-3 px-3">Department</th>
               <th className="py-3 px-3">Application</th>
@@ -86,7 +86,7 @@ export default function ApplicationTracking({
                 className="hover:bg-slate-50/80 transition-colors group"
               >
                 <td className="py-3.5 px-3">
-                  <span className="font-mono text-slate-900 font-semibold text-[11px] bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                  <span className="font-mono text-slate-900 font-semibold text-xs bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                     {item.id}
                   </span>
                 </td>
@@ -123,7 +123,7 @@ export default function ApplicationTracking({
             className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white transition-all space-y-3"
           >
             <div className="flex items-center justify-between">
-              <span className="font-mono text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+              <span className="font-mono text-xs font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                 {item.id}
               </span>
               <Badge variant={item.status} withDot size="xs">

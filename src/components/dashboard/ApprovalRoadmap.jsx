@@ -45,19 +45,19 @@ export default function ApprovalRoadmap({ steps, onViewFullRoadmap }) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-5 sm:p-6">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-4 sm:p-5">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
         <div className="flex items-center gap-2.5">
           <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-100">
             <ShieldCheck className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-none">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight">
               Verified Approval Roadmap
             </h2>
-            <p className="text-xs text-slate-500 mt-1">
-              Custom sequential compliance pipeline based on your business sector & capacity.
+            <p className="text-sm text-slate-500 mt-0.5">
+              Custom sequential compliance pipeline based on your business sector &amp; capacity.
             </p>
           </div>
         </div>
@@ -66,10 +66,10 @@ export default function ApprovalRoadmap({ steps, onViewFullRoadmap }) {
           variant="secondary"
           size="sm"
           onClick={onViewFullRoadmap}
-          className="self-start sm:self-auto text-xs font-semibold text-blue-600 hover:text-blue-700"
+          className="self-start sm:self-auto min-h-[36px] text-sm font-semibold text-blue-600 hover:text-blue-700"
         >
           <span>View Full Roadmap</span>
-          <ChevronRight className="w-3.5 h-3.5" />
+          <ChevronRight className="w-4 h-4" />
         </Button>
       </div>
 
@@ -101,14 +101,14 @@ export default function ApprovalRoadmap({ steps, onViewFullRoadmap }) {
                   <div className="flex-1 min-w-0 bg-slate-50/70 group-hover:bg-slate-50 border border-slate-200/70 group-hover:border-slate-300 rounded-xl p-3.5 sm:p-4 transition-all duration-150 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                           STEP {item.step}
                         </span>
-                        <span className="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                        <span className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
                           {item.title}
                         </span>
                         {item.category && (
-                          <span className="text-[10px] px-2 py-0.5 rounded-md bg-white text-slate-600 border border-slate-200 font-medium">
+                          <span className="text-xs px-2 py-0.5 rounded-md bg-white text-slate-600 border border-slate-200 font-medium">
                             {item.category}
                           </span>
                         )}
@@ -123,7 +123,7 @@ export default function ApprovalRoadmap({ steps, onViewFullRoadmap }) {
                       </div>
 
                       {item.estimatedDays && (
-                        <div className="text-[11px] text-slate-400 mt-1">
+                        <div className="text-xs text-slate-400 mt-1">
                           {item.estimatedDays}
                         </div>
                       )}

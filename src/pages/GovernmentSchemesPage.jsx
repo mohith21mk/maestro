@@ -51,10 +51,10 @@ export default function GovernmentSchemesPage({ showToast, setModalState }) {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight">
             Government Schemes
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+          <p className="text-sm text-slate-400 mt-1">
             Discover and apply for government incentives, subsidies, and credit facilities matching your profile.
           </p>
         </div>
@@ -63,15 +63,15 @@ export default function GovernmentSchemesPage({ showToast, setModalState }) {
           variant="secondary"
           size="sm"
           onClick={handleRefresh}
-          className="self-start sm:self-auto text-xs font-semibold"
+          className="self-start sm:self-auto min-h-[36px] h-9 text-sm font-semibold"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-blue-400' : ''}`} />
+          <RefreshCw className={`w-4 h-4 mr-1.5 ${isRefreshing ? 'animate-spin text-blue-400' : ''}`} />
           <span>Refresh Schemes</span>
         </Button>
       </div>
 
       {/* Recommendation Banner */}
-      <div className="bg-[#111827] rounded-2xl p-6 text-white relative overflow-hidden shadow-xl border border-[#1E293B]">
+      <div className="bg-[#111827] rounded-2xl p-5 sm:p-6 text-white relative overflow-hidden shadow-xl border border-[#1E293B]">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-950 border border-blue-800 text-blue-400 text-xs font-semibold">
@@ -81,20 +81,20 @@ export default function GovernmentSchemesPage({ showToast, setModalState }) {
             <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white">
               {schemesHighlight.totalSchemes || schemesList.length} Government Schemes Pre-Qualified for {businessName}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-400 leading-relaxed">
               {schemesHighlight.description}
             </p>
           </div>
 
-          <div className="flex items-center gap-4 shrink-0 bg-[#141C2B] p-4 rounded-xl border border-slate-700">
+          <div className="flex items-center gap-4 shrink-0 bg-[#141C2B] p-4 sm:p-5 rounded-xl border border-slate-700">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-black text-white">{schemesHighlight.highMatch || 4}</div>
-              <div className="text-[10px] text-blue-400 uppercase font-semibold">High Priority</div>
+              <div className="text-3xl font-black text-white">{schemesHighlight.highMatch || 4}</div>
+              <div className="text-xs text-blue-400 uppercase font-semibold mt-0.5">High Priority</div>
             </div>
             <div className="w-px h-8 bg-slate-700" />
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-black text-emerald-400">₹25L</div>
-              <div className="text-[10px] text-emerald-400 uppercase font-semibold">Max Subsidy</div>
+              <div className="text-3xl font-black text-emerald-400">₹25L</div>
+              <div className="text-xs text-emerald-400 uppercase font-semibold mt-0.5">Max Subsidy</div>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function GovernmentSchemesPage({ showToast, setModalState }) {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-2 text-xs font-medium rounded-xl border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
+            className="h-9 min-h-[36px] px-3 py-1.5 text-sm font-medium rounded-xl border border-[#1E293B] bg-[#141C2B] hover:border-slate-700 focus:border-blue-500 focus:outline-none transition-all text-slate-200"
           >
             {categories.map((c) => (
               <option key={c} value={c}>
@@ -152,10 +152,10 @@ export default function GovernmentSchemesPage({ showToast, setModalState }) {
                   </div>
 
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-xs font-bold text-slate-300 bg-[#141C2B] px-2 py-0.5 rounded border border-slate-700">
+                    <span className="text-xs font-bold text-slate-300 bg-[#141C2B] px-2.5 py-0.5 rounded border border-slate-700">
                       {scheme.category}
                     </span>
-                    <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">
                       {scheme.matchPercentage || 90}% Match
                     </span>
                   </div>
@@ -164,19 +164,19 @@ export default function GovernmentSchemesPage({ showToast, setModalState }) {
                 <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors mt-3">
                   {scheme.name}
                 </h3>
-                <span className="text-xs text-slate-400 font-medium block mt-0.5">
+                <span className="text-xs text-slate-400 font-medium block mt-1">
                   {scheme.officialSource || 'Ministry of MSME / Textiles, Govt of India'}
                 </span>
 
-                <p className="text-xs text-slate-300 mt-3 leading-relaxed">
+                <p className="text-sm text-slate-300 mt-2.5 leading-relaxed">
                   {scheme.description}
                 </p>
 
                 {/* Subsidized Benefit Callout */}
-                <div className="mt-4 p-3 rounded-xl bg-[#141C2B] border border-slate-800 flex items-center justify-between">
+                <div className="mt-4 p-3.5 rounded-xl bg-[#141C2B] border border-slate-800 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-blue-400">Financial Benefit</span>
-                    <div className="text-xs font-bold text-emerald-400 mt-0.5">{scheme.benefit}</div>
+                    <span className="text-xs uppercase font-bold text-blue-400">Financial Benefit</span>
+                    <div className="text-sm font-bold text-emerald-400 mt-0.5">{scheme.benefit}</div>
                   </div>
                   <TrendingUp className="w-4 h-4 text-emerald-400" />
                 </div>
@@ -184,13 +184,13 @@ export default function GovernmentSchemesPage({ showToast, setModalState }) {
 
               {/* Action Button */}
               <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400">Deadline: {scheme.deadline || 'Rolling scheme'}</span>
+                <span className="text-xs text-slate-400">Deadline: {scheme.deadline || 'Rolling scheme'}</span>
                 <button
                   onClick={() => handleOpenDetail(scheme)}
-                  className="py-1.5 px-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  className="min-h-[36px] h-9 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <span>View Details</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>

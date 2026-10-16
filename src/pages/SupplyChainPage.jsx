@@ -325,19 +325,19 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
       {/* ===================================================================== */}
       {/* 1. TOP EXECUTIVE BANNER (SAP-Ready & Demo Data Indicators)             */}
       {/* ===================================================================== */}
-      <div className="bg-[#111827] rounded-2xl border border-[#1E293B] p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-[#111827] rounded-xl border border-[#1E293B] p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="flex items-center gap-3.5">
-          <div className="w-11 h-11 rounded-2xl bg-amber-900/30 text-amber-400 border border-amber-800/50 flex items-center justify-center shrink-0 shadow-lg">
+          <div className="w-11 h-11 rounded-xl bg-amber-900/30 text-amber-400 border border-amber-800/50 flex items-center justify-center shrink-0 shadow-lg">
             <Truck className="w-6 h-6 text-amber-400" />
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-xl font-bold text-slate-100 tracking-tight">Supply Chain Resilience</h2>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-blue-950/70 text-blue-300 border border-blue-800/60 flex items-center gap-1">
+              <span className="text-xs uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-blue-950/70 text-blue-300 border border-blue-800/60 flex items-center gap-1">
                 <Server className="w-3 h-3 text-blue-400" />
                 <span>SAP-Ready Architecture</span>
               </span>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 border border-slate-700 font-mono">
+              <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 border border-slate-700 font-mono">
                 [DEMO DATA PROVIDER]
               </span>
             </div>
@@ -398,14 +398,14 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
             Source: <strong className="text-blue-300">SAP S/4HANA OData / Carrier Telemetry Engine</strong>
           </span>
           <span className="text-slate-600">|</span>
-          <span className="px-2 py-0.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800 text-[10px] font-mono font-bold">
+          <span className="px-2 py-0.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800 text-xs font-mono font-bold">
             Status: Simulated Telemetry [DEMO DATA]
           </span>
         </div>
 
         {activeShipment?.action_state && activeShipment.action_state !== 'NORMAL' && (
           <div className="flex items-center gap-2">
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 ${
+            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1 ${
               activeShipment.action_state.includes('EXECUTED')
                 ? 'bg-emerald-950 text-emerald-300 border border-emerald-700'
                 : 'bg-amber-950 text-amber-300 border border-amber-700 animate-pulse'
@@ -421,7 +421,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   setActionTypeToExecute('EXECUTE_REROUTE');
                   setConfirmActionModalOpen(true);
                 }}
-                className="text-[11px] h-7 px-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center gap-1"
+                className="text-xs min-h-[32px] h-8 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center gap-1"
               >
                 <Send className="w-3 h-3" />
                 <span>Execute Carrier Reroute</span>
@@ -462,7 +462,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           >
             <span>{tab.label}</span>
             {tab.badge && (
-              <span className="text-[9px] px-1.5 py-0.2 rounded bg-rose-950 text-rose-300 border border-rose-800 font-bold">
+              <span className="text-xs px-1.5 py-0.2 rounded bg-rose-950 text-rose-300 border border-rose-800 font-bold">
                 {tab.badge}
               </span>
             )}
@@ -474,7 +474,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
       </div>
 
       {loading ? (
-        <div className="p-16 flex flex-col items-center justify-center space-y-3 bg-[#111827] rounded-2xl border border-[#1E293B]">
+        <div className="p-16 flex flex-col items-center justify-center space-y-3 bg-[#111827] rounded-xl border border-[#1E293B]">
           <Loader2 className="w-8 h-8 animate-spin text-amber-400" />
           <span className="text-xs text-slate-400 font-medium">Loading SAP Resilient Supply Chain telemetry...</span>
         </div>
@@ -487,7 +487,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
             <div className="space-y-6">
               {/* Active Disruption Alert Hero if disruption exists */}
               {activeDisruption && (
-                <div className="p-5 rounded-2xl bg-rose-950/40 border border-rose-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="p-5 rounded-xl bg-rose-950/40 border border-rose-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-xl bg-rose-900/60 text-rose-300 border border-rose-700 flex items-center justify-center shrink-0 mt-0.5">
                       <AlertOctagon className="w-5 h-5 text-rose-400" />
@@ -500,7 +500,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         <span className="text-xs text-rose-300 font-bold">
                           {activeDisruption.title}
                         </span>
-                        <span className="text-[10px] text-amber-400 font-mono">[DEMO DATA]</span>
+                        <span className="text-xs text-amber-400 font-mono">[DEMO DATA]</span>
                       </div>
                       <p className="text-xs text-slate-300">
                         Shipment <strong>{activeDisruption.shipment_id}</strong> delayed by {activeDisruption.delay_days} days.
@@ -526,81 +526,81 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
 
               {/* KPI Cards Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-2">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] space-y-2">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                     Resilience Index
                   </span>
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black text-white">{resilienceScore}</span>
                     <span className="text-xs font-bold text-amber-400">/ 100</span>
                   </div>
-                  <div className="text-[11px] text-slate-400">
+                  <div className="text-xs text-slate-400">
                     Status: <strong className="text-amber-300">{ratingBand}</strong>
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-2">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] space-y-2">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                     Active Disruptions
                   </span>
                   <div className="text-3xl font-black text-rose-400">
                     {disruptions.filter((d) => d.status === 'ACTIVE').length}
                   </div>
-                  <div className="text-[11px] text-slate-400">
+                  <div className="text-xs text-slate-400">
                     Immediate production exposure
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-2">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] space-y-2">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                     Single-Source Vulnerabilities
                   </span>
                   <div className="text-3xl font-black text-amber-400">
                     {summary?.single_source_count ?? 0}
                   </div>
-                  <div className="text-[11px] text-slate-400">
+                  <div className="text-xs text-slate-400">
                     Critical items with 0 backup sources
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-2">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] space-y-2">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                     Decisions Recorded
                   </span>
                   <div className="text-3xl font-black text-emerald-400">
                     {decisions.length}
                   </div>
-                  <div className="text-[11px] text-slate-400">
+                  <div className="text-xs text-slate-400">
                     Human-in-the-loop audit trace
                   </div>
                 </div>
               </div>
 
               {/* SAP Architecture Spec Callout */}
-              <div className="p-5 rounded-2xl bg-[#141C2B] border border-[#1E293B] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-5 rounded-xl bg-[#141C2B] border border-[#1E293B] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <Server className="w-5 h-5 text-blue-400 shrink-0" />
                   <div className="space-y-0.5">
                     <span className="text-xs font-bold text-slate-200">
                       SAP Clean Core Architecture Specification
                     </span>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-xs text-slate-400">
                       Decoupled adapter pattern separating business scenario calculation from SAP BTP / S/4HANA OData service layer.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-800 font-mono">
+                  <span className="text-xs px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-800 font-mono">
                     Provider: {sapStatus?.provider_name || 'DEMO_DATA_PROVIDER'}
                   </span>
-                  <span className="text-[10px] px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono">
+                  <span className="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono">
                     Connection: {sapStatus?.connection_status || 'Demo Mode'}
                   </span>
                 </div>
               </div>
 
               {/* Priority Vulnerabilities Table */}
-              <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-4">
+              <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                   <div className="flex items-center gap-2">
                     <ShieldAlert className="w-4 h-4 text-amber-400" />
@@ -627,18 +627,18 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         <div className="space-y-1 max-w-xl">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-bold text-slate-100 text-xs">{r.title}</span>
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                            <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${
                               r.priority === 'Critical'
                                 ? 'bg-rose-950 text-rose-300 border border-rose-800'
                                 : 'bg-amber-950 text-amber-300 border border-amber-800'
                             }`}>
                               {r.priority}
                             </span>
-                            <span className="text-[9px] text-slate-400 font-mono">{r.category}</span>
-                            {r.is_demo && <span className="text-[9px] text-amber-400 font-mono">[DEMO DATA]</span>}
+                            <span className="text-xs text-slate-400 font-mono">{r.category}</span>
+                            {r.is_demo && <span className="text-xs text-amber-400 font-mono">[DEMO DATA]</span>}
                           </div>
                           <p className="text-xs text-slate-300 leading-relaxed">{r.issue}</p>
-                          <p className="text-[11px] text-slate-400">
+                          <p className="text-xs text-slate-400">
                             Action: <strong className="text-amber-300">{r.recommended_action}</strong>
                           </p>
                         </div>
@@ -668,7 +668,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB: OPERATIONAL EXCEPTIONS (5-Part Analytical Decomposition)     */}
           {/* ================================================================= */}
           {activeTab === 'exceptions' && (
-            <div className="p-6 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-6">
+            <div className="p-6 rounded-xl bg-[#111827] border border-[#1E293B] space-y-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
@@ -676,7 +676,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                       <AlertTriangle className="w-5 h-5 text-amber-400" />
                       <span>Operational Exceptions &amp; Checkpoint Telemetry</span>
                     </h3>
-                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 font-bold">
+                    <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 font-bold">
                       MANDATORY 5-PART ANALYSIS
                     </span>
                   </div>
@@ -703,7 +703,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                 <div className="p-12 text-center space-y-2 bg-[#141C2B] rounded-xl border border-slate-800">
                   <ShieldCheck className="w-8 h-8 text-emerald-400 mx-auto" />
                   <p className="text-xs text-slate-300 font-semibold">All shipment checkpoints operational within SLA.</p>
-                  <p className="text-[11px] text-slate-500">
+                  <p className="text-xs text-slate-500">
                     Click "Simulate Disruption Demo" to induce a 5-day siding hold and generate operational exception telemetry.
                   </p>
                 </div>
@@ -712,27 +712,27 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   {operationalExceptions.map((exc) => (
                     <div
                       key={exc.id}
-                      className="p-5 rounded-2xl bg-[#141C2B] border border-amber-900/60 shadow-lg space-y-5"
+                      className="p-5 rounded-xl bg-[#141C2B] border border-amber-900/60 shadow-lg space-y-5"
                     >
                       {/* Exception Header */}
                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                         <div className="flex items-center gap-2.5 flex-wrap">
-                          <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">
+                          <span className="text-xs font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">
                             {exc.exception_type}
                           </span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">
+                          <span className="text-xs font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">
                             SEVERITY: {exc.severity}
                           </span>
                           <span className="text-xs font-mono font-bold text-white">
                             Shipment: SHP-SAP-9021
                           </span>
-                          <span className="text-[10px] text-slate-400 font-mono">
+                          <span className="text-xs text-slate-400 font-mono">
                             Trans-India Freight Logistics (TIFL-882)
                           </span>
                         </div>
 
                         <div className="flex items-center gap-2">
-                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                          <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
                             exc.action_state?.includes('EXECUTED')
                               ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                               : exc.action_state === 'PREPARE_REROUTE'
@@ -749,7 +749,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                                 setActionTypeToExecute('EXECUTE_REROUTE');
                                 setConfirmActionModalOpen(true);
                               }}
-                              className="text-[11px] h-7 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center gap-1"
+                              className="text-xs min-h-[32px] h-8 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center gap-1"
                             >
                               <Send className="w-3 h-3" />
                               <span>Execute Reroute</span>
@@ -763,7 +763,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         {/* 1. OBSERVED FACT */}
                         <div className="p-4 rounded-xl bg-[#111827] border border-blue-900/40 space-y-1.5">
                           <div className="flex items-center gap-2 text-xs font-bold text-blue-400 uppercase tracking-wider">
-                            <span className="w-5 h-5 rounded-full bg-blue-950 text-blue-300 flex items-center justify-center text-[10px] font-black border border-blue-800">
+                            <span className="w-5 h-5 rounded-full bg-blue-950 text-blue-300 flex items-center justify-center text-xs font-black border border-blue-800">
                               1
                             </span>
                             <span>Observed Fact (Telemetry Ground Truth)</span>
@@ -776,26 +776,26 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         {/* 2. EVIDENCE */}
                         <div className="p-4 rounded-xl bg-[#111827] border border-indigo-900/40 space-y-2">
                           <div className="flex items-center gap-2 text-xs font-bold text-indigo-400 uppercase tracking-wider">
-                            <span className="w-5 h-5 rounded-full bg-indigo-950 text-indigo-300 flex items-center justify-center text-[10px] font-black border border-indigo-800">
+                            <span className="w-5 h-5 rounded-full bg-indigo-950 text-indigo-300 flex items-center justify-center text-xs font-black border border-indigo-800">
                               2
                             </span>
                             <span>Evidence &amp; Operational Metrics</span>
                           </div>
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pl-7 pt-1">
                             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800">
-                              <span className="text-[10px] text-slate-400 block">Stalled Location</span>
+                              <span className="text-xs text-slate-400 block">Stalled Location</span>
                               <strong className="text-xs text-white">Nagpur Junction Siding</strong>
                             </div>
                             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800">
-                              <span className="text-[10px] text-slate-400 block">Telemetry Ping Gap</span>
+                              <span className="text-xs text-slate-400 block">Telemetry Ping Gap</span>
                               <strong className="text-xs text-rose-400 font-mono">36 Hours (&gt;24h SLA)</strong>
                             </div>
                             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800">
-                              <span className="text-[10px] text-slate-400 block">Inventory / Shortage</span>
+                              <span className="text-xs text-slate-400 block">Inventory / Shortage</span>
                               <strong className="text-xs text-amber-400 font-mono">200 on-hand / 300 deficit</strong>
                             </div>
                             <div className="p-2.5 rounded-lg bg-[#141C2B] border border-slate-800">
-                              <span className="text-[10px] text-slate-400 block">Downtime Exposure</span>
+                              <span className="text-xs text-slate-400 block">Downtime Exposure</span>
                               <strong className="text-xs text-rose-400 font-mono">40 hrs ($50,000 risk)</strong>
                             </div>
                           </div>
@@ -804,7 +804,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         {/* 3. ASSUMPTION */}
                         <div className="p-4 rounded-xl bg-[#111827] border border-amber-900/40 space-y-1.5">
                           <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
-                            <span className="w-5 h-5 rounded-full bg-amber-950 text-amber-300 flex items-center justify-center text-[10px] font-black border border-amber-800">
+                            <span className="w-5 h-5 rounded-full bg-amber-950 text-amber-300 flex items-center justify-center text-xs font-black border border-amber-800">
                               3
                             </span>
                             <span>Operational Assumption</span>
@@ -817,7 +817,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         {/* 4. RISK */}
                         <div className="p-4 rounded-xl bg-[#111827] border border-rose-900/40 space-y-1.5">
                           <div className="flex items-center gap-2 text-xs font-bold text-rose-400 uppercase tracking-wider">
-                            <span className="w-5 h-5 rounded-full bg-rose-950 text-rose-300 flex items-center justify-center text-[10px] font-black border border-rose-800">
+                            <span className="w-5 h-5 rounded-full bg-rose-950 text-rose-300 flex items-center justify-center text-xs font-black border border-rose-800">
                               4
                             </span>
                             <span>Enterprise Production Risk</span>
@@ -830,7 +830,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         {/* 5. RECOMMENDATION */}
                         <div className="p-4 rounded-xl bg-[#111827] border border-emerald-900/40 space-y-3">
                           <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
-                            <span className="w-5 h-5 rounded-full bg-emerald-950 text-emerald-300 flex items-center justify-center text-[10px] font-black border border-emerald-800">
+                            <span className="w-5 h-5 rounded-full bg-emerald-950 text-emerald-300 flex items-center justify-center text-xs font-black border border-emerald-800">
                               5
                             </span>
                             <span>Agent Recommendation &amp; Staged Action</span>
@@ -871,7 +871,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB: SHIPMENTS & LIFECYCLE STATE MACHINE                          */}
           {/* ================================================================= */}
           {activeTab === 'shipments' && (
-            <div className="p-6 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-6">
+            <div className="p-6 rounded-xl bg-[#111827] border border-[#1E293B] space-y-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
                 <div>
                   <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
@@ -907,20 +907,20 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   {shipments.map((shp) => (
                     <div
                       key={shp.id}
-                      className="p-5 rounded-2xl bg-[#141C2B] border border-[#1E293B] space-y-5"
+                      className="p-5 rounded-xl bg-[#141C2B] border border-[#1E293B] space-y-5"
                     >
                       {/* Header info */}
                       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                         <div className="space-y-1">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-sm font-bold text-white font-mono">{shp.shipment_number}</span>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">
+                            <span className="text-xs font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">
                               {shp.transport_mode}
                             </span>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-amber-400 font-mono">
+                            <span className="text-xs font-bold px-2 py-0.5 rounded bg-slate-800 text-amber-400 font-mono">
                               {shp.carrier_name} ({shp.carrier_code})
                             </span>
-                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase font-mono ${
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded uppercase font-mono ${
                               shp.action_state?.includes('EXECUTED')
                                 ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                                 : shp.action_state === 'PREPARE_REROUTE'
@@ -967,7 +967,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
 
                       {/* LIFECYCLE STATE MACHINE STEPPER */}
                       <div className="space-y-2">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                           Shipment Lifecycle State Machine:
                         </span>
                         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2">
@@ -1002,10 +1002,10 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                                 {st.done && <Check className="w-3 h-3 text-emerald-400" />}
                                 {st.current && <AlertTriangle className="w-3 h-3 text-rose-400 animate-bounce" />}
                                 {st.pending && <Clock className="w-3 h-3 text-slate-600" />}
-                                <span className="text-[10px] font-bold tracking-tight">{st.label}</span>
+                                <span className="text-xs font-bold tracking-tight">{st.label}</span>
                               </div>
                               {st.note && (
-                                <span className="text-[9px] font-mono text-rose-300 block font-semibold">
+                                <span className="text-xs font-mono text-rose-300 block font-semibold">
                                   {st.note}
                                 </span>
                               )}
@@ -1017,24 +1017,24 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                       {/* Metrics Breakdown */}
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                         <div className="p-3 rounded-xl bg-[#111827] border border-slate-800">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase">Material Cargo</span>
+                          <span className="text-xs font-bold text-slate-400 uppercase">Material Cargo</span>
                           <div className="text-xs font-bold text-white mt-0.5">{shp.material_name}</div>
-                          <span className="text-[10px] text-slate-400 font-mono">{shp.quantity} {shp.quantity_unit} Required</span>
+                          <span className="text-xs text-slate-400 font-mono">{shp.quantity} {shp.quantity_unit} Required</span>
                         </div>
                         <div className="p-3 rounded-xl bg-[#111827] border border-slate-800">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase">Current Inventory</span>
+                          <span className="text-xs font-bold text-slate-400 uppercase">Current Inventory</span>
                           <div className="text-xs font-bold text-amber-400 mt-0.5 font-mono">{shp.current_inventory} {shp.quantity_unit}</div>
-                          <span className="text-[10px] text-slate-400">4 days buffer coverage</span>
+                          <span className="text-xs text-slate-400">4 days buffer coverage</span>
                         </div>
                         <div className="p-3 rounded-xl bg-[#111827] border border-slate-800">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase">Potential Shortage</span>
+                          <span className="text-xs font-bold text-slate-400 uppercase">Potential Shortage</span>
                           <div className="text-xs font-bold text-rose-400 mt-0.5 font-mono">{shp.potential_shortage} {shp.quantity_unit}</div>
-                          <span className="text-[10px] text-rose-300 font-semibold">Line stoppage risk</span>
+                          <span className="text-xs text-rose-300 font-semibold">Line stoppage risk</span>
                         </div>
                         <div className="p-3 rounded-xl bg-[#111827] border border-slate-800">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase">ETA Variance</span>
+                          <span className="text-xs font-bold text-slate-400 uppercase">ETA Variance</span>
                           <div className="text-xs font-bold text-rose-400 mt-0.5 font-mono">+{shp.eta_variance_days} Days Delay</div>
-                          <span className="text-[10px] text-slate-400 font-mono">Siding Hold at Nagpur</span>
+                          <span className="text-xs text-slate-400 font-mono">Siding Hold at Nagpur</span>
                         </div>
                       </div>
                     </div>
@@ -1048,7 +1048,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB: ROUTE TRACKING & MULTI-MODAL CORRIDOR VISUALIZER             */}
           {/* ================================================================= */}
           {activeTab === 'tracking' && (
-            <div className="p-6 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-6">
+            <div className="p-6 rounded-xl bg-[#111827] border border-[#1E293B] space-y-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
                 <div>
                   <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
@@ -1068,13 +1068,13 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
               </div>
 
               {/* CORRIDOR VISUALIZER */}
-              <div className="p-5 rounded-2xl bg-[#141C2B] border border-slate-800 space-y-4">
+              <div className="p-5 rounded-xl bg-[#141C2B] border border-slate-800 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
                     <Radio className="w-4 h-4 text-amber-400 animate-pulse" />
                     <span>Active Rail Corridor Status</span>
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 font-bold">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 font-bold">
                     BOTTLENECK AT NAGPUR SIDING
                   </span>
                 </div>
@@ -1084,13 +1084,13 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   {/* Node 1: Origin */}
                   <div className="p-4 rounded-xl bg-[#111827] border border-emerald-800/60 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
+                      <span className="text-xs font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
                         ORIGIN: COMPLETED
                       </span>
-                      <span className="text-[11px] text-slate-400 font-mono">Day 0</span>
+                      <span className="text-xs text-slate-400 font-mono">Day 0</span>
                     </div>
                     <div className="text-xs font-bold text-white">Jamshedpur Rail Yard, JH</div>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-xs text-slate-400">
                       500 MT steel sheet loaded. Wagons BOXNHL-4491 to 4505 departed eastbound line.
                     </p>
                   </div>
@@ -1098,13 +1098,13 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   {/* Node 2: Delayed Siding */}
                   <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-700 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-rose-900 text-rose-200 border border-rose-600 animate-pulse">
+                      <span className="text-xs font-extrabold uppercase px-2 py-0.5 rounded bg-rose-900 text-rose-200 border border-rose-600 animate-pulse">
                         DELAYED: SIDING HOLD
                       </span>
-                      <span className="text-[11px] text-rose-300 font-mono font-bold">+5 Days Variance</span>
+                      <span className="text-xs text-rose-300 font-mono font-bold">+5 Days Variance</span>
                     </div>
                     <div className="text-xs font-bold text-white">Nagpur Junction Siding, MH</div>
-                    <p className="text-[11px] text-slate-300">
+                    <p className="text-xs text-slate-300">
                       Track maintenance and locomotive reallocation hold. Zero telemetry forward movement for 36 hours.
                     </p>
                   </div>
@@ -1112,13 +1112,13 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   {/* Node 3: Destination */}
                   <div className="p-4 rounded-xl bg-[#111827] border border-slate-700 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                      <span className="text-xs font-extrabold uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
                         DESTINATION: PENDING
                       </span>
-                      <span className="text-[11px] text-amber-400 font-mono font-bold">ETA Slipped</span>
+                      <span className="text-xs text-amber-400 font-mono font-bold">ETA Slipped</span>
                     </div>
                     <div className="text-xs font-bold text-white">Pune Assembly Plant, MH</div>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-xs text-slate-400">
                       Inbound Gate 4 reservation rescheduled. Buffer exhaustion in 4 days if unmitigated.
                     </p>
                   </div>
@@ -1132,7 +1132,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                       <span className="text-xs font-bold text-emerald-200">
                         Recommended Multi-Modal Fallback Corridor:
                       </span>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-900 text-emerald-100 font-bold">
+                      <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-900 text-emerald-100 font-bold">
                         SCENARIO 3 ACTIVE
                       </span>
                     </div>
@@ -1160,7 +1160,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
               </div>
 
               {/* CHECKPOINTS EVENT LOG TABLE */}
-              <div className="p-5 rounded-2xl bg-[#141C2B] border border-slate-800 space-y-4">
+              <div className="p-5 rounded-xl bg-[#141C2B] border border-slate-800 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
                     <Clock className="w-4 h-4 text-slate-400" />
@@ -1172,7 +1172,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase">
+                      <tr className="border-b border-slate-800 text-xs font-bold text-slate-400 uppercase">
                         <th className="py-2.5 px-3">Seq</th>
                         <th className="py-2.5 px-3">Checkpoint Type</th>
                         <th className="py-2.5 px-3">Location</th>
@@ -1206,7 +1206,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                             {cp.actual_time ? new Date(cp.actual_time).toLocaleString() : '—'}
                           </td>
                           <td className="py-2.5 px-3">
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                            <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${
                               cp.status === 'COMPLETED'
                                 ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                                 : cp.status === 'DELAYED'
@@ -1216,7 +1216,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                               {cp.status}
                             </span>
                           </td>
-                          <td className="py-2.5 px-3 text-[11px] text-slate-400 max-w-xs">{cp.notes}</td>
+                          <td className="py-2.5 px-3 text-xs text-slate-400 max-w-xs">{cp.notes}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -1230,7 +1230,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB 2: DISRUPTION CENTER                                          */}
           {/* ================================================================= */}
           {activeTab === 'disruption' && (
-            <div className="p-6 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-6">
+            <div className="p-6 rounded-xl bg-[#111827] border border-[#1E293B] space-y-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
                 <div>
                   <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
@@ -1258,7 +1258,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                 <div className="p-12 text-center space-y-3 bg-[#141C2B] rounded-xl border border-dashed border-slate-800">
                   <PackageCheck className="w-8 h-8 text-emerald-400 mx-auto" />
                   <p className="text-xs text-slate-300 font-semibold">No active enterprise disruptions detected.</p>
-                  <p className="text-[11px] text-slate-500 max-w-md mx-auto">
+                  <p className="text-xs text-slate-500 max-w-md mx-auto">
                     Click "Trigger Steel Sheet Disruption" to run the core demo story (Supplier A 5-day delay for 500 units of Steel Sheet).
                   </p>
                 </div>
@@ -1273,15 +1273,15 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         <div className="space-y-0.5">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-xs font-bold text-white">{d.title}</span>
-                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded ${
                               d.status === 'MITIGATED'
                                 ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                                 : 'bg-rose-950 text-rose-300 border border-rose-800'
                             }`}>
                               {d.status}
                             </span>
-                            <span className="text-[10px] text-slate-400 font-mono">Shipment: {d.shipment_id}</span>
-                            {d.is_demo && <span className="text-[10px] text-amber-400 font-mono">[DEMO DATA]</span>}
+                            <span className="text-xs text-slate-400 font-mono">Shipment: {d.shipment_id}</span>
+                            {d.is_demo && <span className="text-xs text-amber-400 font-mono">[DEMO DATA]</span>}
                           </div>
                         </div>
 
@@ -1302,24 +1302,24 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                       {/* Deterministic Impact Metrics Grid */}
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-[#111827] p-4 rounded-xl border border-slate-800">
                         <div>
-                          <span className="text-[10px] text-slate-400 uppercase font-bold">Required Qty</span>
+                          <span className="text-xs text-slate-400 uppercase font-bold">Required Qty</span>
                           <p className="text-sm font-black text-slate-100 font-mono mt-0.5">{d.affected_quantity} units</p>
                         </div>
                         <div>
-                          <span className="text-[10px] text-slate-400 uppercase font-bold">On-Hand Stock</span>
+                          <span className="text-xs text-slate-400 uppercase font-bold">On-Hand Stock</span>
                           <p className="text-sm font-black text-blue-400 font-mono mt-0.5">{d.current_inventory} units</p>
                         </div>
                         <div>
-                          <span className="text-[10px] text-slate-400 uppercase font-bold">Calculated Shortage</span>
+                          <span className="text-xs text-slate-400 uppercase font-bold">Calculated Shortage</span>
                           <p className="text-sm font-black text-rose-400 font-mono mt-0.5">{d.potential_shortage} units</p>
                         </div>
                         <div>
-                          <span className="text-[10px] text-slate-400 uppercase font-bold">Transit Delay</span>
+                          <span className="text-xs text-slate-400 uppercase font-bold">Transit Delay</span>
                           <p className="text-sm font-black text-amber-400 font-mono mt-0.5">+{d.delay_days} days</p>
                         </div>
                       </div>
 
-                      <div className="text-[11px] text-slate-400 flex flex-col sm:flex-row justify-between gap-2 pt-1">
+                      <div className="text-xs text-slate-400 flex flex-col sm:flex-row justify-between gap-2 pt-1">
                         <span>Production Line Exposure: <strong className="text-rose-300">{d.production_exposure_hours} hours</strong> of assembly stoppage</span>
                         <span>Estimated Downtime Risk: <strong className="text-rose-300 font-mono">${(d.production_exposure_hours * 1250).toLocaleString()} USD</strong></span>
                       </div>
@@ -1336,7 +1336,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {activeTab === 'planner' && (
             <div className="space-y-6">
               {/* Header Box */}
-              <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
                     <Sliders className="w-5 h-5 text-amber-400" />
@@ -1369,7 +1369,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                     return (
                       <div
                         key={sc.scenario_id}
-                        className={`rounded-2xl p-5 border flex flex-col justify-between transition-all ${
+                        className={`rounded-xl p-5 border flex flex-col justify-between transition-all ${
                           isRec
                             ? 'bg-amber-950/30 border-amber-500 shadow-xl ring-1 ring-amber-500/50'
                             : 'bg-[#111827] border-[#1E293B] hover:border-slate-700'
@@ -1378,11 +1378,11 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         <div className="space-y-3">
                           {/* Card Badge */}
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">
+                            <span className="text-xs uppercase font-bold tracking-wider text-slate-400 font-mono">
                               {sc.scenario_id.replace('SCENARIO_', 'OPT ')}
                             </span>
                             {isRec && (
-                              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 uppercase tracking-wider flex items-center gap-1">
+                              <span className="text-xs font-extrabold px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 uppercase tracking-wider flex items-center gap-1">
                                 <Zap className="w-3 h-3 fill-slate-950" />
                                 <span>AI Recommended</span>
                               </span>
@@ -1390,7 +1390,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                           </div>
 
                           <h4 className="text-sm font-bold text-slate-100 leading-snug">{sc.title}</h4>
-                          <p className="text-[11px] text-slate-400 line-clamp-2">{sc.strategy}</p>
+                          <p className="text-xs text-slate-400 line-clamp-2">{sc.strategy}</p>
 
                           {/* Numerical Metrics */}
                           <div className="space-y-2 pt-2 border-t border-slate-800">
@@ -1423,7 +1423,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
 
                             <div className="flex justify-between items-center text-xs">
                               <span className="text-slate-400">Compliance:</span>
-                              <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
+                              <span className={`text-xs font-bold px-1.5 py-0.2 rounded ${
                                 sc.compliance_status === 'PASS'
                                   ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                                   : 'bg-amber-950 text-amber-300 border border-amber-800'
@@ -1434,7 +1434,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                           </div>
 
                           {/* Inventory Effect Note */}
-                          <div className="p-2.5 rounded-xl bg-[#141C2B] text-[10px] text-slate-300 leading-relaxed border border-slate-800/80">
+                          <div className="p-2.5 rounded-xl bg-[#141C2B] text-xs text-slate-300 leading-relaxed border border-slate-800/80">
                             <strong>Inventory:</strong> {sc.inventory_coverage_effect}
                           </div>
                         </div>
@@ -1458,7 +1458,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   })}
                 </div>
               ) : (
-                <div className="p-12 text-center space-y-3 bg-[#111827] rounded-2xl border border-[#1E293B]">
+                <div className="p-12 text-center space-y-3 bg-[#111827] rounded-xl border border-[#1E293B]">
                   <Sliders className="w-8 h-8 text-amber-400 mx-auto" />
                   <p className="text-xs text-slate-300 font-semibold">No scenario comparison generated yet.</p>
                   <Button
@@ -1474,7 +1474,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
 
               {/* STRUCTURED AI RECOMMENDATION BOX */}
               {scenarioPlan && (
-                <div className="p-6 rounded-2xl bg-[#141C2B] border border-amber-800/60 space-y-4 shadow-xl">
+                <div className="p-6 rounded-xl bg-[#141C2B] border border-amber-800/60 space-y-4 shadow-xl">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                     <div className="flex items-center gap-2">
                       <Zap className="w-5 h-5 text-amber-400" />
@@ -1482,7 +1482,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         Scenario Planning Agent Recommendation
                       </h4>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-mono">
+                    <span className="text-xs font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-mono">
                       {scenarioPlan.disclaimer}
                     </span>
                   </div>
@@ -1493,7 +1493,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
 
                   {/* Reasoning Bullets */}
                   <div className="space-y-2 pt-2">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                       Strategic Rationale &amp; Trade-off Synthesis:
                     </span>
                     <ul className="space-y-1.5 text-xs text-slate-300">
@@ -1516,7 +1516,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
 
                   {/* Action Bar */}
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-slate-800">
-                    <span className="text-[11px] text-slate-400 italic">
+                    <span className="text-xs text-slate-400 italic">
                       Deterministic engine verified: Cost (+$2,500) and line starvation (0 hrs) are mathematically proven.
                     </span>
 
@@ -1553,7 +1553,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB 4: COMPLIANCE CHECK (AGENT 3 - VENDOR VERIFICATION)           */}
           {/* ================================================================= */}
           {activeTab === 'compliance' && (
-            <div className="p-6 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-6">
+            <div className="p-6 rounded-xl bg-[#111827] border border-[#1E293B] space-y-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
                 <div>
                   <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
@@ -1582,7 +1582,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                   {/* Target Supplier Banner */}
                   <div className="p-4 rounded-xl bg-[#141C2B] border border-[#1E293B] flex flex-col sm:flex-row justify-between gap-3">
                     <div>
-                      <span className="text-[10px] text-slate-400 uppercase font-bold">Candidate Alternate Vendor</span>
+                      <span className="text-xs text-slate-400 uppercase font-bold">Candidate Alternate Vendor</span>
                       <h4 className="text-sm font-bold text-white mt-0.5">{complianceAudit.supplier_name}</h4>
                       <p className="text-xs text-slate-400 font-mono mt-0.5">SAP Code: VEND-SAP-B02 | Lead Time: 2 days</p>
                     </div>
@@ -1611,10 +1611,10 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                           <div>
                             <span className="font-semibold text-slate-200">GST Clear Tax Certificate</span>
-                            <p className="text-[10px] text-slate-400">Statutory Tax Filing Verification FY26</p>
+                            <p className="text-xs text-slate-400">Statutory Tax Filing Verification FY26</p>
                           </div>
                         </div>
-                        <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">
+                        <span className="text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">
                           VERIFIED (Expires 31 Dec 2026)
                         </span>
                       </div>
@@ -1625,10 +1625,10 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                           <div>
                             <span className="font-semibold text-slate-200">ISO 9001:2015 Quality Management</span>
-                            <p className="text-[10px] text-slate-400">Quality Management System Standard</p>
+                            <p className="text-xs text-slate-400">Quality Management System Standard</p>
                           </div>
                         </div>
-                        <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">
+                        <span className="text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">
                           VERIFIED (Expires 20 Nov 2026)
                         </span>
                       </div>
@@ -1639,10 +1639,10 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                           <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
                           <div>
                             <span className="font-semibold text-amber-200">Formal Vendor Registration Approval</span>
-                            <p className="text-[10px] text-slate-400">SAP ERP Master Vendor Sign-off (Form VR-04)</p>
+                            <p className="text-xs text-slate-400">SAP ERP Master Vendor Sign-off (Form VR-04)</p>
                           </div>
                         </div>
-                        <span className="text-[10px] font-bold text-amber-300 bg-amber-950/80 border border-amber-700 px-2 py-0.5 rounded">
+                        <span className="text-xs font-bold text-amber-300 bg-amber-950/80 border border-amber-700 px-2 py-0.5 rounded">
                           MISSING (Requires Human Verification)
                         </span>
                       </div>
@@ -1651,13 +1651,13 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
 
                   {/* Agent Recommendation Statement */}
                   <div className="p-4 rounded-xl bg-[#141C2B] border border-amber-800/60 text-xs space-y-2">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                       Compliance Agent Directive:
                     </span>
                     <p className="text-slate-200 leading-relaxed">
                       "{complianceAudit.recommendation_note}"
                     </p>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-xs text-slate-400">
                       <strong>Recommended Verification Step:</strong> Procurement Manager or QA Inspector must confirm the physical factory loading dock inspection report prior to signing PO-SAP-2026-B02.
                     </p>
                   </div>
@@ -1674,7 +1674,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB 5: SUPPLIER REGISTRY                                          */}
           {/* ================================================================= */}
           {activeTab === 'suppliers' && (
-            <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-4">
+            <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider">
                   Enterprise Supplier Network
@@ -1690,7 +1690,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
                     <thead>
-                      <tr className="border-b border-slate-800 text-slate-400 text-[10px] uppercase">
+                      <tr className="border-b border-slate-800 text-slate-400 text-xs uppercase">
                         <th className="py-2.5 px-3">Supplier Name</th>
                         <th className="py-2.5 px-3">Type</th>
                         <th className="py-2.5 px-3">Location</th>
@@ -1706,7 +1706,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                           <td className="py-3 px-3 font-semibold text-slate-100">
                             {s.name}
                             {s.is_demo && (
-                              <span className="ml-1.5 text-[9px] text-amber-400 font-mono">[DEMO]</span>
+                              <span className="ml-1.5 text-xs text-amber-400 font-mono">[DEMO]</span>
                             )}
                           </td>
                           <td className="py-3 px-3 text-slate-300">{s.supplier_type}</td>
@@ -1720,7 +1720,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                             </span>
                           </td>
                           <td className="py-3 px-3">
-                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                            <span className={`px-2 py-0.5 rounded text-xs font-bold ${
                               s.risk_status === 'High' || s.risk_status === 'Critical'
                                 ? 'bg-rose-950 text-rose-300 border border-rose-800'
                                 : 'bg-emerald-950 text-emerald-300 border border-emerald-800'
@@ -1732,16 +1732,16 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                             <div className="space-y-0.5">
                               {s.documents && s.documents.length > 0 ? (
                                 s.documents.map((d) => (
-                                  <div key={d.id} className="text-[10px] flex items-center gap-1.5">
+                                  <div key={d.id} className="text-xs flex items-center gap-1.5">
                                     <span className={`w-1.5 h-1.5 rounded-full ${
                                       d.verification_status === 'Verified' ? 'bg-emerald-400' : 'bg-amber-400'
                                     }`} />
                                     <span className="text-slate-300 truncate max-w-[150px]">{d.document_name}</span>
-                                    <span className="text-[9px] text-slate-500 font-mono">({d.verification_status})</span>
+                                    <span className="text-xs text-slate-500 font-mono">({d.verification_status})</span>
                                   </div>
                                 ))
                               ) : (
-                                <span className="text-amber-400 text-[10px]">No documents attached</span>
+                                <span className="text-amber-400 text-xs">No documents attached</span>
                               )}
                             </div>
                           </td>
@@ -1758,7 +1758,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB 6: MATERIALS & INVENTORY                                      */}
           {/* ================================================================= */}
           {activeTab === 'items' && (
-            <div className="p-5 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-4">
+            <div className="p-5 rounded-xl bg-[#111827] border border-[#1E293B] space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider">
                   Critical Materials &amp; Inventory Dependencies
@@ -1774,7 +1774,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
                     <thead>
-                      <tr className="border-b border-slate-800 text-slate-400 text-[10px] uppercase">
+                      <tr className="border-b border-slate-800 text-slate-400 text-xs uppercase">
                         <th className="py-2.5 px-3">Item Name</th>
                         <th className="py-2.5 px-3">Category</th>
                         <th className="py-2.5 px-3">Criticality</th>
@@ -1790,12 +1790,12 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                           <td className="py-3 px-3 font-semibold text-slate-100">
                             {it.name}
                             {it.is_demo && (
-                              <span className="ml-1.5 text-[9px] text-amber-400 font-mono">[DEMO]</span>
+                              <span className="ml-1.5 text-xs text-amber-400 font-mono">[DEMO]</span>
                             )}
                           </td>
                           <td className="py-3 px-3 text-slate-300">{it.category}</td>
                           <td className="py-3 px-3">
-                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                            <span className={`px-2 py-0.5 rounded text-xs font-bold ${
                               it.criticality === 'Critical'
                                 ? 'bg-rose-950 text-rose-300 border border-rose-800'
                                 : 'bg-blue-950 text-blue-300 border border-blue-800'
@@ -1830,7 +1830,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
           {/* TAB 7: AUDIT TRAIL & DECISION TRACE                               */}
           {/* ================================================================= */}
           {activeTab === 'audit' && (
-            <div className="p-6 rounded-2xl bg-[#111827] border border-[#1E293B] space-y-6">
+            <div className="p-6 rounded-xl bg-[#111827] border border-[#1E293B] space-y-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
                 <div>
                   <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
@@ -1850,7 +1850,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                 <div className="p-12 text-center space-y-2 bg-[#141C2B] rounded-xl border border-slate-800">
                   <Info className="w-6 h-6 text-slate-400 mx-auto" />
                   <p className="text-xs text-slate-300 font-semibold">No human decisions recorded yet.</p>
-                  <p className="text-[11px] text-slate-500">
+                  <p className="text-xs text-slate-500">
                     Run the Scenario Planner and approve or modify a scenario to generate an immutable audit log entry.
                   </p>
                 </div>
@@ -1863,7 +1863,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                     >
                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                          <span className={`text-xs font-bold px-2 py-0.5 rounded ${
                             dec.decision === 'APPROVED'
                               ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                               : dec.decision === 'MODIFIED'
@@ -1873,11 +1873,11 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                             {dec.decision}
                           </span>
                           <span className="text-xs font-bold text-white">{dec.scenario_title}</span>
-                          <span className="text-[10px] text-slate-400 font-mono">
+                          <span className="text-xs text-slate-400 font-mono">
                             AuditLog: #{dec.audit_log_id ? dec.audit_log_id.slice(0, 8) : 'RECORDED'}
                           </span>
                         </div>
-                        <span className="text-[11px] text-slate-400 font-mono">
+                        <span className="text-xs text-slate-400 font-mono">
                           {new Date(dec.created_at).toLocaleString()}
                         </span>
                       </div>
@@ -1886,7 +1886,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                         <strong>Reviewer Justification:</strong> {dec.decision_notes || 'No custom notes entered.'}
                       </p>
 
-                      <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400 pt-1 border-t border-slate-800/60">
+                      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 pt-1 border-t border-slate-800/60">
                         <span>Authorized By: <strong className="text-slate-200">{dec.confirmed_by}</strong></span>
                         <span>Cost Delta: <strong className="text-amber-400 font-mono">+${dec.cost_impact.toLocaleString()} USD</strong></span>
                         <span>Delay: <strong className="text-emerald-400 font-mono">{dec.delay_impact_days} days</strong></span>
@@ -1906,10 +1906,10 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
       {/* ===================================================================== */}
       {decisionModalOpen && selectedScenarioForAction && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#111827] rounded-2xl border border-amber-700/80 shadow-2xl max-w-xl w-full p-6 space-y-5 animate-scale-up">
+          <div className="bg-[#111827] rounded-xl border border-amber-700/80 shadow-2xl max-w-xl w-full p-6 space-y-5 animate-scale-up">
             <div className="flex items-start justify-between pb-3 border-b border-slate-800">
               <div className="space-y-0.5">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-400">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-amber-400">
                   Human Decision Gate
                 </span>
                 <h3 className="text-base font-bold text-white">
@@ -1928,7 +1928,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
             <div className="p-3.5 rounded-xl bg-[#141C2B] border border-slate-800 space-y-1.5 text-xs">
               <div className="font-bold text-slate-100">{selectedScenarioForAction.title}</div>
               <div className="text-slate-400">{selectedScenarioForAction.strategy}</div>
-              <div className="flex gap-4 pt-1 font-mono text-[11px]">
+              <div className="flex gap-4 pt-1 font-mono text-xs">
                 <span className="text-amber-400">Cost: +${selectedScenarioForAction.total_cost_delta} USD</span>
                 <span className="text-emerald-400">Delay: {selectedScenarioForAction.production_delay_days} days</span>
                 <span className="text-slate-300">Compliance: {selectedScenarioForAction.compliance_status}</span>
@@ -1966,7 +1966,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
             {decisionActionType === 'MODIFIED' && (
               <div className="p-3.5 rounded-xl bg-[#141C2B] border border-blue-900/60 space-y-3 text-xs">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-300 mb-1">
                     Adjusted Order Allocation (Units):
                   </label>
                   <input
@@ -1976,7 +1976,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
                     className="w-full bg-[#111827] border border-slate-700 rounded-lg p-2 text-xs text-white font-mono"
                   />
                 </div>
-                <label className="flex items-center gap-2 text-[11px] text-slate-300 cursor-pointer">
+                <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={requireImmediatePhysicalAudit}
@@ -2032,10 +2032,10 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
       {/* ===================================================================== */}
       {confirmActionModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#111827] rounded-2xl border border-emerald-700/80 shadow-2xl max-w-xl w-full p-6 space-y-5 animate-scale-up">
+          <div className="bg-[#111827] rounded-xl border border-emerald-700/80 shadow-2xl max-w-xl w-full p-6 space-y-5 animate-scale-up">
             <div className="flex items-start justify-between pb-3 border-b border-slate-800">
               <div className="space-y-0.5">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-400">
                   Prepare vs Execute Operational Action Gate
                 </span>
                 <h3 className="text-base font-bold text-white">
@@ -2053,7 +2053,7 @@ export default function SupplyChainPage({ showToast, _onNavigate, _setModalState
             <div className="p-3.5 rounded-xl bg-[#141C2B] border border-emerald-900/60 space-y-2 text-xs">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-slate-100">Shipment SHP-SAP-9021 Reroute Execution</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-bold">
+                <span className="text-xs font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-bold">
                   Current State: {activeShipment?.action_state || 'PREPARE_REROUTE'}
                 </span>
               </div>
