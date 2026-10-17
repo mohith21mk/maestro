@@ -1,0 +1,44 @@
+# ==============================================================================
+# POWER HOUSE — Render Blueprint Deployment Specification
+# ==============================================================================
+# Deployment Target: Render Web Service (FastAPI) + Managed PostgreSQL
+# Runtime: Python 3.11+
+# ==============================================================================
+
+services:
+  - type: web
+    name: powerhouse-backend
+    runtime: python
+    rootDir: backend
+    plan: starter
+    region: oregon
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt && alembic upgrade head"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: APP_NAME
+        value: "POWER HOUSE Backend API"
+      - key: API_V1_STR
+        value: "/api/v1"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: powerhouse-db
+          property: connectionString
+      - key: BACKEND_CORS_ORIGINS
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+databases:
+  - name: powerhouse-db
+    databaseName: powerhouse
+    user: powerhouse_user
+    plan: free
+    region: oregon

@@ -127,8 +127,13 @@ def check_and_guard_port(host: str = "127.0.0.1", port: int = 8000) -> bool:
       - Prints structured diagnostic telemetry matching specifications.
       - Gracefully terminates current launch attempt so WinError 10013 is prevented.
     """
-    # Skip during test runs
-    if "pytest" in sys.modules or os.getenv("TESTING") == "true":
+    # Skip during test runs or in production / non-Windows hosted environments
+    if (
+        "pytest" in sys.modules
+        or os.getenv("TESTING") == "true"
+        or os.getenv("ENVIRONMENT") in ("production", "prod")
+        or sys.platform != "win32"
+    ):
         return True
 
     # Check if socket is actually accepting connections or in listening table

@@ -79,7 +79,7 @@ class VectorStoreService:
     def __init__(self, persist_dir: Optional[str] = None):
         if not persist_dir:
             base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-            persist_dir = os.path.join(base_dir, "data", "chroma_db")
+            persist_dir = os.getenv("CHROMA_PERSIST_DIR", os.path.join(base_dir, "data", "chroma_db"))
         os.makedirs(persist_dir, exist_ok=True)
         self.persist_dir = persist_dir
 

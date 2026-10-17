@@ -5,7 +5,7 @@ from typing import Tuple, Optional
 from fastapi import HTTPException, status as http_status
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
+UPLOAD_DIR = os.getenv("UPLOAD_DIR", os.path.join(BASE_DIR, "uploads"))
 MAX_FILE_SIZE = 25 * 1024 * 1024  # 25 MB
 
 ALLOWED_EXTENSIONS = {".pdf", ".docx", ".xlsx"}

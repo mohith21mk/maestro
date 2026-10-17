@@ -5,11 +5,37 @@
  * Provides resilient fallbacks if the backend server is temporarily unreachable.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api/v1';
+const rawApiUrl = import.meta.env.VITE_API_URL;
+const isProd = import.meta.env.PROD;
+
+function resolveApiBaseUrl() {
+  if (rawApiUrl && typeof rawApiUrl === 'string' && rawApiUrl.trim().length > 0) {
+    const trimmed = rawApiUrl.trim().replace(/\/$/, '');
+    if (isProd && (trimmed.includes('127.0.0.1') || trimmed.includes('localhost'))) {
+      console.warn(
+        '[POWER HOUSE Configuration Warning] Production build is targeting a localhost API URL. ' +
+        'Please set VITE_API_URL to your deployed Render service (e.g. https://powerhouse-api.onrender.com/api/v1) in Netlify.'
+      );
+    }
+    return trimmed;
+  }
+
+  if (isProd) {
+    console.error(
+      '[POWER HOUSE Production Error] VITE_API_URL is not configured for this production deployment. ' +
+      'Requests cannot be routed to a local development server. Configure VITE_API_URL in Netlify environment variables.'
+    );
+    return '';
+  }
+
+  return 'http://127.0.0.1:8000/api/v1';
+}
+
+const API_BASE_URL = resolveApiBaseUrl();
 
 class ApiClient {
   constructor(baseUrl = API_BASE_URL) {
-    this.baseUrl = baseUrl.replace(/\/$/, '');
+    this.baseUrl = (baseUrl || '').replace(/\/$/, '');
     this.token = typeof window !== 'undefined' ? window.localStorage.getItem('ph_token') : null;
   }
 
@@ -36,6 +62,14 @@ class ApiClient {
   }
 
   async request(endpoint, options = {}) {
+    if (!this.baseUrl) {
+      const configErr = new Error(
+        'Production Configuration Error: Backend API URL (VITE_API_URL) is not configured. ' +
+        'Please set VITE_API_URL in your Netlify dashboard to your deployed Render API (e.g. https://your-api.onrender.com/api/v1).'
+      );
+      configErr.isConfigurationError = true;
+      throw configErr;
+    }
     const url = `${this.baseUrl}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
     const token = this.getToken();
     const isFormData = typeof FormData !== 'undefined' && options.body instanceof FormData;
@@ -87,6 +121,9 @@ class ApiClient {
 
   // Health check
   async getHealth() {
+    if (!this.baseUrl) {
+      throw new Error('Production Configuration Error: Backend API URL (VITE_API_URL) is not configured.');
+    }
     const healthUrl = this.baseUrl.replace(/\/api\/v1$/, '') + '/health';
     const res = await fetch(healthUrl);
     if (!res.ok) {

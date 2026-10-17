@@ -16,16 +16,31 @@ logging.basicConfig(
 )
 logger = logging.getLogger("powerhouse")
 
-# Pre-flight port guard check when run under uvicorn server directly
-if "uvicorn" in sys.modules and not ("pytest" in sys.modules or os.getenv("TESTING") == "true"):
-    check_and_guard_port(host="127.0.0.1", port=8000)
+# Local development port guard check (only runs in local dev on Windows port 8000)
+if (
+    settings.ENVIRONMENT == "development"
+    and sys.platform == "win32"
+    and "uvicorn" in sys.modules
+    and not ("pytest" in sys.modules or os.getenv("TESTING") == "true")
+):
+    try:
+        check_and_guard_port(host="127.0.0.1", port=8000)
+    except Exception as e:
+        logger.warning(f"Development port guard skipped: {e}")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Lifespan startup check
-    if not ("pytest" in sys.modules or os.getenv("TESTING") == "true"):
-        check_and_guard_port(host="127.0.0.1", port=8000)
+    # Lifespan startup check for local dev
+    if (
+        settings.ENVIRONMENT == "development"
+        and sys.platform == "win32"
+        and not ("pytest" in sys.modules or os.getenv("TESTING") == "true")
+    ):
+        try:
+            check_and_guard_port(host="127.0.0.1", port=8000)
+        except Exception as e:
+            logger.warning(f"Development port guard skipped: {e}")
     yield
 
 
@@ -33,9 +48,9 @@ app = FastAPI(
     title=settings.APP_NAME,
     description="Enterprise Business Compliance & Statutory Approval Management API",
     version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc",
-    openapi_url="/openapi.json",
+    docs_url="/docs" if settings.DEBUG or settings.ENVIRONMENT != "production" else None,
+    redoc_url="/redoc" if settings.DEBUG or settings.ENVIRONMENT != "production" else None,
+    openapi_url="/openapi.json" if settings.DEBUG or settings.ENVIRONMENT != "production" else None,
     lifespan=lifespan,
 )
 
@@ -44,20 +59,73 @@ origins = settings.BACKEND_CORS_ORIGINS
 if isinstance(origins, str):
     origins = [o.strip() for o in origins.split(",") if o.strip()]
 
+# In production, ensure no wildcards with allow_credentials=True
+cors_origins: list[str] = []
+if isinstance(origins, list):
+    for origin in origins:
+        if origin == "*" and settings.ENVIRONMENT in ("production", "prod"):
+            continue
+        cors_origins.append(origin)
+
+if not cors_origins and settings.ENVIRONMENT == "development":
+    cors_origins = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins if origins else ["*"],
+    allow_origins=cors_origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 
 @app.get("/health", tags=["Health"])
+@app.get(f"{settings.API_V1_STR}/health", tags=["Health"])
 def health_check():
+    """Liveness probe for hosting platforms (Render/Netlify integration verification)."""
     return {
         "status": "healthy",
-        "service": "power-house-api"
+        "service": "power-house-api",
+        "environment": settings.ENVIRONMENT,
+        "version": "1.0.0",
+    }
+
+
+@app.get("/ready", tags=["Health"])
+@app.get(f"{settings.API_V1_STR}/ready", tags=["Health"])
+def readiness_check():
+    """Readiness probe checking database connectivity without exposing sensitive credentials."""
+    from sqlalchemy import text
+    from app.core.database import SessionLocal
+
+    db_status = "connected"
+    try:
+        db = SessionLocal()
+        try:
+            db.execute(text("SELECT 1"))
+        finally:
+            db.close()
+    except Exception as e:
+        logger.error(f"Readiness probe database connection failed: {e}", exc_info=settings.DEBUG)
+        return JSONResponse(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            content={
+                "status": "degraded",
+                "database": "unreachable",
+                "detail": "Database connection verification failed.",
+            },
+        )
+
+    return {
+        "status": "ready",
+        "database": db_status,
+        "environment": settings.ENVIRONMENT,
     }
 
 
@@ -79,5 +147,8 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 if __name__ == "__main__":
     import uvicorn
-    if check_and_guard_port(host="127.0.0.1", port=8000):
-        uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+    host = os.getenv("HOST", "0.0.0.0" if settings.ENVIRONMENT in ("production", "prod") else "127.0.0.1")
+    port = int(os.getenv("PORT", 8000))
+    if settings.ENVIRONMENT == "development" and sys.platform == "win32" and port == 8000:
+        check_and_guard_port(host="127.0.0.1", port=8000)
+    uvicorn.run("app.main:app", host=host, port=port, reload=(settings.ENVIRONMENT == "development"))
