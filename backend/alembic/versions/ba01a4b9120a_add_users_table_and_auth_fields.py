@@ -34,7 +34,7 @@ def upgrade() -> None:
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
     op.create_index(op.f('ix_users_id'), 'users', ['id'], unique=False)
     op.add_column('business_profiles', sa.Column('user_id', sa.String(length=36), nullable=True))
-    op.add_column('business_profiles', sa.Column('onboarding_completed', sa.Boolean(), nullable=False, server_default=sa.text('0')))
+    op.add_column('business_profiles', sa.Column('onboarding_completed', sa.Boolean(), nullable=False, server_default=sa.false()))
     op.add_column('business_profiles', sa.Column('business_category', sa.String(length=100), nullable=True))
     op.add_column('business_profiles', sa.Column('image_category', sa.String(length=100), nullable=True))
     op.create_index(op.f('ix_business_profiles_business_category'), 'business_profiles', ['business_category'], unique=False)

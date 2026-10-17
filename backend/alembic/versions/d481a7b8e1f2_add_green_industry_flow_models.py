@@ -80,7 +80,7 @@ def upgrade() -> None:
         sa.Column('measured_value', sa.Float(), nullable=True),
         sa.Column('absolute_change', sa.Float(), nullable=True),
         sa.Column('percentage_change', sa.Float(), nullable=True),
-        sa.Column('is_demo', sa.Boolean(), nullable=False, server_default='0'),
+        sa.Column('is_demo', sa.Boolean(), nullable=False, server_default=sa.false()),
         sa.Column('verification_status', sa.String(length=50), nullable=False, server_default='PENDING'),
         sa.Column('formula', sa.String(length=255), nullable=False),
         sa.Column('assumptions', sa.Text(), nullable=True),
@@ -117,7 +117,7 @@ def upgrade() -> None:
         sa.Column('metric_type', sa.String(length=100), nullable=False),
         sa.Column('value', sa.Float(), nullable=False),
         sa.Column('unit', sa.String(length=50), nullable=False),
-        sa.Column('is_demo', sa.Boolean(), nullable=False, server_default='0'),
+        sa.Column('is_demo', sa.Boolean(), nullable=False, server_default=sa.false()),
         sa.Column('label', sa.String(length=255), nullable=True),
         sa.Column('collected_at', sa.DateTime(), nullable=False),
     )

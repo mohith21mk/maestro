@@ -141,3 +141,48 @@ def test_all_models_registered_in_metadata():
     actual_tables = set(Base.metadata.tables.keys())
     missing = expected_tables - actual_tables
     assert not missing, f"Missing tables in metadata: {missing}"
+
+
+def test_alembic_boolean_server_defaults_postgresql_compatible():
+    """
+    Regression test: Verify that all Boolean columns with server_default in Alembic
+    migrations use PostgreSQL-compatible boolean expressions (e.g. sa.false() or sa.true()),
+    and never use integer defaults ('0', 0, sa.text('0')) which cause psycopg2 DatatypeMismatch.
+    """
+    import re
+    from sqlalchemy.dialects import postgresql
+    import sqlalchemy as sa
+
+    versions_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "alembic", "versions")
+    assert os.path.isdir(versions_dir), f"Migrations directory not found: {versions_dir}"
+
+    incompatible_patterns = [
+        re.compile(r"server_default\s*=\s*['\"]0['\"]"),
+        re.compile(r"server_default\s*=\s*['\"]1['\"]"),
+        re.compile(r"server_default\s*=\s*sa\.text\(\s*['\"]0['\"]\s*\)"),
+        re.compile(r"server_default\s*=\s*sa\.text\(\s*['\"]1['\"]\s*\)"),
+    ]
+
+    violations = []
+    migration_files = [f for f in os.listdir(versions_dir) if f.endswith(".py")]
+    assert len(migration_files) >= 6, "Expected at least 6 migration files in chain"
+
+    for file_name in migration_files:
+        file_path = os.path.join(versions_dir, file_name)
+        with open(file_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+
+        for line_no, line in enumerate(lines, 1):
+            if "Boolean" in line and "server_default" in line:
+                for pat in incompatible_patterns:
+                    if pat.search(line):
+                        violations.append(f"{file_name}:{line_no} -> {line.strip()}")
+
+    assert not violations, f"Found incompatible integer defaults for Boolean columns in migrations: {violations}"
+
+    # Verify that sa.false() and sa.true() compile to valid PostgreSQL boolean literals
+    false_compiled = str(sa.false().compile(dialect=postgresql.dialect()))
+    true_compiled = str(sa.true().compile(dialect=postgresql.dialect()))
+    assert false_compiled.lower() == "false"
+    assert true_compiled.lower() == "true"
+
