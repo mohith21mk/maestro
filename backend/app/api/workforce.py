@@ -157,11 +157,17 @@ def create_employee(
 @router.get("/roles", response_model=List[RoleProfileResponse])
 def get_roles(
     business_profile_id: str = Query(...),
+    auto_seed: bool = Query(True),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
     profile = verify_business_ownership(db, current_user, business_profile_id)
-    return db.query(RoleProfile).filter(RoleProfile.business_id == profile.id).order_by(RoleProfile.created_at.desc()).all()
+    roles = db.query(RoleProfile).filter(RoleProfile.business_id == profile.id).order_by(RoleProfile.created_at.desc()).all()
+    if not roles and auto_seed:
+        from app.services.workforce.demo_data import seed_demo_workforce
+        seed_demo_workforce(db, profile.id)
+        roles = db.query(RoleProfile).filter(RoleProfile.business_id == profile.id).order_by(RoleProfile.created_at.desc()).all()
+    return roles
 
 
 @router.post("/roles", response_model=RoleProfileResponse)

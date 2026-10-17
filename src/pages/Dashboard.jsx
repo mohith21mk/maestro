@@ -489,6 +489,11 @@ export default function Dashboard({ modalState: _modalState, setModalState, onNa
             </span>
           </div>
         </div>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              All 5 Governance Engines Active
+            </span>
+          </div>
+        </div>
 
         {/* 5 Control Tower Pillars */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
